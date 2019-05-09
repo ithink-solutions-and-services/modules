@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+
+    <record id="res_partner_vouchers_voucher_search" model="ir.ui.view">
+        <field name="name">res.partner.vouchers.voucher.search</field>
+        <field name="model">res.partner.vouchers.voucher</field>
+        <field name="arch" type="xml">
+            <search string="Voucher">
+                <field name="password" string="S/N" filter_domain="[('id','=',self)]"/>
+                <field name="vouchers_id" string="B/N"/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="username" string="Username"/>
+                <filter name="new" string="New" domain="[('status','=','new')]"/>
+                <filter name="open" string="Activated" domain="[('status','=','open')]"/>
+                <filter name="used" string="Used" domain="[('status','=','used')]"/>
+                <separator/>
+                <filter name="invoiced" string="Invoiced" domain="[('invoiced','=',True)]"/>
+                <filter name="not_invoiced" string="Not Invoiced" domain="[('invoiced','=',False)]"/>
+                <separator/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Plan" domain="[]" context="{'group_by':'plan_id'}"/>
+                    <filter string="Status" domain="[]" context="{'group_by':'status'}"/>
+                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Invoiced" domain="[]" context="{'group_by':'invoiced'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+       <record model="ir.ui.view" id="res_partner_vouchers_voucher_tree">
+                <field name="name">res_partner_vouchers.voucher.tree</field>
+                <field name="model">res.partner.vouchers.voucher</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="vouchers_id" string="B/N"/>
+                        <field name="id" string="S/N"/>
+                        <field name="username"/>
+                        <field name="password"/>
+                        <field name="status"/>
+                        <field name="balance"/>
+                        <field name="invoiced"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_vouchers_voucher_form">
+                <field name="name">res.partner.vouchers.voucher.form</field>
+                <field name="model">res.partner.vouchers.voucher</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                   <form>
+                       <sheet>
+                           <group col="4">
+                               <field name="username" readonly="1" colspan="2"/>
+                               <field name="password" readonly="1" colspan="2"/>
+                               <field name="status" readonly="1" colspan="2"/>
+                               <field name="balance" readonly="1" colspan="2"/>
+                               <field name="expiration_date" readonly="1" colspan="2" invisible="1"/>
+                               <field name="invoiced" readonly="1"/>
+                           </group>
+                       </sheet>
+                   </form>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_res_partner_vouchers_voucher">
+            <field name="name">All Vouchers</field>
+            <field name="res_model">res.partner.vouchers.voucher</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'sequence': 1,'view_mode': 'form', 'view_id': ref('res_partner_vouchers_voucher_form')}),
+                (0, 0, {'sequence': 0,'view_mode': 'tree', 'view_id': ref('res_partner_vouchers_voucher_tree')})]"/>
+        </record>
+
+       <record model="ir.ui.view" id="res_partner_vouchers_tree">
+                <field name="name">res_partner_vouchers.tree</field>
+                <field name="model">res.partner.vouchers</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="plan_category"/>
+                        <field name="plan_id"/>
+                        <field name="quantity"/>
+                        <field name="is_printed"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_vouchers_form">
+                <field name="name">res.partner.vouchers.form</field>
+                <field name="model">res.partner.vouchers</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                   <form>
+                       <header>
+                           <button name="voucher_print" type="object" class="oe_highlight" string="Print Voucher"/>
+                       </header>
+                       <sheet>
+                           <group col="4">
+                               <field name="name" readonly="1" colspan="2"/>
+                               <field name="partner_id" readonly="1" colspan="2"/>
+                               <field name="quantity" readonly="1" colspan="2"/>
+                               <field name="plan_category" readonly="1" colspan="2"/>
+                               <field name="plan_id" readonly="1" colspan="2"/>
+                               <field name="is_printed" readonly="1" colspan="2"/>
+                               <field name="order_id" readonly="1" colspan="2" attrs="{'invisible': [('order_id','=',False)]}"/>
+                               <field name="voucher_ids" readonly="1" colspan="4">
+                                   <tree>
+                                       <field name="username"/>
+                                       <field name="password"/>
+                                       <field name="balance"/>
+                                       <field name="status"/>
+                                       <field name="invoiced"/>
+                                   </tree>
+                               </field>
+                           </group>
+                       </sheet>
+                   </form>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_res_partner_vouchers">
+            <field name="name">All Voucher List</field>
+            <field name="res_model">res.partner.vouchers</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'sequence': 1,'view_mode': 'form', 'view_id': ref('res_partner_vouchers_form')}),
+                (0, 0, {'sequence': 0,'view_mode': 'tree', 'view_id': ref('res_partner_vouchers_tree')})]"/>
+        </record>
+
+       <record model="ir.ui.view" id="radius_users_tree">
+                <field name="name">radius.users.tree</field>
+                <field name="model">res.partner</field>
+                <field name="type">tree</field>
+                <field name="inherit_id" ref="base.view_partner_tree"/>
+                <field name="arch" type="xml">
+                    <!--<xpath expr="//field[@name='phone']" position="replace">
+                        <field name="username"/>
+                        <field name="password"/>
+                        <field name="expiration_date"/>
+                        <field name="is_printed"/>
+                    </xpath>-->
+                    <xpath expr="//field[@name='email']" position="replace">
+                        <field name="email"/>
+                        <!--<field name="plan_id"/>
+                        <field name="plan_category"/>
+                        <field name="status"/>-->
+                    </xpath>
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="radius_users_form">
+                <field name="name">radius.users.form</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='category_id']" position="after">
+                        <field name="is_radius"/>
+                    </xpath>
+                    <xpath expr="//notebook" position="inside">
+                        <page name="radius_user" string="Radius User" attrs="{'invisible': [('is_radius','=',False)]}">
+                            <group>
+                                <!--<field name="username" attrs="{'required': [('is_radius','=',True)]}"/>
+                                <field name="password" attrs="{'required': [('is_radius','=',True)]}"/>
+                                <field name="plan_id" attrs="{'required': [('is_radius','=',True)]}"/>
+                                <field name="expiration_date" attrs="{'required': [('is_radius','=',True)]}"/>
+                                <field name="is_printed" readonly="1"/>
+                                <field name="status" readonly="0"/>-->
+                                <field name="vouchers_ids"/>
+                            </group>
+                        </page>
+                    </xpath>
+                </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_radius_users">
+            <field name="name">All Accounts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_radius','=',True)]</field>
+            <field name="context">{'default_is_radius': True, 'default_customer': True, 'default_supplier': True, 'default_agent': True, 'default_user_id': uid}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'sequence': 1,'view_mode': 'form', 'view_id': ref('radius_users_form')}),
+                (0, 0, {'sequence': 0,'view_mode': 'tree', 'view_id': ref('radius_users_tree')})]"/>
+        </record>
+
+    <record id="action_res_partner_vouchers_voucher_report" model="ir.actions.act_window">
+        <field name="name">Vouchers Report</field>
+        <field name="res_model">res.partner.vouchers.voucher</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="search_view_id" eval='False'/>
+    </record>
+
+    <!--<record id="res_partner_vouchers_voucher_graph" model="ir.ui.view">
+        <field name="name">res.partner.vouchers.voucher.graph</field>
+        <field name="model">res.partner.vouchers.voucher</field>
+        <field name="arch" type="xml">
+            <graph string="Vouchers Report Graph">
+            </graph>
+        </field>
+    </record>
+
+    <record id="res_partner_vouchers_voucher_pivot" model="ir.ui.view">
+        <field name="name">res.partner.vouchers.voucher.pivot</field>
+        <field name="model">res.partner.vouchers.voucher</field>
+        <field name="arch" type="xml">
+            <pivot string="Vouchers Report">
+            </pivot>
+        </field>
+    </record>-->
+
+        <menuitem name="Voucher List" parent="menu_radius_vouchers" id="menu_action_res_partner_vouchers_tree" action="action_res_partner_vouchers" sequence="1"/>
+        <menuitem name="All Vouchers" parent="menu_radius_vouchers" id="menu_action_res_partner_vouchers_voucher_tree" action="action_res_partner_vouchers_voucher" sequence="2"/>
+        
+        <menuitem name="Resellers" parent="menu_radius_vouchers" id="menu_action_radius_users_tree" action="action_radius_users" sequence="3"/>
+        <menuitem name="Vouchers" parent="menu_radius_report" id="menu_action_res_partner_vouchers_voucher" action="action_res_partner_vouchers_voucher_report" groups="group_radius_officer,group_radius_manager,group_pdn_billing_manager"/>
+</odoo>

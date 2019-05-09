@@ -1,0 +1,119 @@
+ <odoo>
+  <data>
+  <!-- from radius_v1 module -->
+      <!-- BEGIN group -->
+<!--      <record id="group_radius" model="res.groups">
+            <field name="name">Radius</field>
+      </record>-->
+      <!-- END group -->
+
+      <!-- BEGIN view Partner form -->
+<!--      <record id="res_partner_form_radius_view" model="ir.ui.view">
+          <field name="name">res.partner.form.radius</field>
+          <field name="model">res.partner</field>
+          <field name="priority">6</field>
+          <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="groups_id" eval="[(6, 0, [ref('pdn_billing.group_pdn_billing_manager') ])]"/>
+          <field name="arch" type="xml">
+              <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page string="Radius">
+                  <field name="radius_account_ids" context="{'default_partner_id' : active_id}">
+                    <tree>
+                      <field name="partner_id" groups="base.hidden"/>
+                      <field name="username"/>
+                      <field name="password"/>
+                      <field name="contract_id" domain="[('partner_id','=', partner_id)]"/>
+                      <field name="product_id" domain="[('radius','=', True)]"/>
+                      <field name="pool_type"/>
+                      <field name="static_ip"/>
+                      <field name="ippool_id"/>
+                    </tree>
+                  </field>
+                </page>
+              </xpath>
+          </field>
+      </record>-->
+      <!-- BEGIN view Partner form -->
+
+      <!-- BEGIN view IP Pool tree -->
+      <record id="view_ippool_tree" model="ir.ui.view">
+          <field name="name">radius.ippool.tree</field>
+          <field name="model">radius.ippool</field>
+          <field name="arch" type="xml">
+              <tree string="IP Pool">
+                  <field name="name"/>
+                  <field name="pool_range"/>
+              </tree>
+          </field>
+      </record>
+      <!-- END view IP Pool tree -->
+
+
+
+      <!-- BEGIN view IP Pool form -->
+      <record id="view_ippool_form" model="ir.ui.view">
+          <field name="name">radius.ippool.form</field>
+          <field name="model">radius.ippool</field>
+          <field name="arch" type="xml">
+              <form string="IP Pool Form">
+                  <sheet>
+                      <group>
+                          <field name="name"/>
+                          <field name="pool_range"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+      <!-- END view IP Pool form -->
+
+      <!-- BEGIN menu media (partners) action -->
+      <record id="radius_ippool_list_action" model="ir.actions.act_window">
+          <field name="name">IP Pool</field>
+          <field name="res_model">radius.ippool</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+      <!-- END menu media (partners) action -->
+
+
+ <!--     <record id="product_template_radius_form_view" model="ir.ui.view">
+          <field name="name">product.template.radius</field>
+          <field name="model">product.template</field>
+          <field name="priority">6</field>
+          <field name="inherit_id" ref="product.product_template_form_view"/>
+          <field name="groups_id" eval="[(6, 0, [ref('pdn_billing.group_radius') ])]"/>
+          <field name="arch" type="xml">
+              <field name="sale_ok" position="before">
+                <div class="oe_left" name="options" attrs="{'invisible': [('type', '!=', 'service')]}">
+                    <div>
+                        <field name="radius"/>
+                        <label for="radius"/>
+                    </div>
+                </div>
+              </field>
+              <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Radius" attrs="{'invisible': ['|', ('radius', '!=', True), ('type', '!=', 'service')]}">
+                    <group name="Rate" col='4'>
+                        <field name="download_rate"/>
+                        <field name="upload_rate"/>
+                        <field name="burst" />
+                    </group>
+                    <group name="Burst" attrs="{'invisible': [('burst', '!=', True)]}" col='4'>
+                        <field name="burst_download_limit"/>
+                        <field name="burst_upload_limit"/>
+                        <field name="burst_download_thershold"/>
+                        <field name="burst_upload_thershold"/>
+                        <field name="burst_download_time"/>
+                        <field name="burst_upload_time"/>
+                    </group>
+                </page>
+              </xpath>
+          </field>
+      </record>-->
+
+
+     <menuitem id="menu_action_pdn_billing_ippool_list" name="IP Pool" parent="menu_radius_settings"
+          action="radius_ippool_list_action" sequence="11"/>
+		  
+    </data>
+</odoo>

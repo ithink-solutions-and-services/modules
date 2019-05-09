@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record id="view_prepaid_wizard" model="ir.ui.view">
+            <field name="name">Create Prepaid Accounts</field>
+            <field name="model">res.partner.prepaid</field>
+            <field name="arch" type="xml">
+                <form string="Create Prepaid Accounts">
+                    <group>
+                        <field name="partner_id" required="1" domain="[('is_radius','=',True)]" context="{'default_is_radius': True, 'default_customer': True}"/>
+                        <field name="quantity" required="1"/>
+                        <field name="group_id" required="1"/>
+<!--                        <field name="expiration_date"/>-->
+                    </group>
+                    <footer>
+                        <button name="action_create"
+                                string="Create Accounts"
+                                type="object"
+                                class="oe_highlight"/>
+                        or
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="oe_link"
+                            special="cancel"
+                            />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_prepaid_wizard"
+                    name="Create Prepaid Accounts"
+                    res_model="res.partner.prepaid"
+                    view_mode="form"
+                    view_type="form"
+                    target="new" />
+
+        <menuitem id="menu_prepaid_wizard"
+                  parent="menu_pdn_billing_radius_accounts"
+                  action="action_prepaid_wizard" sequence="3"/>
+
+</odoo>

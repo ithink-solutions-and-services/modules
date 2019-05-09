@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+	
+        <menuitem name="RADIUS" id="menu_radius" sequence="5"/>
+		<menuitem name="Vouchers" id="menu_radius_vouchers" parent="menu_radius" sequence="1" groups="group_radius_officer,group_radius_manager,base.group_system"/>
+		<menuitem name="Plans/Groups" id="menu_radius_groups" parent="menu_radius" sequence="2"  groups="group_radius_manager,base.group_system"/>
+		<menuitem name="Accounting" id="menu_radius_accounting" parent="menu_radius" sequence="3"  groups="group_radius_manager,base.group_system"/>
+		<menuitem name="Report" id="menu_radius_report" parent="menu_radius" sequence="4" groups="group_radius_manager,base.group_system"/>
+		<menuitem name="Settings" id="menu_radius_settings" parent="menu_radius" sequence="100" groups="group_radius_manager,base.group_system"/>
+	
+	</data>
+</odoo>
