@@ -66,6 +66,22 @@ class LoanMgmtLoanRequest(models.Model):
     
     @api.one
     def _applied(self):
+        last_loan = self.env['loan_mgmt.loan_request'].sudo().search([('partner_id','=',self.partner_id.id), ('state','!=', 'closed')])
+        if last_loan and len(last_loan)>0:
+            raise UserError("There is an existing loan for this customer")
+        limit = 0
+        if self.policy_ids and len(self.policy_ids)>0:
+            for policy in self.policy_ids:
+                if policy.type == 'gap':
+                    if policy.num_days > limit:
+                        limit = policy.num_days
+        if limit > 0:
+            last_loan = self.env['loan_mgmt.loan_request'].sudo().search([('partner_id','=',self.partner_id.id), ('state','=', 'closed')], order="closed_date desc")
+            if last_loan and len(last_loan)>0:
+                allow_date = fields.Date.from_string(last_loan[0].closed_date) + relativedelta(days=limit+1)
+                if datetime.datetime.today().date < allow_date:
+                    raise UserError("This customer can only apply for a loan starting on " + allow_date.strftime("%B %d, %Y"))
+                
         self.write({
             'state': 'applied',
             'name': self.env['ir.sequence'].sudo().next_by_code('loan_mgmt.loan_request'),
