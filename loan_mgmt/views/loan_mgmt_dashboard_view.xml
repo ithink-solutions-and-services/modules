@@ -1,0 +1,188 @@
+<odoo>
+  <data>
+    <record id="loan_mgmt_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">loan_mgmt.dashboard.kanban.view</field>
+        <field name="model">loan_mgmt.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_loan_mgmt_dashboard_kanban">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="total_count"/>
+                <field name="short_count"/>
+                <field name="color"/>
+                <field name="type"/>
+                <field name="state"/>
+                <field name="kanban_dashboard_graph"/>
+                <field name="kanban_dashboard_graph_type"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <!--<div t-attf-class="#{kanban_color(record.color.raw_value)}">-->
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)}">
+                            <!--<t t-value="JSON.parse(record.kanban_dashboard.raw_value)" t-set="dashboard"/>
+                            <t t-value="record.type.raw_value" t-set="journal_type"/>-->
+                            <t t-call="LeadTop"/>
+                            <div class="o_kanban_card_content">
+                                <div class="row">
+                                    <t t-call="LeadBody"/>
+                                    <!--<t t-if="journal_type == 'sale' || journal_type == 'purchase'" t-call="JournalBodySalePurchase"/>
+                                    <t t-if="journal_type == 'general' || journal_type == 'situation'">
+                                        <div class="col-xs-6 o_kanban_primary_left">
+                                            <button type="object" name="open_action" context="{'action_name': 'action_move_journal_line', 'view_no_maturity': 1}" class="btn btn-primary btn-sm">
+                                                <span>Journal Entries</span>
+                                            </button>
+                                        </div>
+                                    </t>-->
+                                </div>
+<!--                                <t t-if="record.type.raw_value == 'cur_mo_disb' || record.type.raw_value == 'cur_yr_disb'" t-call="LeadGraph"/>-->
+                            </div>
+                            <div class="container o_kanban_card_manage_pane">
+                                <t t-call="LeadManage"/>
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-name="LeadTop">
+                        <!--<div t-attf-class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary">
+                                    <field name="name"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_manage_button_section">
+                                <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-h" /></a>
+                            </div>
+                        </div>-->
+                                    <div class="o_dropdown_kanban dropdown" style="font-color: #484848!important;">
+                                        <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                            <span class="fa fa-ellipsis-h" aria-hidden="true"/>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                            <li t-if="widget.editable"><a name="toggle_active" type="object"><t t-if="record.state.raw_value == 'on'">Hide</t><t t-if="record.state.raw_value == 'off'">Show</t></a></li>
+                                            <li class="divider"></li>
+                                            <t t-if="record.kanban_dashboard_graph_type.raw_value == 'line' || record.kanban_dashboard_graph_type.raw_value == 'bar'"><li><a type="object" name="toggle_graph_type">
+                                  <t t-if="record.kanban_dashboard_graph_type.raw_value == 'line'"><span>Switch to Bar Graph</span></t>
+                                  <t t-if="record.kanban_dashboard_graph_type.raw_value == 'bar'"><span>Switch to Line Graph</span></t>
+                               </a> </li>
+                                            <li class="divider"></li></t>
+                                            <li class="dropdown-header">Tile Colour</li>
+                                            <li>
+                                                <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                    </t>
+
+                    <t t-name="LeadManage">
+                        <!--<div class="row">
+                             <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                <div class="o_kanban_card_manage_title">
+                                    <span>View</span>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_action">
+                                        <t t-if="journal_type == 'bank'">Bank Statements</t>
+                                        <t t-if="journal_type == 'cash'">Cash Statements</t>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_action_with_context" context="{'action_name': 'action_bank_statement_line', 'search_default_journal': True}">Search Operations</a>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_action" context="{'action_name': 'action_account_moves_all_a'}" groups="base.group_no_one">Journal Items</a>
+                                </div>
+                            </div>
+
+                             <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                <div class="o_kanban_card_manage_title">
+                                    <span>New</span>
+                                </div>
+                                <div name="bank_cash_commands">
+                                    <t t-if="journal_type == 'bank'">
+                                        <a type="object" name="create_bank_statement">Transaction</a>
+                                    </t>
+                                    <t t-if="journal_type == 'cash'">
+                                        <a type="object" name="create_cash_statement">Transaction</a>
+                                    </t>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_spend_money">Send Money</a>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_collect_money">Receive Money</a>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_transfer_money">Internal Transfer</a>
+                                </div>
+                            </div>
+
+                             <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_reconciliation">
+                                <div class="o_kanban_card_manage_title">
+                                    <span>Reconciliation</span>
+                                </div>
+                                <div>
+                                    <a t-if="dashboard.number_to_reconcile > 0" type="object" name="action_open_reconcile">Reconcile</a>
+                                    <span t-if="dashboard.number_to_reconcile == 0" class="text-muted">Nothing to Reconcile</span>
+                                </div>
+                                <div>
+                                    <a type="object" name="open_action_with_context" context="{'action_name': 'action_account_reconcile_model', 'use_domain': True}" groups="account.group_account_manager">Reconciliation Models</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                            <div class="col-xs-8">
+                                <ul class="oe_kanban_colorpicker" data-field="color"/>
+                            </div>
+                        </div>
+                        
+                        <div class="row o_kanban_card_settings">
+                            <div class="col-xs-6">
+                                <field name="active" widget="boolean_favorite"/>
+                            </div>
+                        </div>-->
+                    </t>
+
+                    <t t-name="LeadBody">
+                        <div class="col-xs-12 o_kanban_primary_left" style="font-size:32px;text-align:center;">
+                               <span><t t-if="record.type.raw_value == 'cur_mo_disb'"><i class="fa fa-star-half-empty"></i></t>
+                                <t t-if="record.type.raw_value == 'cur_yr_disb'"><i class="fa fa-star"></i></t>
+                                <t t-if="record.type.raw_value == 'collection_mo'"><i class="fa fa-thumbs-up"></i></t>
+                                <t t-if="record.type.raw_value == 'collection_yr'"><i class="fa fa-trophy"></i></t>
+                                <t t-esc="record.short_count.raw_value"/></span><br/>
+                               <span style="font-size: 12px;"><field name="name"/></span>
+                        </div>
+                    </t>
+                    <t t-name="LeadGraph">
+                        <field name="kanban_dashboard_graph" t-att-graph_type="record.kanban_dashboard_graph_type.raw_value" widget="dashboard_graph"/>
+                    </t>
+            </templates>
+            </kanban>
+        </field>
+    </record>
+
+        <record id="view_loan_mgmt_dashboard_search" model="ir.ui.view">
+            <field name="name">view.loan.mgmt.dashboard.search</field>
+            <field name="model">loan_mgmt.dashboard</field>
+            <field name="arch" type="xml">
+               <search string="Tasks">
+                    <filter string="Active" name="active" domain="[('state','=','on')]"/>
+                    <filter string="Inactive" name="inactive" domain="[('state','=','off')]"/>
+                </search>
+            </field>
+        </record>
+
+    <record id="open_loan_mgmt_dashboard_kanban" model="ir.actions.act_window">
+        <field name="name">Loan Management Dashboard</field>
+        <field name="res_model">loan_mgmt.dashboard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="loan_mgmt_dashboard_kanban_view"/>
+        <field name="usage">menu</field>
+        <field name="context">{'search_default_active':1}</field>
+    </record>
+
+    <menuitem id="menu_loan_mgmt_dashboard" name="Dashboard" action="open_loan_mgmt_dashboard_kanban" parent="menu_loan" sequence="0"/>
+
+</data>
+</odoo>

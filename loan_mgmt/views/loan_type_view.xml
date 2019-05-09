@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+  
+    <record id="view_loan_mgmt_loan_type_form" model="ir.ui.view">
+        <field name="name">view.loan.mgmt.loan.type.form</field>
+        <field name="model">loan_mgmt.loan_type</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="interest_type"/>
+                            <field name="interest_rate"/>
+                            <field name="interest_account_id"/>
+                            <field name="disburse_journal_id"/>
+                            <field name="disburse_cash_journal_id"/>
+                            <field name="disburse_expense_account_id"/>
+                            <field name="disburse_payable_account_id"/>
+                            <field name="emi_journal_id"/>
+                            <field name="emi_cash_journal_id"/>
+                            <field name="emi_account_id"/>
+                            <field name="emi_receivable_account_id"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="disburse_method"/>
+                            <field name="requirement_ids" widget="many2many_tags"/>
+                            <field name="categ_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_loan_mgmt_loan_type_tree" model="ir.ui.view">
+      <field name="name">view.loan.mgmt.loan.type.tree</field>
+      <field name="model">loan_mgmt.loan_type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="interest_type"/>
+          <field name="interest_rate"/>
+          <field name="disburse_method"/>
+          <field name="requirement_ids" widget="many2many_tags"/>
+          <field name="categ_ids" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_loan_mgmt_loan_type">
+      <field name="name">Loan Types</field>
+      <field name="res_model">loan_mgmt.loan_type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Loan Types" id="menu_loan_mgmt_loan_type" parent="menu_loan_config" action="action_loan_mgmt_loan_type"/>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,100 @@
+<odoo>
+  <data>
+  
+    <record id="view_loan_mgmt_loan_request_form" model="ir.ui.view">
+        <field name="name">view.loan.mgmt.loan.request.form</field>
+        <field name="model">loan_mgmt.loan_request</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                     <button name="button_applied" string="Apply" type="object" class="oe_highlight" states='draft'/>
+                     <button name="button_approved" string="Approve" type="object" class="oe_highlight" states='applied'/>
+                     <button name="button_disbursed" string="Disburse" type="object" class="oe_highlight" states='approved'/>
+                     <button name="button_compute_monthly" string="Compute Monthly" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('computed','=',True), ('state','!=', 'disbursed')]}"/>
+                     <field name="state" widget="statusbar" nolabel="1"/>
+                     <field name="computed" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_bill" type="object" states="disbursed" class="oe_stat_button" icon="fa-pencil-square-o">Disbursement</button>
+                    </div>
+                    <h1 class="mt0">
+                        <div>
+                            <label string="Draft Request" attrs="{'invisible': [('state','!=','draft')]}"/>
+                            <field name="name" readonly="1" class="oe_inline" attrs="{'invisible': [('state','=','draft')]}"/>
+                        </div>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" domain="[('loan_customer','=',True)]" context="{'default_loan_customer': True, 'loan_customer': True, 'default_supplier': True, 'supplier': True, 'default_customer': True, 'customer': True, 'default_user_id': user_id, 'user_id': user_id}"/>
+                            <field name="loan_type_id" required="1" attrs="{'readonly': [('state','!=','draft')]}" options="{'no_create': True, 'no_open': True }"/>
+                            <field name="principal_amount" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="duration" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="interest_type" readonly="1"/>
+                            <field name="interest_rate" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="partner_categ_id" readonly="1" options="{'no_create': True, 'no_open': True }"/>
+                            <field name="user_id" readonly="1" options="{'no_create': True, 'no_open': True }"/>
+                            <field name="applied_date" readonly="1"/>
+                            <field name="approved_date" readonly="1"/>
+                            <field name="disburse_date" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Loan Request Lines" name="lines" >
+                            <field name="loan_line_ids" readonly="1"/>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total_loan"/>
+                                <field name="total_interest"/>
+                                <field name="total_payments"/>
+                                <field name="balance"/>
+                            </group>
+                        </page>
+                        <page string="Requirements" name="requirements">
+                            <field name="requirement_ids" readonly="1"/>
+                        </page>
+                        <page string="Policies" name="policies">
+                            <field name="policy_ids" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_loan_mgmt_loan_request_tree" model="ir.ui.view">
+      <field name="name">view.loan.mgmt.loan.request.tree</field>
+      <field name="model">loan_mgmt.loan_request</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="partner_id"/>
+          <field name="loan_type_id"/>
+          <field name="principal_amount"/>
+          <field name="applied_date"/>
+          <field name="approved_date"/>
+          <field name="user_id"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_loan_mgmt_loan_request">
+      <field name="name">Loan Requests</field>
+      <field name="res_model">loan_mgmt.loan_request</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Loan Requests" id="menu_loan_mgmt_loan_request" parent="menu_loan_request" action="action_loan_mgmt_loan_request"/>
+
+
+  </data>
+</odoo>

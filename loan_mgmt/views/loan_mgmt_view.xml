@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+
+     <menuitem name="Loan" id="menu_loan" sequence="5"/>
+     <menuitem name="Loan Request" id="menu_loan_request" parent="menu_loan" sequence="1" groups="group_loan_user,group_loan_manager"/>
+     <menuitem name="Config" id="menu_loan_config" parent="menu_loan" sequence="10" groups="base.group_system"/>
+
+
+  </data>
+</odoo>

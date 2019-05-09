@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+  
+    <record id="view_loan_mgmt_policy_form" model="ir.ui.view">
+        <field name="name">view.loan.mgmt.policy.form</field>
+        <field name="model">loan_mgmt.policy</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="max_loan_amount" attrs="{'invisible': [('type','!=','max')]}"/>
+                            <field name="num_days" attrs="{'invisible': [('type','!=','gap')]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_loan_mgmt_policy_tree" model="ir.ui.view">
+      <field name="name">view.loan.mgmt.policy.tree</field>
+      <field name="model">loan_mgmt.policy</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_loan_mgmt_policy">
+      <field name="name">Policies</field>
+      <field name="res_model">loan_mgmt.policy</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Policies" id="menu_loan_mgmt_policy" parent="menu_loan_config" action="action_loan_mgmt_policy"/>
+
+
+  </data>
+</odoo>

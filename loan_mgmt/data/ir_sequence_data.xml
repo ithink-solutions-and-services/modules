@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+	
+	    <record id="sequence_loan_request" model="ir.sequence">
+		    <field name="name">Loan Request Number Sequence</field>
+		    <field name="code">loan_mgmt.loan_request</field>
+			<field name="prefix">LOA/%(year)s/</field>
+		</record>
+	
+	</data>
+</odoo>

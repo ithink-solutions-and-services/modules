@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+        <record id="inherit_res_partner_form_loan" model="ir.ui.view">
+            <field name="name">inherit.res.partner.form.loan</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile']" position="replace">
+                    <field name="mobile" widget="phone" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='state_id']" position="replace">
+                    <field name="state_id" class="o_address_state" placeholder="Province" options="{&quot;no_open&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'zip': zip}"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="before">
+                    <field name="categ_id" required="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Loan Policies" name="loan_page">
+                        <field name="policy_ids" readonly="1"/>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='purchase']" position="after">
+                    <group string="Loan" name="loan">
+                        <field name="loan_customer"/>
+                    </group>
+                </xpath>    
+            </field>
+        </record>
+
+        <record id="view_res_partner_categ_tree" model="ir.ui.view">
+            <field name="name">view.res.partner.categ.tree</field>
+            <field name="model">res.partner.categ</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="policy_ids" widget="many2many_tags"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_res_partner_categ">
+          <field name="name">Partner Categories</field>
+          <field name="res_model">res.partner.categ</field>
+          <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem name="Partner Categories" id="menu_res_partner_categ" parent="menu_loan_config" action="action_res_partner_categ"/>
+
+    </data>
+</odoo>

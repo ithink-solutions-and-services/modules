@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <record id="inherit_view_account_payment_form_loan" model="ir.ui.view">
+            <field name="name">inherit.view.account.payment.form.loan</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="replace">
+                    <field name="journal_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('disbursement','=',False)]}" domain="[('id','=',disburse_cash_journal_id)]"/>
+                    <field name="journal_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': ['|',('disbursement','=',True), ('loan_payment','=',True)]}"/>
+                    <field name="journal_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('loan_payment','=',False)]}" domain="[('id','=',loan_cash_journal_id)]"/>
+                    <field name="loan_request_id" invisible="1"/>
+                    <field name="disbursement" invisible="1"/>
+                    <field name="disburse_cash_journal_id" invisible="1"/>
+                    <field name="loan_payment" invisible="1"/>
+                    <field name="loan_cash_journal_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

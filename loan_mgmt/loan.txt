@@ -1,0 +1,62 @@
+Loan Management
+• Config
+ • Loan requirements (valid ids, etc.)
+ • Loan types (Car Loan, Multi-purpose Loan, etc)
+  • Interest Type (Flat/Reducing)
+  • Interest Rate
+  • Payment methods ?
+  • Disbursement methods
+  • Interest account (cash or income?)
+  • Loan requirements
+  • Allowed partner categories *
+ • Loan Policies
+  • Policy Type (Max Loan Amount, gap between loans)
+• Loan Request
+ • Applied Date
+ • Loan Type
+ • Loan Partner Type
+ • Approved Date
+ • User
+ • Principal Amount
+ • Interest Mode (get from loan type)
+ • Duration
+ • Rate (get from loan type)
+ • Total Loan (Principal + Interests)
+ • Total Interets (Interests)
+ • Received From Partner (Total Payments Received)
+ • Balance
+ • Requirements (get from loan type)
+ • Policies (get from loan type)
+ • Status (Draft, Applied, Approved, Disbursed)
+ • Loan Unique Number Sequence
+ • Disbursement Date
+ • Disburse Journal (set default, cash)
+ • Disburse Account (set default, cash)
+ • Disburse Journal entry (set upon creation)
+ • Loan Repayment journal (set default, cash)
+ • Borrower Loan Account (set default)
+ • Interest Journal (set default)
+ • Interest Account (get from loan type)
+ • Interest Receivable Account (set default)
+ • Interest on loan journal entry (set upon creation)
+ • Loan Lines
+  • Number (order/sequence)
+  • Date from (starts with disbursement date)
+  • Date to 
+  • Principal Amount/Base (Principal Amount divided by duration)
+  • Interest Amount (Base * rate)
+  • EMI (installment) (base + interest)
+  • Status (unpaid, confirmed, paid)
+  • Interest Accounting Entry
+  • Interest Receivable Account (get from loan request)
+  • Bank/Cash Journal
+  • Interest on Loan Journal Entry
+  • Loan Installment Entry
+  • Bank/Cash Account
+  • Partner (get from loan request)
+  • Partner Type (get from loan request)
+  • Loan Type (get from loan request)
+ • Compute Loan Lines then Disburse Loan (upon disbursing, create disbursement entry and interest entry)
+ • Disbursement Entry (Journal: Disburse Journal, Credit: Disburse Account, Debit: Borrower Loan Account) :: Principal Amount
+ • Interest Entry (Journal: Interest Journal, Credit: Interest Account, Debit: Interest Receivable Account) :: total Interest Amount
+ 

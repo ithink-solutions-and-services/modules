@@ -1,0 +1,216 @@
+.o_kanban_view.o_kanban_dashboard.o_loan_mgmt_dashboard_kanban {
+    .oe_kanban_color_0 {
+        background-color: #FFFFFF;
+    }
+    .oe_kanban_color_0 span, .oe_kanban_color_0 i.fa {
+        color: #5a5a5a;
+    }
+    .oe_kanban_color_0 text {
+        fill: #5a5a5a;
+    }
+    .oe_kanban_color_1 {
+        background-color: #F06050;
+    }
+    .oe_kanban_color_1 span, .oe_kanban_color_1 i.fa{
+        color: #FFFFFF;
+    }
+    .oe_kanban_color_1 text {
+        fill: #FFFFFF;
+    }
+    .oe_kanban_color_2 {
+        background-color: #F4A460;
+    }
+    .oe_kanban_color_2 span, .oe_kanban_color_2 i.fa{
+        color: #474747;
+    }
+    .oe_kanban_color_2 text {
+        fill: #474747;
+    }
+    .oe_kanban_color_3 {
+        background-color: #F7CD1F;
+    }
+    .oe_kanban_color_3 span, .oe_kanban_color_3 i.fa{
+        color: #5A5A5A;
+    }
+    .oe_kanban_color_3 text {
+        fill: #5A5A5A;
+    }
+    .oe_kanban_color_4 {
+        background-color: #6CC1ED;
+    }
+    .oe_kanban_color_4 span, .oe_kanban_color_4 i.fa{
+        color: #484848;
+    }
+    .oe_kanban_color_4 text {
+        fill: #484848;
+    }
+    .oe_kanban_color_5 {
+        background-color: #814968;
+    }
+    .oe_kanban_color_5 span, .oe_kanban_color_5 i.fa{
+        color: #D2D2D2;
+    }
+    .oe_kanban_color_5 text {
+        fill: #D2D2D2;
+    }
+    .oe_kanban_color_6 {
+        background-color: #EB7E7F;
+    }
+    .oe_kanban_color_6 span, .oe_kanban_color_6 i.fa{
+        color: #363636;
+    }
+    .oe_kanban_color_6 text {
+        fill: #363636;
+    }
+    .oe_kanban_color_7 {
+        background-color: #2C8397;
+    }
+    .oe_kanban_color_7 span, .oe_kanban_color_7 i.fa{
+        color: #363636;
+    }
+    .oe_kanban_color_7 text {
+        fill: #363636;
+    }
+    .oe_kanban_color_8 {
+        background-color: #475577;
+    }
+    .oe_kanban_color_8 span, .oe_kanban_color_8 i.fa{
+        color: #CACACA;
+    }
+    .oe_kanban_color_8 text {
+        fill: #CACACA;
+    }
+    .oe_kanban_color_9 {
+        background-color: #D6145F;
+    }
+    .oe_kanban_color_9 span, .oe_kanban_color_9 i.fa{
+        color: #F1F1F1;
+    }
+    .oe_kanban_color_9 text {
+        fill: #F1F1F1;
+    }
+    .oe_kanban_color_10 {
+        background-color: #30C381;
+    }
+    .oe_kanban_color_10 span, .oe_kanban_color_10 i.fa{
+        color: #404040;
+    }
+    .oe_kanban_color_10 text {
+        fill: #404040;
+    }
+    .oe_kanban_color_11 {
+        background-color: #9365B8;
+    }
+    .oe_kanban_color_11 span, .oe_kanban_color_11 i.fa{
+        color: #0A0A0A;
+    }
+    .oe_kanban_color_11 text {
+        fill: #0A0A0A;
+    }
+    .o_kanban_record {
+
+        .oe_kanban_action_button {
+            margin-bottom: 5px;
+        }
+
+        .o_kanban_card_settings {
+            padding-top: @odoo-horizontal-padding/2;
+            padding-bottom: @odoo-horizontal-padding/2;
+
+            border-top: 1px solid;
+            border-color: @odoo-brand-lightsecondary;
+        }
+        .o_dashboard_star {
+            font-size: 12px;
+
+            &.fa-star-o {
+                color: @odoo-main-color-muted;
+                &:hover {
+                    color: gold;
+                }
+            }
+            &.fa-star {
+                color: gold;
+            }
+        }
+
+        .o_dashboard_graph {
+            margin-bottom: -@odoo-horizontal-padding/2;
+        }
+    }
+
+    &.o_kanban_ungrouped {
+        .o_kanban_record {
+            width: 450px;
+        }
+    }
+}
+
+// Style for the widget "dashboard_graph"
+.o_dashboard_graph {
+    &.o_graph_linechart {
+        > svg {
+            height: 75px;
+
+            // X axis
+            g.nv-x.nv-axis {
+                transform: translateY(50px);
+
+                // Remove max and min labels
+                g.nv-axisMaxMin {
+                    display: none;
+                }
+                g.tick.major {
+                    // Don't know why, but leads to strange bold text
+                    // stroke: @odoo-brand-primary;
+
+                    line {
+                        display: none;
+                    }
+                }
+            }
+
+            // !important are needed because nvd3 uses inline style on elements
+
+            // Remove strokes
+            g.nv-linesWrap {
+                g.nv-group.nv-series-0 {
+                    fill-opacity: 0.3 !important;
+                    fill: @odoo-brand-primary !important;
+                    stroke: @odoo-brand-primary !important;
+
+                    .nv-point {
+                        visibility: hidden;
+                        r: 3;
+                        stroke: @odoo-brand-primary !important;
+                        fill: white;
+                        stroke-width: 2;
+                    }
+                    .nv-point:nth-child(5n+1) {
+                        visibility: visible;
+                        fill-opacity: .95 !important;
+                        stroke-opacity: .95 !important;
+                    }
+                }
+            }
+        }
+    }
+    &.o_graph_barchart {
+        > svg {
+            height: 75px;
+            overflow: visible;
+            g.nv-barsWrap {
+                g.nv-group.nv-series-0 {
+                    g.past {
+                        opacity: 0.5;
+                        fill: @odoo-brand-primary !important;
+                    }
+                    g.future {
+                        opacity: 0.5;
+                        fill: @odoo-brand-optional !important;
+                    }
+                }
+            }
+        }
+    }
+}

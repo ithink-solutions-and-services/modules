@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+  
+        <record id="view_loan_mgmt_requirement_tree" model="ir.ui.view">
+            <field name="name">view.loan.mgmt.requirement.tree</field>
+            <field name="model">loan_mgmt.requirement</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_loan_mgmt_requirement">
+          <field name="name">Requirement</field>
+          <field name="res_model">loan_mgmt.requirement</field>
+          <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem name="Requirements" id="menu_loan_mgmt_requirement" parent="menu_loan_config" action="action_loan_mgmt_requirement"/>
+
+
+  </data>
+</odoo>
