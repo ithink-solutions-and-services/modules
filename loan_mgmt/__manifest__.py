@@ -6,7 +6,7 @@
     'author': "Nathaniel Lew Aquino",
 	'price': 130,
 	'currency': 'EUR',
-	'license': 'OPL-1'
+	'license': 'OPL-1',
     'category': 'Loan Management',
     'description': """
     Icon made by monkik(https://www.flaticon.com/authors/monkik)
