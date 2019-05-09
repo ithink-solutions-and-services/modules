@@ -28,6 +28,16 @@
                 </xpath>
             </field>
         </record>        
+
+        <record model="ir.actions.act_window" id="action_loan_mgmt_disbursement">
+            <field name="name">Disbursements</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('disbursement','=',True)]</field>
+        </record>
+
+        <menuitem name="Disbursements" id="menu_loan_mgmt_disbursements" parent="menu_loan_request" action="action_loan_mgmt_disbursement"/>
+
         
     </data>
 </odoo>
