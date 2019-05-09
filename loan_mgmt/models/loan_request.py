@@ -62,7 +62,7 @@ class LoanMgmtLoanRequest(models.Model):
     disburse_date = fields.Date('Disbursement Date')
     bill_id = fields.Many2one('account.invoice', string="Vendor Bill")
     computed = fields.Boolean()
-
+    closed_date = fields.Date("Closed Date")
     
     @api.one
     def _applied(self):
@@ -94,6 +94,16 @@ class LoanMgmtLoanRequest(models.Model):
         self.write({
             'state': 'approved',
             'approved_date': datetime.datetime.today().date()
+        })
+        return True
+        
+    @api.one
+    def _closed(self):
+        if self.balance > 0:
+            raise UserError("You cannot close a loan with remaining balance")
+        self.write({
+            'state': 'closed',
+            'closed_date': datetime.datetime.today().date()
         })
         return True
         
@@ -152,6 +162,12 @@ class LoanMgmtLoanRequest(models.Model):
     def button_applied(self):
         for rec in self:
             rec._applied()
+        return True
+        
+    @api.multi
+    def button_closed(self):
+        for rec in self:
+            rec._closed()
         return True
         
     @api.multi
