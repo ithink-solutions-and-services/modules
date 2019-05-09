@@ -12,3 +12,13 @@ class LoanMgmtPolicy(models.Model):
     active = fields.Boolean(string="Active", default=True)
     max_loan_amount = fields.Float(string="Max Loan Amount")
     num_days = fields.Integer(string="Gap Between Loans")
+    
+    @api.depends('type')
+    def _condition(self):
+        for rec in self:
+            if rec.type == 'max':
+                rec.condition = str(rec.max_loan_amount) if rec.max_loan_amount else False
+            elif rec.type == 'gap':
+                rec.condition = (rec.num_days) if rec.num_days else False
+    
+    condition = fields.Char(string="Value", compute="_condition", store=True)
