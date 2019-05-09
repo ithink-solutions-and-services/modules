@@ -12,6 +12,7 @@
                      <button name="button_approved" string="Approve" type="object" class="oe_highlight" states='applied'/>
                      <button name="button_disbursed" string="Disburse" type="object" class="oe_highlight" states='approved'/>
                      <button name="button_compute_monthly" string="Compute Monthly" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('computed','=',True), ('state','!=', 'disbursed')]}"/>
+                     <button name="button_closed" string="Close" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state','!=','disbursed'), ('computed','=',False)]}"/>
                      <field name="state" widget="statusbar" nolabel="1"/>
                      <field name="computed" invisible="1"/>
                 </header>
@@ -37,9 +38,10 @@
                         <group>
                             <field name="partner_categ_id" readonly="1" options="{'no_create': True, 'no_open': True }"/>
                             <field name="user_id" readonly="1" options="{'no_create': True, 'no_open': True }"/>
-                            <field name="applied_date" readonly="1"/>
-                            <field name="approved_date" readonly="1"/>
-                            <field name="disburse_date" readonly="1"/>
+                            <field name="applied_date" readonly="1" attrs="{'invisible': [('applied_date','=',False)]}"/>
+                            <field name="approved_date" readonly="1" attrs="{'invisible': [('approved_date','=',False)]}"/>
+                            <field name="disburse_date" readonly="1" attrs="{'invisible': [('disburse_date','=',False)]}"/>
+                            <field name="closed_date" readonly="1" attrs="{'invisible': [('closed_date','=',False)]}"/>
                         </group>
                     </group>
                     <notebook>
