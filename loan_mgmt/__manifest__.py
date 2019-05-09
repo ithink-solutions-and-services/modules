@@ -28,4 +28,5 @@
         'views/js.xml',
         'views/loan_mgmt_dashboard_view.xml',
     ],
+    'images': ['images/main_screenshot.jpg','images/main_1.jpg','images/main_2.jpg','images/main_3.jpg','images/main_4.jpg']
 }
