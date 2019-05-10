@@ -3,7 +3,10 @@
     'author': "Nathaniel Lew Aquino",
     'license': 'OPL-1',
     'version': '1.0',
-    'summary': "",
+    'summary': "BIR Philippines Forms Generation",
+    'description': """
+    
+    """,
     'category': 'Accounting',
     'website': 'https://ithinksols.com',
     'images': [
