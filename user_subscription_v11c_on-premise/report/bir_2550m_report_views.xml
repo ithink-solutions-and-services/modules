@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <template id="report_bir_2550m_custom_document">
+            <div class="article" style="margin-left:-15px!important;">
+                <div class="page" style="font-size:12px;color:black!important;">
+                <style>.fstatic { position:absolute!important; }</style>
+                    <img src="user_subscription_v11c_on-premise/static/src/birforms/2550M/2550M-1.jpg" style="position:absolute;width:100%;z-index:1;height:1500px;"/>
+                    <div style="position:absolute;width:100%;height:1500px;z-index:2;">
+                        <t t-set="get_month" t-value="'{:02d}'.format(datetime.datetime.strptime(doc_id.of_month,'%M').month)"/>
+                        <span t-esc="get_month[0]" class="fstatic" style="left:298px!important;top:138px!important;"/>
+                           <span t-esc="get_month[1]" class="fstatic" style="left:314px!important;top:138px!important;"/>
+					            	<span t-esc="str(doc_id.of_year)[0] if doc_id.of_year else ''" class="fstatic" style="left:335px!important;top:138px!important;"/>
+                                    <span t-esc="str(doc_id.of_year)[1] if doc_id.of_year else ''" class="fstatic" style="left:359px!important;top:138px!important;"/>
+                                    <span t-esc="str(doc_id.of_year)[2] if doc_id.of_year else ''" class="fstatic" style="left:385px!important;top:138px!important;"/>
+                                    <span t-esc="str(doc_id.of_year)[3] if doc_id.of_year else ''" class="fstatic" style="left:410px!important;top:138px!important;"/>
+                                    <t t-if="doc_id.amended_return"><span t-esc="'✔'" class="fstatic" style="left:537px!important;top:141px!important;"/></t>
+                                    <t t-if="not doc_id.amended_return"><span t-esc="'✔'" class="fstatic" style="left:595px!important;top:141px!important;"/></t>
+						            <span t-esc="'{:02d}'.format(doc_id.sheets_attached)[0]" class="fstatic" style="left:835px!important;top:138px!important;"/>
+                                    <span t-esc="'{:02d}'.format(doc_id.sheets_attached)[1]" class="fstatic" style="left:875px!important;top:138px!important;"/>
+					            	<t t-set="company_vat" t-value="doc_id.company_id.vat.replace('-','')"/>
+					            	<span t-esc="company_vat[0] if company_vat and len(company_vat) >= 1 else ''" class="fstatic" style="left:110px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[1] if company_vat and len(company_vat) >= 2 else ''" class="fstatic" style="left:126px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[2] if company_vat and len(company_vat) >= 3 else ''" class="fstatic" style="left:144px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[3] if company_vat and len(company_vat) >= 4 else ''" class="fstatic" style="left:170px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[4] if company_vat and len(company_vat) >= 5 else ''" class="fstatic" style="left:185px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[5] if company_vat and len(company_vat) >= 6 else ''" class="fstatic" style="left:203px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[6] if company_vat and len(company_vat) >= 7 else ''" class="fstatic" style="left:230px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[7] if company_vat and len(company_vat) >= 8 else ''" class="fstatic" style="left:245px!important;top:180px!important;"/>
+                                    <span t-esc="company_vat[8] if company_vat and len(company_vat) >= 9 else ''" class="fstatic" style="left:260px!important;top:180px!important;"/>
+                                    
+					            	<span t-esc="doc_id.company_id.rdo[0] if doc_id.company_id.rdo and len(doc_id.company_id.rdo) >= 1 else ''" class="fstatic" style="left:438px!important;top:180px!important;"/>
+                                    <span t-esc="doc_id.company_id.rdo[1] if doc_id.company_id.rdo and len(doc_id.company_id.rdo) >= 2 else ''" class="fstatic" style="left:463px!important;top:180px!important;"/>
+                                    <span t-esc="doc_id.company_id.rdo[2] if doc_id.company_id.rdo and len(doc_id.company_id.rdo) >= 3 else ''" class="fstatic" style="left:488px!important;top:180px!important;"/>
+						            <span t-field="doc_id.company_id.line_of_business" class="fstatic" style="left:670px!important;top:180px!important;"/>
+						         
+						            <span t-field="doc_id.company_id" class="fstatic" style="left:90px!important;top:220px!important;width:600px;"/>
+						            <span t-field="doc_id.company_id.phone" class="fstatic" style="left:760px!important;top:220px!important;"/>
+					            	
+					            	<span t-field="doc_id.company_id.street" class="fstatic" style="left:90px!important;top:260px!important;width:600px;"/>
+					            	<span t-esc="doc_id.company_id.zip[0] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 1 else ''" class="fstatic" style="left:827px!important;top:260px!important;"/>
+					            	<span t-esc="doc_id.company_id.zip[1] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 2 else ''" class="fstatic" style="left:846px!important;top:260px!important;"/>
+					            	<span t-esc="doc_id.company_id.zip[2] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 3 else ''" class="fstatic" style="left:866px!important;top:260px!important;"/>
+					            	<span t-esc="doc_id.company_id.zip[3] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 4 else ''" class="fstatic" style="left:886px!important;top:260px!important;"/>
+                                    
+					            	<t t-if="doc_id.under_special_law"><span t-esc="'✔'" class="fstatic" style="left:395px!important;top:290px!important;"/></t>
+                                    <t t-if="not doc_id.under_special_law"><span t-esc="'✔'" class="fstatic" style="left:476px!important;top:290px!important;"/></t>
+                                    <span t-field="doc_id.under_special_law_spec" class="fstatic" style="left:632!important;top:287px!important;"/>
+                        
+                        <span t-field="doc_id.vatable_sales_private_a" class="fstatic" style="left:490px!important;top:335px!important;"/>
+                        <span t-field="doc_id.vatable_sales_private_b" class="fstatic" style="left:710px!important;top:335px!important;"/>
+                        <span t-field="doc_id.sales_to_government_a" class="fstatic" style="left:490px!important;top:350px!important;"/>
+					            	<span t-field="doc_id.sales_to_government_b" class="fstatic" style="left:710px!important;top:350px!important;"/>
+                        <span t-field="doc_id.zero_rated_sales" class="fstatic" style="left:490px!important;top:365px!important;"/>
+					            	<span t-field="doc_id.exempt_sales" class="fstatic" style="left:490px!important;top:380px!important;"/>
+                        <span t-field="doc_id.total_sales_a" class="fstatic" style="left:490px!important;top:395px!important;"/>
+                        <span t-field="doc_id.total_sales_b" class="fstatic" style="left:710px!important;top:395px!important;"/>
+<!--						            <span t-field="doc_id.input_tax_carried_over" class="fstatic" style="left:710px!important;top:420px!important;"/>
+						            <span t-field="doc_id.input_tax_deferred_exceed" class="fstatic" style="left:710px!important;top:440px!important;"/>
+						            <span t-field="doc_id.transitional_input_tax" class="fstatic" style="left:710px!important;top:455px!important;"/>
+						            <span t-field="doc_id.presumptive_input_tax" class="fstatic" style="left:710px!important;top:470px!important;"/>
+						            <span t-field="doc_id.others_allowable_input_tax" class="fstatic" style="left:710px!important;top:485px!important;"/>
+						            <span t-field="doc_id.total_allowable_input_tax" class="fstatic" style="left:710px!important;top:500px!important;"/>-->
+                        <span t-field="doc_id.capital_goods_not_exceed_a" class="fstatic" style="left:490px!important;top:530px!important;"/>
+						            <span t-field="doc_id.capital_goods_not_exceed_b" class="fstatic" style="left:710px!important;top:530px!important;"/>
+<!--						            <span t-field="doc_id.capital_goods_exceed_c" class="fstatic" style="left:490px!important;top:545px!important;"/>
+						            <span t-field="doc_id.capital_goods_exceed_d" class="fstatic" style="left:710px!important;top:545px!important;"/>
+						            <span t-field="doc_id.domestic_purchases_goods_e" class="fstatic" style="left:490px!important;top:560px!important;"/>
+						            <span t-field="doc_id.domestic_purchases_goods_f" class="fstatic" style="left:710px!important;top:560px!important;"/>-->
+						            <span t-field="doc_id.importation_of_goods_a" class="fstatic" style="left:490px!important;top:575px!important;"/>
+						            <span t-field="doc_id.importation_of_goods_b" class="fstatic" style="left:710px!important;top:575px!important;"/>
+						            <span t-field="doc_id.domestic_purchases_services_a" class="fstatic" style="left:490px!important;top:590px!important;"/>
+					            	<span t-field="doc_id.domestic_purchases_services_b" class="fstatic" style="left:710px!important;top:590px!important;"/>
+<!--					            	<span t-field="doc_id.nonresident_services_k" class="fstatic" style="left:490px!important;top:605px!important;"/>
+						            <span t-field="doc_id.nonresident_services_l" class="fstatic" style="left:710px!important;top:605px!important;"/>
+                        <span t-field="doc_id.not_qualified_purchases" class="fstatic" style="left:490px!important;top:620px!important;"/>-->
+                        <span t-field="doc_id.others_a" class="fstatic" style="left:490px!important;top:635px!important;"/>
+						            <span t-field="doc_id.others_b" class="fstatic" style="left:710px!important;top:635px!important;"/>
+						            <span t-field="doc_id.total_current_purchases" class="fstatic" style="left:490px!important;top:650px!important;"/>
+						            <span t-field="doc_id.total_available_input_tax" class="fstatic" style="left:710px!important;top:665px!important;"/>
+<!--                        <span t-field="doc_id.input_tax_capital_goods_exceed" class="fstatic" style="left:710px!important;top:710px!important;"/>
+					            	<span t-field="doc_id.input_tax_sale_to_gov" class="fstatic" style="left:710px!important;top:725px!important;"/>
+					            	<span t-field="doc_id.input_tax_exempt" class="fstatic" style="left:710px!important;top:740px!important;"/>
+					            	<span t-field="doc_id.vat_refund_tcc" class="fstatic" style="left:710px!important;top:755px!important;"/>
+						            <span t-field="doc_id.deductions_others" class="fstatic" style="left:710px!important;top:770px!important;"/>
+					            	<span t-field="doc_id.total_deductions" class="fstatic" style="left:710px!important;top:785px!important;"/>-->
+					            	<span t-field="doc_id.total_allowable_input_tax" class="fstatic" style="left:710px!important;top:800px!important;"/>
+					            	<span t-field="doc_id.net_vat_payable" class="fstatic" style="left:710px!important;top:818px!important;"/>
+                        <!--<span t-field="doc_id.creditable_vat_withheld" class="fstatic" style="left:710px!important;top:848px!important;"/>
+						            <span t-field="doc_id.advanced_sugar_flour" class="fstatic" style="left:710px!important;top:865px!important;"/>
+						            <span t-field="doc_id.vat_withheld_sales_to_gov" class="fstatic" style="left:710px!important;top:880px!important;"/>
+						            <span t-field="doc_id.vat_paid_previous" class="fstatic" style="left:710px!important;top:893px!important;"/>
+						            <span t-field="doc_id.advanced_payments_made" class="fstatic" style="left:710px!important;top:908px!important;"/>
+						            <span t-field="doc_id.others_tax_credits" class="fstatic" style="left:710px!important;top:925px!important;"/>
+						            <span t-field="doc_id.total_tax_credits" class="fstatic" style="left:710px!important;top:940px!important;"/>-->
+						            <span t-field="doc_id.tax_still_payable" class="fstatic" style="left:710px!important;top:955px!important;"/>
+                    
+                        <!--<span t-field="doc_id.surcharge" class="fstatic" style="left:195px!important;top:982px!important;"/>
+					            	<span t-field="doc_id.interest" class="fstatic" style="left:368px!important;top:982px!important;"/>
+						            <span t-field="doc_id.compromise" class="fstatic" style="left:560px!important;top:982px!important;"/>
+						            <span t-field="doc_id.add_penalties" class="fstatic" style="left:710px!important;top:980px!important;"/>-->
+						            <span t-field="doc_id.total_amount_payable" class="fstatic" style="left:710px!important;top:997px!important;"/>
+                    
+                        
+                        <!--<span t-field="doc_id.cash_bank" class="fstatic" style="left:147px!important;top:1210px!important;"/>
+					            	<span t-field="doc_id.cash_number" class="fstatic" style="left:257px!important;top:1210px!important;"/>
+						            <span t-field="doc_id.cash_date" class="fstatic" style="left:395px!important;top:1210px!important;"/>
+						            <span t-field="doc_id.cash_amount" class="fstatic" style="left:570px!important;top:1213px!important;"/>
+						            
+						            <span t-field="doc_id.check_bank" class="fstatic" style="left:147px!important;top:1238px!important;"/>
+						            <span t-field="doc_id.check_number" class="fstatic" style="left:257px!important;top:1238px!important;"/>
+						            <span t-field="doc_id.check_date" class="fstatic" style="left:395px!important;top:1238px!important;"/>-->
+						            <span t-field="doc_id.total_amount_payable" class="fstatic" style="left:570px!important;top:1238px!important;"/>
+						           
+						            
+						            <!--<span t-field="doc_id.tax_number" class="fstatic" style="left:257px!important;top:1260px!important;"/>
+					            	<span t-field="doc_id.tax_date" class="fstatic" style="left:395px!important;top:1260px!important;"/>
+					            	<span t-field="doc_id.tax_amount" class="fstatic" style="left:570px!important;top:1260px!important;"/>
+					            	
+                        <span t-field="doc_id.others_bank" class="fstatic" style="left:147px!important;top:1280px!important;"/>
+						            <span t-field="doc_id.others_number" class="fstatic" style="left:257px!important;top:1280px!important;"/>
+						            <span t-field="doc_id.others_date" class="fstatic" style="left:395px!important;top:1280px!important;"/>
+						            <span t-field="doc_id.others_amount" class="fstatic" style="left:570px!important;top:1280px!important;"/>-->
+                    
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="report_bir_2550m_custom">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc_id">
+                    <t t-call="user_subscription_v11c_on-premise.report_bir_2550m_custom_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

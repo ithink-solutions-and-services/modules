@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+        <template id="inherit_web_login" inherit_id="web.login">
+            <xpath expr="//p" position="inside">
+                <t t-if="error == 'Trial Account has Expired'">
+                    <a href="https://www.prodatanet.com.ph/contactus">
+                        | Subscribe Now
+                    </a>
+                </t>
+                <t t-if="error == 'Account has Expired'">
+                    <a href="https://www.prodatanet.com.ph/contactus">
+                        | Renew Now
+                    </a>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

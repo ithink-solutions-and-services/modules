@@ -1,0 +1,124 @@
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.ui.view" id="tree_bir_2307">
+            <field name="name">bir.2307.tree</field>
+            <field name="model">bir.2307</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="form_bir_2307">
+            <field name="name">bir.2307.form</field>
+            <field name="model">bir.2307</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="2307">
+                    <header>
+                        <field name="generated_file" invisible="1"/>
+                        <field name="generated_file_name" invisible="1"/>
+                        <button name="generate_pdf" type="object" string="Generate PDF"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="path_id"/>
+                            <field name="generated_file_datas" filename="generated_file_name" readonly="1"/>
+                        </group>
+                        <group col="6">
+                            <field name="for_the_period_from" colspan="3"/>
+                            <field name="to" colspan="3"/>
+                            <field name="payees_vat" colspan="3" readonly="1"/>
+                            <field name="payees_rdo" colspan="3" readonly="1"/>
+                            <field name="payees_name" colspan="3"/>
+                            <field name="payees_registered_address" colspan="3" readonly="1"/>
+                            <field name="payees_zip" colspan="3" readonly="1"/>
+                            <field name="payees_foreign_address" colspan="3" readonly="1"/>
+                            <field name="payees_foreign_zip" colspan="3" readonly="1"/>
+                            <field name="payors_vat" colspan="3" readonly="1"/>
+                            <field name="payors_rdo" colspan="3" readonly="1"/>
+                            <field name="payors_name" colspan="3"/>
+                            <field name="payors_registered_address" colspan="3" readonly="1"/>
+                            <field name="payors_zip" colspan="3" readonly="1"/>
+                        </group>
+                        <group col="6">
+                            <div class="o_td_label" colspan="6">
+                                <span colspan="6" class="o_form_label">Income Payments Subject to Expanded Withholding Tax</span>
+                            </div>
+                            <field name="income_payment_ids" colspan="6" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="nip" readonly="1"/>
+                                    <field name="atc"/>
+                                    <field name="amount_quarter_1" sum="Total"/>
+                                    <field name="amount_quarter_2" sum="Total"/>
+                                    <field name="amount_quarter_3" sum="Total"/>
+                                    <field name="tax_base" sum="Total"/>
+                                    <field name="tax_withheld" sum="Total"/>
+                                </tree>
+<!--                                <form>
+                                    <group>
+                                        <field name="nip" readonly="1"/>
+                                        <field name="atc"/>
+                                        <field name="amount_quarter_1"/>
+                                        <field name="amount_quarter_2"/>
+                                        <field name="amount_quarter_3"/>
+                                        <field name="tax_base" readonly="1"/>
+                                        <field name="tax_withheld" readonly="1"/>
+                                    </group>
+                                </form>-->
+                            </field>
+                            <field name="income_payment_quarter_1_total" colspan="2"/>
+                            <field name="income_payment_quarter_2_total" colspan="2"/>
+                            <field name="income_payment_quarter_3_total" colspan="2"/>
+                            <field name="income_payment_total" colspan="3"/>
+                            <field name="income_payment_total_withheld" colspan="3"/>
+                        </group>
+                        <group col="6">
+                            <div class="o_td_label" colspan="6">
+                                <span colspan="6" class="o_form_label">Money Payments Subject to Withholding of Business Tax (Government &amp; Private)</span>
+                            </div>
+                            <field name="money_payment_ids" colspan="6" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="nip" readonly="1"/>
+                                    <field name="atc"/>
+                                    <field name="amount_quarter_1" sum="Total"/>
+                                    <field name="amount_quarter_2" sum="Total"/>
+                                    <field name="amount_quarter_3" sum="Total"/>
+                                    <field name="tax_base" sum="Total"/>
+                                    <field name="tax_withheld" sum="Total"/>
+                                </tree>
+<!--                                <form>
+                                    <group>
+                                        <field name="nip" readonly="1"/>
+                                        <field name="atc"/>
+                                        <field name="amount_quarter_1"/>
+                                        <field name="amount_quarter_2"/>
+                                        <field name="amount_quarter_3"/>
+                                        <field name="tax_base" readonly="1"/>
+                                        <field name="tax_withheld" readonly="1"/>
+                                    </group>
+                                </form>-->
+                            </field>
+                            <field name="money_payment_quarter_1_total" colspan="2"/>
+                            <field name="money_payment_quarter_2_total" colspan="2"/>
+                            <field name="money_payment_quarter_3_total" colspan="2"/>
+                            <field name="money_payment_total" colspan="3"/>
+                            <field name="money_payment_total_withheld" colspan="3"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_bir_2307">
+            <field name="name">BIR 2307</field>
+            <field name="res_model">bir.2307</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

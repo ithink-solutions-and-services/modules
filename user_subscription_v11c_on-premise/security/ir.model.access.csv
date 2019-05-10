@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_/opt/odoo11/addons/user_activate_v11c/_/opt/odoo11/addons/user_activate_v11c/,/opt/odoo11/addons/user_activate_v11c/./opt/odoo11/addons/user_activate_v11c/,model_/opt/odoo11/addons/user_activate_v11c/_/opt/odoo11/addons/user_activate_v11c/,,1,0,0,0

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="report_bir_2550m_custom_report"
+            model="bir.generate.pdf"
+            string="BIR 2550M Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_2550m_custom"
+            file="user_subscription_v11c_on-premise.report_bir_2550m_custom"
+            menu="True"/>
+        <report
+            id="report_bir_1601e_custom_report"
+            model="bir.1601e"
+            string="BIR 1601E Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_1601e_custom"
+            file="user_subscription_v11c_on-premise.report_bir_1601e_custom"
+            menu="True"/>
+        <report
+            id="report_bir_1601c_custom_report"
+            model="bir.1601c"
+            string="BIR 1601C Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_1601c_custom"
+            file="user_subscription_v11c_on-premise.report_bir_1601c_custom"
+            menu="True"/>
+        <report
+            id="report_bir_1601eq_custom_report"
+            model="bir.1601eq"
+            string="BIR 1601EQ Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_1601eq_custom"
+            file="user_subscription_v11c_on-premise.report_bir_1601eq_custom"
+            menu="True"/>
+        <report
+            id="report_bir_1604cf_custom_report"
+            model="bir.1604cf"
+            string="BIR 1604CF Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_1604cf_custom"
+            file="user_subscription_v11c_on-premise.report_bir_1604cf_custom"
+            menu="True"/>
+        <report
+            id="report_bir_1702q_custom_report"
+            model="bir.1702q"
+            string="BIR 1702Q Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_1702q_custom"
+            file="user_subscription_v11c_on-premise.report_bir_1702q_custom"
+            menu="True"/>
+        <report
+            id="report_bir_2307_custom_report"
+            model="account.invoice"
+            string="BIR 2307 Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_2307_custom"
+            file="user_subscription_v11c_on-premise.report_bir_2307_custom"
+            menu="True"/>
+        <report
+            id="report_bir_2551m_custom_report"
+            model="bir.2551m"
+            string="BIR 2551M Form"
+            report_type="qweb-pdf"
+            name="user_subscription_v11c_on-premise.report_bir_2551m_custom"
+            file="user_subscription_v11c_on-premise.report_bir_2551m_custom"
+            menu="True"/>
+
+
+       <record id="paperformat_bir_forms" model="report.paperformat">
+           <field name="name">BIR Forms Format</field>
+           <field name="default" eval="True"/>
+           <field name="format">Legal</field>
+           <field name="orientation">Portrait</field>
+           <field name="margin_top">1</field>
+           <field name="margin_bottom">1</field>
+           <field name="margin_left">0</field>
+           <field name="margin_right">0</field>
+           <field name="header_line" eval="False"/>
+           <field name="header_spacing">0</field>
+           <field name="dpi">90</field>
+           <field name="report_ids" eval="[(4,ref('user_subscription_v11c_on-premise.report_bir_2550m_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_1601e_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_1601c_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_1601eq_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_1604cf_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_1702q_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_2551m_custom_report')),(4,ref('user_subscription_v11c_on-premise.report_bir_2307_custom_report'))
+            ]"/>
+       </record>
+
+    </data>
+</odoo>

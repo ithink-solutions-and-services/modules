@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <template id="report_bir_2307_custom_document">
+            <div class="article" style="margin-left:-15px!important;">
+                <div class="page" style="font-size:12px;color:black!important;">
+                <style>.fstatic { position:absolute!important; }</style>
+                    <img src="user_subscription_v11c_on-premise/static/src/birforms/2307/2307-1.jpg" style="position:absolute;width:100%;z-index:1;height:1500px;"/>
+                    <div style="position:absolute;width:100%;height:1500px;z-index:2;">
+                        <t t-set="inv_date" t-value="datetime.datetime.strptime(doc_id.date_invoice,'%Y-%m-%d')"/>
+                        <t t-set="inv_date_start" t-value="datetime.date(month=inv_date.month, year=inv_date.year, day=1)"/>
+                        <t t-set="inv_date_end" t-value="(inv_date_start+relativedelta(months=1))- relativedelta(days=1)"/>
+                        <span t-esc="'{:02d}'.format(inv_date_start.month)[0]" class="fstatic" style="left:157px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_start.month)[1]" class="fstatic" style="left:175px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_start.day)[0]" class="fstatic" style="left:198px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_start.day)[1]" class="fstatic" style="left:219px!important;top:153px!important;"/>
+                        <span t-esc="str(inv_date_start.year)[2]" class="fstatic" style="left:242px!important;top:153px!important;"/>
+                        <span t-esc="str(inv_date_start.year)[3]" class="fstatic" style="left:260px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_end.month)[0]" class="fstatic" style="left:509px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_end.month)[1]" class="fstatic" style="left:529px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_end.day)[0]" class="fstatic" style="left:553px!important;top:153px!important;"/>
+                        <span t-esc="'{:02d}'.format(inv_date_end.day)[1]" class="fstatic" style="left:573px!important;top:153px!important;"/>
+                        <span t-esc="str(inv_date_end.year)[2]" class="fstatic" style="left:596px!important;top:153px!important;"/>
+                        <span t-esc="str(inv_date_end.year)[3]" class="fstatic" style="left:616px!important;top:153px!important;"/>
+                        <t t-set="partner_vat" t-value="doc_id.partner_id.vat.replace('-','')"/>
+                        <span t-esc="partner_vat[0] if partner_vat and len(partner_vat) >= 1 else ''" class="fstatic" style="left:180px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[1] if partner_vat and len(partner_vat) >= 2 else ''" class="fstatic" style="left:196px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[2] if partner_vat and len(partner_vat) >= 3 else ''" class="fstatic" style="left:214px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[3] if partner_vat and len(partner_vat) >= 4 else ''" class="fstatic" style="left:251px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[4] if partner_vat and len(partner_vat) >= 5 else ''" class="fstatic" style="left:270px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[5] if partner_vat and len(partner_vat) >= 6 else ''" class="fstatic" style="left:290px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[6] if partner_vat and len(partner_vat) >= 7 else ''" class="fstatic" style="left:332px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[7] if partner_vat and len(partner_vat) >= 8 else ''" class="fstatic" style="left:351px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[8] if partner_vat and len(partner_vat) >= 9 else ''" class="fstatic" style="left:371px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[9] if partner_vat and len(partner_vat) >= 10 else ''" class="fstatic" style="left:396px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[10] if partner_vat and len(partner_vat) >= 11 else ''" class="fstatic" style="left:413px!important;top:202px!important;"/>
+                        <span t-esc="partner_vat[11] if partner_vat and len(partner_vat) >= 12 else ''" class="fstatic" style="left:430px!important;top:202px!important;"/>
+                        <span t-esc="doc_id.partner_id.name" class="fstatic" style="left:178px!important;top:230px!important;"/>
+                        <span t-esc="doc_id.partner_id.street" class="fstatic" style="left:178px!important;top:268px!important;"/>
+                        <span t-esc="doc_id.partner_id.zip[0] if doc_id.partner_id.zip and len(doc_id.partner_id.zip) >= 1 else ''" class="fstatic" style="left:835px!important;top:268px!important;"/>
+                        <span t-esc="doc_id.partner_id.zip[1] if doc_id.partner_id.zip and len(doc_id.partner_id.zip) >= 2 else ''" class="fstatic" style="left:853px!important;top:268px!important;"/>
+                        <span t-esc="doc_id.partner_id.zip[2] if doc_id.partner_id.zip and len(doc_id.partner_id.zip) >= 3 else ''" class="fstatic" style="left:871px!important;top:268px!important;"/>
+                        <span t-esc="doc_id.partner_id.zip[3] if doc_id.partner_id.zip and len(doc_id.partner_id.zip) >= 4 else ''" class="fstatic" style="left:889px!important;top:268px!important;"/>
+                        <span t-esc="doc_id.partner_id.foreign_address" class="fstatic" style="left:178px!important;top:287px!important;"/>
+                        <span t-esc="doc_id.partner_id.foreign_zip[0] if doc_id.partner_id.foreign_zip and len(doc_id.partner_id.foreign_zip) >= 1 else ''" class="fstatic" style="left:835px!important;top:287px!important;"/>
+                        <span t-esc="doc_id.partner_id.foreign_zip[1] if doc_id.partner_id.foreign_zip and len(doc_id.partner_id.foreign_zip) >= 2 else ''" class="fstatic" style="left:853px!important;top:287px!important;"/>
+                        <span t-esc="doc_id.partner_id.foreign_zip[2] if doc_id.partner_id.foreign_zip and len(doc_id.partner_id.foreign_zip) >= 3 else ''" class="fstatic" style="left:871px!important;top:287px!important;"/>
+                        <span t-esc="doc_id.partner_id.foreign_zip[3] if doc_id.partner_id.foreign_zip and len(doc_id.partner_id.foreign_zip) >= 4 else ''" class="fstatic" style="left:889px!important;top:287px!important;"/>
+                        <t t-set="company_vat" t-value="doc_id.company_id.vat.replace('-','')"/>
+                        <span t-esc="company_vat[0] if company_vat and len(company_vat) >= 1 else ''" class="fstatic" style="left:180px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[1] if company_vat and len(company_vat) >= 2 else ''" class="fstatic" style="left:196px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[2] if company_vat and len(company_vat) >= 3 else ''" class="fstatic" style="left:214px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[3] if company_vat and len(company_vat) >= 4 else ''" class="fstatic" style="left:251px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[4] if company_vat and len(company_vat) >= 5 else ''" class="fstatic" style="left:270px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[5] if company_vat and len(company_vat) >= 6 else ''" class="fstatic" style="left:290px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[6] if company_vat and len(company_vat) >= 7 else ''" class="fstatic" style="left:332px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[7] if company_vat and len(company_vat) >= 8 else ''" class="fstatic" style="left:351px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[8] if company_vat and len(company_vat) >= 9 else ''" class="fstatic" style="left:371px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[9] if company_vat and len(company_vat) >= 10 else ''" class="fstatic" style="left:396px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[10] if company_vat and len(company_vat) >= 11 else ''" class="fstatic" style="left:413px!important;top:342px!important;"/>
+                        <span t-esc="company_vat[11] if company_vat and len(company_vat) >= 12 else ''" class="fstatic" style="left:430px!important;top:342px!important;"/>
+                        <span t-esc="doc_id.company_id.name" class="fstatic" style="left:178px!important;top:370px!important;width:600px;"/>
+                        <span t-esc="doc_id.company_id.street" class="fstatic" style="left:178px!important;top:408px!important;width:500px;"/>
+                        <span t-esc="doc_id.company_id.zip[0] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 1 else ''" class="fstatic" style="left:836px!important;top:408px!important;"/>
+                        <span t-esc="doc_id.company_id.zip[1] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 1 else ''" class="fstatic" style="left:860px!important;top:408px!important;"/>
+                        <span t-esc="doc_id.company_id.zip[2] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 1 else ''" class="fstatic" style="left:883px!important;top:408px!important;"/>
+                        <span t-esc="doc_id.company_id.zip[3] if doc_id.company_id.zip and len(doc_id.company_id.zip) >= 1 else ''" class="fstatic" style="left:904px!important;top:408px!important;"/>
+                        <t t-set="count" t-value="1"/>
+                        <t t-set="total" t-value="0"/>
+                        <t t-set="total_tax" t-value="0"/>
+                        <t t-set="month_num" t-value="0"/>
+                        <t t-if="inv_date.month in [1,4,7,10]"><t t-set="month_num" t-value="1"/></t>
+                        <t t-if="inv_date.month in [2,5,8,11]"><t t-set="month_num" t-value="2"/></t>
+                        <t t-if="inv_date.month in [3,6,9,12]"><t t-set="month_num" t-value="3"/></t>
+                        <t t-foreach="doc_id.tax_line_ids" t-as="tax_line">
+                            <t t-if="' EWT ' in tax_line.tax_id.name">
+                                <t t-set="get_tax_code" t-value="tax_line.tax_id.name.split(' ')[0]"/>
+                                <t t-set="get_tax_name" t-value="tax_line.tax_id.name[tax_line.tax_id.name.find('-')+1:]"/>
+                                <span t-esc="get_tax_name[:40]" class="fstatic" t-att-style="'left:32px!important;top:' + str(490+(count*17))  + 'px!important;width:217px;'"/>
+                               <!-- <span t-esc="get_tax_name[32:]" class="fstatic" t-att-style="'left:32px!important;top:' + str(495+(count*17))  + 'px!important;width:213px;'"/>-->
+                                <span t-esc="get_tax_code" class="fstatic" t-att-style="'left:274px!important;top:' + str(490+(count*17))  + 'px!important;'"/>
+                                <span t-field="tax_line.base" class="fstatic" t-att-style="'left:'+ str(242+((month_num)*103)) +'px!important;top:' + str(490+(count*17))  + 'px!important;width:100px;'"/>
+                                <span t-field="tax_line.base" class="fstatic" t-att-style="'left:661px!important;top:' + str(490+(count*17))  + 'px!important;width:100px;'"/>
+                                <span t-esc="doc_id.currency_id.symbol+ ' {0:,.2f}'.format(tax_line.amount_total*-1)" class="fstatic" t-att-style="'left:772px!important;top:' + str(490+(count*17))  + 'px!important;width:100px;'"/>
+                                <t t-set="count" t-value="count+1"/><t t-set="total" t-value="total+tax_line.base"/><t t-set="total_tax" t-value="total_tax+tax_line.amount_total"/>
+                            </t>
+                        </t>
+                        <span t-esc="doc_id.currency_id.symbol+' {0:,.2f}'.format(total)" class="fstatic" t-att-style="'left:'+ str(242+((month_num)*103)) +'px!important;top:745px!important;width:100px;'"/>
+                        <span t-esc="doc_id.currency_id.symbol+' {0:,.2f}'.format(total)" class="fstatic" style="left:661px!important;top:745px!important;width:100px;"/>
+                        <span t-esc="doc_id.currency_id.symbol+' {0:,.2f}'.format(total_tax*-1)" class="fstatic" style="left:772px!important;top:745px!important;width:100px;"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="report_bir_2307_custom">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc_id">
+                    <t t-call="user_subscription_v11c_on-premise.report_bir_2307_custom_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

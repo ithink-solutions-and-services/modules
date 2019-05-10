@@ -1,0 +1,331 @@
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.ui.view" id="tree_bir_2550m">
+            <field name="name">bir.2550m.tree</field>
+            <field name="model">bir.2550m</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="form_bir_2550m">
+            <field name="name">bir.2550m.form</field>
+            <field name="model">bir.2550m</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="2550M">
+                    <style>.o_form_sheet { max-width: 95%!important;} .resizelabel > label { width: 5px; }</style>
+                    <header>
+                        <field name="generated_file" invisible="1"/>
+                        <field name="generated_file_name" invisible="1"/>
+                        <button name="generate_pdf" type="object" string="Generate PDF" invisible="1"/>
+                        <field name="name" invisible="1"/>
+                        <field name="path_id" invisible="1"/>
+                        <field name="generated_file_datas" filename="generated_file_name" readonly="1"/>
+<!--                        <field name="generated_dat_file" invisible="1"/>
+                        <field name="generated_dat_file_name" invisible="1"/>
+                        <button name="generate_dat" type="object" string="Generate dat"/>-->
+                    </header>
+                    <sheet>
+                        <img src="user_subscription_v11c_on-premise/static/src/birforms/2550M/2550M-1.jpg" style="position:absolute;width:100%;z-index:9999;height:1500px;"/>
+                        <div class="o_td_label" style="text-align:center;border-top:1px solid black!important;border-bottom:1px solid black!important;">
+                            <span class="o_form_label" style="font-size: 24px!important;">Monthly Value-Added Tax Declaration</span>
+                        </div>
+                        <group col="8">
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">1. For the Month of (MM/YYYY)</span>
+                            </div>
+                            <field name="of_month" colspan="1" nolabel="1"/>
+                            <field name="of_year" colspan="1" nolabel="1"/>
+                            <field name="amended_return" colspan="2"/>
+                            <field name="sheets_attached" colspan="2"/>
+                            <div class="o_td_label" colspan="8" style="border-top:1px solid black!important;border-bottom:1px solid black!important;text-align:center;">
+                                <span class="o_form_label" style="float:left;">Part I</span>
+                                <span class="o_form_label">Background Information</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">4. TIN</span>
+                            </div>
+                            <field name="vat" nolabel="1" colspan="2" readonly="1"/>
+                            <field name="rdo" colspan="2" readonly="1"/>
+                            <field name="line_of_business" colspan="2" readonly="1"/>
+                            <div class="o_td_label" colspan="6">
+                                <span class="o_form_label">7. Taxpayer's Name (For Individual)Last Name, First Name, Middle Name/(For Non-Individual) Registered Name</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">8. Telephone Number</span>
+                            </div>
+                            <field name="registered_name" colspan="4" nolabel="1"/>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+                            <field name="telephone_number" colspan="2" readonly="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="6">
+                                <span class="o_form_label">9. Registered Address</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">10. Zip Code</span>
+                            </div>
+                            <field name="registered_address" colspan="4" nolabel="1" readonly="1"/>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+                            <field name="zip" colspan="2" readonly="1" nolabel="1"/>
+                            <field name="under_special_law" colspan="4"/>
+                            <field name="under_special_law_spec" colspan="4" attrs="{'invisible': [('under_special_law','=',False)]}"/>
+                        </group>
+                        <group col="8">
+                            <div class="o_td_label" colspan="8" style="border-top:1px solid black!important;border-bottom:1px solid black!important;text-align:center;">
+                                <span class="o_form_label" style="float:left;">Part II</span>
+                                <span class="o_form_label">Computation of Tax (Attach additional sheets, if necessary)</span>
+                            </div>
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">Sales/Receipts for the Month (Exclusive of VAT)</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">Output Tax Due for the Month</span>
+                            </div>
+
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">12. Vatable Sales/Receipts- Private (Sch.1)</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">12A. </span>
+                            </div>
+                            <field name="vatable_sales_private_a" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">12B. </span>
+                            </div>
+
+                            <field name="vatable_sales_private_b" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">13. Sales to Government</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">13A. </span>
+                            </div>
+                            <field name="sales_to_government_a" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">13B. </span>
+                            </div>
+                            <field name="sales_to_government_b" colspan="1" nolabel="1"/>
+
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">14. Zero Rated Sales/Receipts</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">14. </span>
+                            </div>
+                            <field name="zero_rated_sales" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">15. Exempt Rated Sales/Receipts</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">15. </span>
+                            </div>
+                            <field name="exempt_sales" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">16. Total Sales/Receipts and Output Tax Due</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">16A. </span>
+                            </div>
+                            <field name="total_sales_a" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">16B. </span>
+                            </div>
+                            <field name="total_sales_b" colspan="1" nolabel="1"/>
+
+                            <div class="o_td_label" colspan="8">
+                                <span class="o_form_label">17. &amp;nbsp; &amp;nbsp; Less: Allowable Input Tax</span>
+                            </div>
+
+                            <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17A. Input Tax Carried Over from Previous Period</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17A. </span>
+                            </div>
+                            <field name="input_tax_carried_over" colspan="1" nolabel="1"/>
+
+                            <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17B. Input Tax Deferred on Capital Goods Exceeding P1Million from Previous Period</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17B. </span>
+                            </div>
+                            <field name="input_tax_deferred_exceed" colspan="1" nolabel="1"/>
+
+                            <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17C. Transitional Input Tax</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17C. </span>
+                            </div>
+                            <field name="transitional_input_tax" colspan="1" nolabel="1"/>
+
+                           <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17D. Presumptive Input Tax</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17D. </span>
+                            </div>
+                            <field name="presumptive_input_tax" colspan="1" nolabel="1"/>
+
+                           <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17E. Others</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17E. </span>
+                            </div>
+                            <field name="others_allowable_input_tax" colspan="1" nolabel="1"/>
+
+                           <div class="o_td_label" colspan="6">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 17F. Total (Sum of Item 17A,17B,17C,17D&amp;17E)</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">17F. </span>
+                            </div>
+                            <field name="total_allowable_input_tax" colspan="1" nolabel="1"/>
+
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label">18. &amp;nbsp; &amp;nbsp; Current Transactions</span>
+                            </div>
+                            <div class="o_td_label" colspan="2" style="text-align:center;">
+                                <span class="o_form_label">Purchases</span>
+                            </div>
+                            <div class="o_td_label" colspan="2">
+                                <span class="o_form_label">&amp;nbsp;</span>
+                            </div>
+                            <div class="o_td_label" colspan="4">
+                                <span class="o_form_label"> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 18A/B. Purchase of Capital Goods not exceeding P1Million (see. sch2.)</span>
+                            </div>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">18A. </span>
+                            </div>
+                            <field name="capital_goods_not_exceed_a" colspan="1" nolabel="1"/>
+                            <div class="o_td_label" colspan="1">
+                                <span class="o_form_label">18B. </span>
+                            </div>
+                            <field name="capital_goods_not_exceed_b" colspan="1" nolabel="1"/>
+
+                        </group>
+                        <notebook>
+                            <page string="Form" name="page_form">
+                                <group col="6">
+<!--                                    <field name="company_id" colspan="2"/>-->
+                                    <field name="of_month" colspan="2"/>
+                                    <field name="of_year" colspan="2"/>
+                                    <field name="amended_return" colspan="2"/>
+                                    <field name="sheets_attached" colspan="2"/>
+                                    <field name="vat" colspan="2" readonly="1"/>
+                                    <field name="rdo" colspan="2" readonly="1"/>
+                                    <field name="line_of_business" colspan="2" readonly="1"/>
+                                    <field name="registered_name" colspan="2"/>
+                                    <field name="telephone_number" colspan="2" readonly="1"/>
+                                    <field name="registered_address" colspan="2" readonly="1"/>
+                                    <field name="zip" colspan="2" readonly="1"/>
+                                    <field name="under_special_law" colspan="2"/>
+                                    <field name="under_special_law_spec" colspan="4" attrs="{'invisible': [('under_special_law','=',False)]}"/>
+                                </group>
+                                <group col="6">
+                                    <field name="vatable_sales_private_a" colspan="3"/>
+                                    <field name="vatable_sales_private_b" colspan="3"/>
+                                    <field name="sales_to_government_a" colspan="3"/>
+                                    <field name="sales_to_government_b" colspan="3"/>
+                                    <field name="zero_rated_sales" colspan="3"/>
+                                    <field name="exempt_sales" colspan="3"/>
+                                    <field name="total_sales_a" colspan="3"/>
+                                    <field name="total_sales_b" colspan="3"/>
+                                    <field name="input_tax_carried_over" colspan="3"/>
+                                    <field name="input_tax_deferred_exceed" colspan="3"/>
+                                    <field name="transitional_input_tax" colspan="3"/>
+                                    <field name="presumptive_input_tax" colspan="3"/>
+                                    <field name="others_allowable_input_tax" colspan="3"/>
+                                    <field name="total_allowable_input_tax" colspan="3"/>
+                                    <field name="capital_goods_not_exceed_a" colspan="3"/>
+                                    <field name="capital_goods_not_exceed_b" colspan="3"/>
+                                    <field name="capital_goods_exceed_c" colspan="3"/>
+                                    <field name="capital_goods_exceed_d" colspan="3"/>
+                                    <field name="domestic_purchases_goods_e" colspan="3"/>
+                                    <field name="domestic_purchases_goods_f" colspan="3"/>
+                                    <field name="importation_of_goods_g" colspan="3"/>
+                                    <field name="importation_of_goods_h" colspan="3"/>
+                                    <field name="domestic_purchases_services_i" colspan="3"/>
+                                    <field name="domestic_purchases_services_j" colspan="3"/>
+                                    <field name="nonresident_services_k" colspan="3"/>
+                                    <field name="nonresident_services_l" colspan="3"/>
+                                    <field name="not_qualified_purchases" colspan="3"/>
+                                    <field name="others_current_transactions_n" colspan="3"/>
+                                    <field name="others_current_transactions_o" colspan="3"/>
+                                    <field name="total_current_purchases" colspan="3"/>
+                                    <field name="total_available_input_tax" colspan="3"/>
+                                    <field name="input_tax_capital_goods_exceed" colspan="3"/>
+                                    <field name="input_tax_sale_to_gov" colspan="3"/>
+                                    <field name="input_tax_exempt" colspan="3"/>
+                                    <field name="vat_refund_tcc" colspan="3"/>
+                                    <field name="deductions_others" colspan="3"/>
+                                    <field name="total_deductions" colspan="3"/>
+                                    <field name="total_allowable_input_tax" colspan="3"/>
+                                    <field name="net_vat_payable" colspan="3"/>
+                                    <field name="creditable_vat_withheld" colspan="3"/>
+                                    <field name="advanced_sugar_flour" colspan="3"/>
+                                    <field name="vat_withheld_sales_to_gov" colspan="3"/>
+                                    <field name="vat_paid_previous" colspan="3"/>
+                                    <field name="advanced_payments_made" colspan="3"/>
+                                    <field name="others_tax_credits" colspan="3"/>
+                                    <field name="total_tax_credits" colspan="3"/>
+                                    <field name="tax_still_payable" colspan="3"/>
+                                    <field name="surcharge" colspan="3"/>
+                                    <field name="interest" colspan="3"/>
+                                    <field name="compromise" colspan="3"/>
+                                    <field name="add_penalties" colspan="3"/>
+                                    <field name="total_amount_payable" colspan="3"/>
+                                    <field name="cash_bank" colspan="3"/>
+                                    <field name="cash_number" colspan="3"/>
+                                    <field name="cash_date" colspan="3"/>
+                                    <field name="cash_amount" colspan="3"/>
+                                    <field name="check_bank" colspan="3"/>
+                                    <field name="check_number" colspan="3"/>
+                                    <field name="check_date" colspan="3"/>
+                                    <field name="check_amount" colspan="3"/>
+                                    <field name="tax_number" colspan="3"/>
+                                    <field name="tax_date" colspan="3"/>
+                                    <field name="tax_amount" colspan="3"/>
+                                    <field name="others_bank" colspan="3"/>
+                                    <field name="others_number" colspan="3"/>
+                                    <field name="others_date" colspan="3"/>
+                                    <field name="others_amount" colspan="3"/>
+                                    <field name="machine_validation" colspan="6"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_bir_2550m">
+            <field name="name">BIR 2550M</field>
+            <field name="res_model">bir.2550m</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,107 @@
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.ui.view" id="tree_bir_1601e">
+            <field name="name">bir.1601e.tree</field>
+            <field name="model">bir.1601e</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="form_bir_1601e">
+            <field name="name">bir.1601e.form</field>
+            <field name="model">bir.1601e</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="1601E">
+                    <header>
+                        <field name="generated_file" invisible="1"/>
+                        <field name="generated_file_name" invisible="1"/>
+                        <button name="generate_pdf" type="object" string="Generate PDF"/>
+                        <field name="generated_dat_file" invisible="1"/>
+                        <field name="generated_dat_file_name" invisible="1"/>
+                        <button name="generate_dat" type="object" string="Generate dat"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="path_id"/>
+                            <field name="generated_file_datas" filename="generated_file_name" readonly="1"/>
+                            <field name="generated_dat_file_datas" filename="generated_dat_file_name" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Form" name="page_form">
+                                <group col="6">
+                                    <field name="company_id" colspan="2"/>
+                                    <field name="of_month" colspan="2"/>
+                                    <field name="of_year" colspan="2"/>
+                                    <field name="amended_return" colspan="2"/>
+                                    <field name="under_special_law" colspan="2"/>
+                                    <field name="under_special_law_spec" colspan="4" attrs="{'invisible': [('under_special_law','=',False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="line_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="nip" readonly="1"/>
+                                            <field name="atc"/>
+                                            <field name="tax_base"/>
+                                            <field name="tax_rate" readonly="1"/>
+                                            <field name="tax_withheld"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group col="6">
+                                    <field name="total_withheld" colspan="3"/>
+                                    <field name="amended_return_previous_filed" colspan="3"/>
+                                    <field name="overremitance" colspan="3"/>
+                                    <field name="surcharge" colspan="3"/>
+                                    <field name="interest" colspan="3"/>
+                                    <field name="compromise" colspan="3"/>
+                                    <field name="add_penalties" colspan="3"/>
+                                    <field name="total_still_due" colspan="3"/>
+                                </group>
+                            </page>
+                            <page string="Schedule 1" name="page_schedule1">
+                                <field name="schedule1_ids" nolabel="1">
+                                    <tree>
+                                        <field name="of_month"/>
+                                        <field name="of_year"/>
+                                        <field name="vendor_id"/>
+                                        <field name="amount"/>
+                                        <field name="atc"/>
+                                        <field name="amount_withheld"/>
+                                    </tree>
+                                    <form>
+                                        <group col="6">
+                                            <field name="of_month" colspan="2"/>
+                                            <field name="of_year" colspan="2"/>
+                                            <field name="vendor_id" colspan="2"/>
+                                            <field name="vat" colspan="2" readonly="1"/>
+                                            <field name="branch_code" colspan="2"/>
+                                            <field name="amount" colspan="2"/>
+                                            <field name="atc" colspan="2"/>
+                                            <field name="atc_nip" colspan="2" readonly="1"/>
+                                            <field name="tax_rate" colspan="2" readonly="1"/>
+                                            <field name="amount_withheld" colspan="2" readonly="1"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_bir_1601e">
+            <field name="name">BIR 1601E</field>
+            <field name="res_model">bir.1601e</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

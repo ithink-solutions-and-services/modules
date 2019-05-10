@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <menuitem name="BIR" parent="account.menu_finance" id="menu_bir_main" sequence="2" groups="account.group_account_manager"/>
+<!--        <menuitem name="1604CF" parent="menu_bir_main" id="menu_bir_1604cf" action="action_bir_1604cf"/>
+        <menuitem name="1702Q" parent="menu_bir_main" id="menu_bir_1702q" action="action_bir_1702q"/>
+        <menuitem name="2307" parent="menu_bir_main" id="menu_bir_2307" action="action_bir_2307"/>
+        <menuitem name="2550M" parent="menu_bir_main" id="menu_bir_2550m" action="action_bir_2550m"/>
+        <menuitem name="2551M" parent="menu_bir_main" id="menu_bir_2551m" action="action_bir_2551m"/
+        <menuitem name="1601E" parent="menu_bir_main" id="menu_bir_1601e" action="action_bir_1601e"/>
+        <menuitem name="1601C" parent="menu_bir_main" id="menu_bir_1601c" action="action_bir_1601c"/>
+        <menuitem name="Paths" parent="menu_bir_main" id="menu_bir_paths" action="action_bir_paths" sequence="100"/>-->
+        <menuitem name="ATC" parent="menu_bir_main" id="menu_bir_atc" action="action_bir_atc" sequence="101"/>
+
+    </data>
+</odoo>

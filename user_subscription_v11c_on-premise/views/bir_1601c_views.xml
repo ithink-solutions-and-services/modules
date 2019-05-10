@@ -1,0 +1,119 @@
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.ui.view" id="tree_bir_1601c">
+            <field name="name">bir.1601c.tree</field>
+            <field name="model">bir.1601c</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="form_bir_1601c">
+            <field name="name">bir.1601c.form</field>
+            <field name="model">bir.1601c</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="1601C">
+                    <header>
+                        <field name="generated_file" invisible="1"/>
+                        <field name="generated_file_name" invisible="1"/>
+                        <button name="generate_pdf" type="object" string="Generate PDF"/>
+<!--                        <field name="generated_dat_file" invisible="1"/>
+                        <field name="generated_dat_file_name" invisible="1"/>
+                        <button name="generate_dat" type="object" string="Generate dat"/>-->
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="path_id"/>
+                            <field name="generated_file_datas" filename="generated_file_name" readonly="1"/>
+<!--                            <field name="generated_dat_file_datas" filename="generated_dat_file_name" readonly="1"/>-->
+                        </group>
+                        <notebook>
+                            <page string="Form" name="page_form">
+                                <group col="6">
+<!--                                    <field name="company_id" colspan="2"/>-->
+                                    <field name="of_month" colspan="2"/>
+                                    <field name="of_year" colspan="2"/>
+                                    <field name="amended_return" colspan="2"/>
+                                    <field name="sheets_attached" colspan="2"/>
+                                    <field name="any_taxes_withheld" colspan="2"/>
+                                    <field name="vat" colspan="2" readonly="1"/>
+                                    <field name="rdo" colspan="2" readonly="1"/>
+                                    <field name="line_of_business" colspan="2" readonly="1"/>
+                                    <field name="registered_name" colspan="2"/>
+                                    <field name="telephone_number" colspan="2" readonly="1"/>
+                                    <field name="registered_address" colspan="2" readonly="1"/>
+                                    <field name="zip" colspan="2" readonly="1"/>
+                                    <field name="category_of_withholding2" readonly="1" colspan="2"/>
+                                    <field name="under_special_law" colspan="2"/>
+                                    <field name="under_special_law_spec" colspan="4" attrs="{'invisible': [('under_special_law','=',False)]}"/>
+                                </group>
+                                <group col="6">
+                                    <field name="total_amount_of_compensation" colspan="3"/>
+                                    <field name="statutory_mwe" colspan="3"/>
+                                    <field name="holiday_overtime" colspan="3"/>
+                                    <field name="other_nontaxable" colspan="3"/>
+                                    <field name="taxable_compensation" colspan="3"/>
+                                    <field name="tax_required_withheld" colspan="3"/>
+                                    <field name="adjustment" colspan="3"/>
+                                    <field name="tax_required_remittance" colspan="3"/>
+                                    <field name="tax_remitted_previous_a" colspan="3"/>
+                                    <field name="tax_remitted_previous_b" colspan="3"/>
+                                    <field name="total_payments" colspan="3"/>
+                                    <field name="tax_still_due" colspan="3"/>
+                                    <field name="surcharge" colspan="3"/>
+                                    <field name="interest" colspan="3"/>
+                                    <field name="compromise" colspan="3"/>
+                                    <field name="add_penalties" colspan="3"/>
+                                    <field name="total_amount_still_due" colspan="3"/>
+                                    <div class="o_td_label" colspan="6">
+                                        <span class="o_form_label" colspan="6">Section A Adjustment of Taxes Withheld on Compensation For Previous Months </span>
+                                    </div>
+                                    <field name="line_ids" colspan="6" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="previous_month"/>
+                                            <field name="previous_year"/>
+                                            <field name="date_paid"/>
+                                            <field name="bank_validation"/>
+                                            <field name="bank_code"/>
+                                            <field name="tax_paid"/>
+                                            <field name="should_be_tax_due"/>
+                                            <field name="adjustment_current" sum="Adjustments"/>
+                                            <field name="adjustment_yearend" sum="Adjustments"/>
+                                        </tree>
+                                    </field>
+                                    <field name="cash_bank" colspan="3"/>
+                                    <field name="cash_number" colspan="3"/>
+                                    <field name="cash_date" colspan="3"/>
+                                    <field name="cash_amount" colspan="3"/>
+                                    <field name="check_bank" colspan="3"/>
+                                    <field name="check_number" colspan="3"/>
+                                    <field name="check_date" colspan="3"/>
+                                    <field name="check_amount" colspan="3"/>
+                                    <field name="others_bank" colspan="3"/>
+                                    <field name="others_number" colspan="3"/>
+                                    <field name="others_date" colspan="3"/>
+                                    <field name="others_amount" colspan="3"/>
+                                    <field name="machine_validation" colspan="6"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_bir_1601c">
+            <field name="name">BIR 1601C</field>
+            <field name="res_model">bir.1601c</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,63 @@
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.cron" id="cron_expired_accounts">
+            <field name="name">Expired Accounts</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_expired_accounts()</field>
+        </record>
+
+        <record model="ir.cron" id="cron_remove_temp_dat">
+            <field name="name">Remove Temporary Dat Files</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+            <field name="model_id" ref="base.model_ir_attachment"/>
+            <field name="state">code</field>
+            <field name="code">model.search([('res_model','=','bir.generate.dat')]).unlink()</field>
+        </record>
+
+        <record model="ir.rule" id="invoicing_partner_rule">
+            <field name="name">Custom: See all except admin</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[('id','!=', 3)]</field>
+            <field name="groups" eval="[(4, ref('account.group_account_invoice')), (4, ref('account.group_account_manager'))]"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record model="res.users" id="default_billing_user">
+            <field name="name">Billing</field>
+            <field name="login">billing</field>
+            <field name="password">a</field>
+            <field name="active">True</field>
+            <field name="first_notice">False</field>
+            <field name="second_notice">False</field>
+            <field name="renew_request">False</field>
+            <field name="sub_type">trial</field>
+            <field name="expiry_date"></field>
+            <field name="tz">Asia/Manila</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'),ref('account.group_account_invoice'),ref('base.group_partner_manager'),ref('sales_team.group_sale_salesman')])]"/>
+        </record>
+
+        <record model="res.users" id="default_billing_manager">
+            <field name="name">Billing Manager</field>
+            <field name="login">billingmanager</field>
+            <field name="password">a</field>
+            <field name="active">True</field>
+            <field name="first_notice">False</field>
+            <field name="second_notice">False</field>
+            <field name="renew_request">False</field>
+            <field name="sub_type">trial</field>
+            <field name="expiry_date"></field>
+            <field name="tz">Asia/Manila</field>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('account.group_account_manager'), ref('base.group_partner_manager'),ref('sales_team.group_sale_salesman_all_leads')])]"/>
+        </record>
+
+    </data>
+</odoo>

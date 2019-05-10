@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="tree_bir_atc">
+            <field name="name">bir.atc.tree</field>
+            <field name="model">bir.atc</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="nip"/>
+                    <field name="tax_rate"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>      
+
+        <record model="ir.actions.act_window" id="action_bir_atc">
+            <field name="name">BIR ATC</field>
+            <field name="res_model">bir.atc</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

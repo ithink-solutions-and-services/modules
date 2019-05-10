@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <record id="email_template_renew_subscription" model="mail.template">
+            <field name="name">Renew Subscription</field>
+            <field name="email_from">${object.login}</field>
+            <field name="reply_to"></field>
+            <field name="subject">Renewal Request</field>
+            <field name="email_to">mis@prodatanet.com.ph</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="lang"></field>
+            <field name="body_html"><![CDATA[
+                <p><font style="font-size: 14px;">Name: ${object.name}
+                </font></p><br/><p><font style="font-size: 12px;">Email: ${object.login}</p>
+                <p><br/>
+                </font></p>
+                <p><font style="font-size: 12px;">Expiry Date: ${object.expiry_date}</a>
+                <br/>
+                </font></p><p><font style="font-size: 12px;">
+                
+                </font></p><p><font style="font-size: 12px;">
+                </span><br></p>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

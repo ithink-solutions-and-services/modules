@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+        <record id="inherit_base_view_partner_form" model="ir.ui.view">
+            <field name="name">inherit.base.view.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="foreign_address"/>
+                    <field name="foreign_zip"/>
+                    <field name="branch_code"/>
+                    <field name="rdo"/>
+                    <field name="line_of_business"/>
+                    <field name="taxpayer_classification" required="1"/>
+                    <field name="category_of_withholding"/>
+                    <field name="firstname" attrs="{'required': [('taxpayer_classification','=','ind')]}"/>
+                    <field name="middlename" attrs="{'required': [('taxpayer_classification','=','ind')]}"/>
+                    <field name="lastname" attrs="{'required': [('taxpayer_classification','=','ind')]}"/>
+                    <field name="tradename"/>
+                </xpath>
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="barangay" placeholder="Barangay..." nolabel="1" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                    <field name="district" placeholder="District/Municipality" string="District/Municipality" nolabel="1" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                    <field name="city" placeholder="City/Province" string="City/Province" class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                </xpath>
+            </field>            
+        </record>
+    </data>
+</odoo>

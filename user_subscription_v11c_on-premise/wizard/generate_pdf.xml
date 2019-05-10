@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record id="view_generate_pdf_wizard" model="ir.ui.view">
+            <field name="name">BIR Forms</field>
+            <field name="model">bir.generate.pdf</field>
+            <field name="arch" type="xml">
+                <form string="BIR Forms">
+                    <group col="4">
+                        <field name="form_type" colspan="4" string="BIR Form" required="1"/>
+                        <field name="of_month" colspan="2" string="For the Month of" required="1" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="of_year" colspan="1" nolabel="1" required="1" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="company_id" colspan="4" string="Company" required="1" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="amended_return" colspan="4" string="Amended Return?" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="sheets_attached" colspan="4" string="Number of Sheets attached" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="under_special_law" colspan="4" string="Are there payees availing of tax relief under special law or international tax treaty?" attrs="{'invisible': [('form_type','not in',['2550M'])]}"/>
+                        <field name="under_special_law_spec" colspan="4" attrs="{'invisible': [('under_special_law','=',False)], 'required': [('under_special_law','=',True)]}" string="If yes, specify"/>
+<!--                        <div class="o_td_label" colspan="4" style="text-align:center;" attrs="{'invisible': [('form_type','not in',['2550M'])]}">
+                            <span class="o_form_label"> Schedule I</span>
+                        </div>
+                        <field name="sch1_ids" nolabel="1" context="{'default_of_month': of_month,'default_of_year': of_year, 'default_company_id': company_id}" colspan="4" attrs="{'invisible': [('form_type','not in',['2550M'])]}">
+                            <tree editable="bottom">
+                                <field name="of_month" invisible="1"/>
+                                <field name="of_year" invisible="1"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="desc" readonly="1"/>
+                                <field name="tax_id"/>
+                                <field name="amount"/>
+                                <field name="tax"/>
+                            </tree>
+                        </field>-->
+                    </group>
+                    <footer>
+                        <button name="action_generate"
+                                string="Generate"
+                                type="object"
+                                class="oe_highlight" />
+                        or
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="oe_link"
+                            special="cancel"
+                            />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_generate_pdf"
+                    name="Generate PDF"
+                    res_model="bir.generate.pdf"
+                    view_mode="form"
+                    view_type="form"
+                    target="new" />
+
+        <menuitem name="BIR Forms" id="menu_generate_pdf" action="action_generate_pdf" parent="menu_bir_main" sequence="0"/>
+
+</odoo>

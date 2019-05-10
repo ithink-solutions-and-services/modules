@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <template id="report_bir_1601eq_custom_document">
+            <div class="article" style="margin-left:-15px!important;">
+                <div class="page" style="font-size:10px;color:black!important;">
+                    <img src="user_subscription_v11c_on-premise/static/src/birforms/1601EQ/1601EQ-1.jpg" style="position:absolute;width:100%;z-index:9999;height:1500px;"/>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="report_bir_1601eq_custom">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc_id">
+                    <t t-call="user_subscription_v11c_on-premise.report_bir_1601eq_custom_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
