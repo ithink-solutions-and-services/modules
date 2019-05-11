@@ -1,36 +1,18 @@
-# -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (c) 2016 brain-tec AG (http://www.braintec-group.com)
-#    All Right Reserved
-#
-#    See LICENSE file for full licensing details.
-##############################################################################
 {
-    'name': "{{name}}",
-    'author': "brain-tec AG",
-    'license': 'LGPL-3',
+    'name': "name",
+    'author': "Nathaniel Lew Aquino",
+    'license': 'OPL-1',
     'version': '1.0',
-    'summary': "",
-    'category': 'Base',
-    'website': 'http://www.braintec-group.com',
-    'images': [
-    ],
-    'depends': [],
-    'data': ['security/ir.model.access.csv',
-
-             'views/views.xml',
-
-             'templates/templates.xml',
+    'summary': "summary",
+    'description': """
+        Description
+    """,
+    'category': 'Category',
+    'website': 'https://ithinksols.com',
+    'depends': ['base'],
+    'data': [
+            
              ],
-    'qweb': [
-    ],
-    'test': [
-    ],
-    'js': [
-    ],
-    'external_dependencies': {
-    },
     'installable': True,
     'application': False,
     'auto_install': False,
