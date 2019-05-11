@@ -15,8 +15,15 @@
             </field>
         </record>
         
+        <record model="ir.actions.act_window" id="action_account_bir">
+            <field name="name">BIR Forms</field>
+            <field name="res_model">account.bir</field>
+            <field name="view_mode">tree</field>
+        </record>
         
-        <menuitem name="BIR" id="menu_account_bir" parent="account.menu_finance_configuration" sequence="15" groups="base.group_system"/>
+        <menuitem name="BIR" id="menu_account_bir" parent="account.menu_finance" sequence="14" groups="account.group_account_manager"/>
+        <menuitem name="BIR Forms" id="menu_account_bir_forms" parent="menu_account_bir" sequence="100" groups="base.group_system" action="action_account_bir"/>
+        <menuitem name="Generate BIR Form" id="menu_account_bir_forms_wizard" parent="menu_account_bir" sequence="1" groups="account.group_account_manager" action=""/>
         
     </data>
 </odoo>
