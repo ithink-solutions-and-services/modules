@@ -14,7 +14,7 @@
     'depends': ['base', 'account_invoicing'],
     'data': ['security/ir.model.access.csv',
 
-             'views/views.xml',
+             'views/account_bir_views.xml.xml',
 
              'templates/templates.xml',
              ],
