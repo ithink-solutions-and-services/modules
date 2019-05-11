@@ -33,5 +33,7 @@
                     view_type="form"
                     target="new" />
     
+        <menuitem name="Generate BIR Form" id="menu_account_bir_forms_wizard" parent="menu_account_bir" sequence="1" groups="account.group_account_manager" action="action_account_bir_forms"/>
+        
     </data>
 </odoo>
