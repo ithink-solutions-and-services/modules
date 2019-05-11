@@ -11,7 +11,9 @@
     'website': 'https://ithinksols.com',
     'depends': ['base', 'account_invoicing'],
     'data': ['security/ir.model.access.csv',
-             'views/account_bir_views.xml.xml',
+             'views/account_bir_views.xml',
+             'views/res_partner_views.xml',
+             'views/res_company_views.xml',
              'wizard/account_bir_forms_wizard_views.xml'
              ],
     'installable': True,
