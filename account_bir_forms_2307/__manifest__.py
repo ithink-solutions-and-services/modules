@@ -1,36 +1,19 @@
-# -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (c) 2016 brain-tec AG (http://www.braintec-group.com)
-#    All Right Reserved
-#
-#    See LICENSE file for full licensing details.
-##############################################################################
 {
-    'name': "{{name}}",
-    'author': "brain-tec AG",
-    'license': 'LGPL-3',
+    'name': "BIR Form 2307",
+    'author': "Nathaniel Lew Aquino",
+    'license': 'OPL-1',
     'version': '1.0',
-    'summary': "",
-    'category': 'Base',
-    'website': 'http://www.braintec-group.com',
-    'images': [
-    ],
-    'depends': [],
-    'data': ['security/ir.model.access.csv',
-
-             'views/views.xml',
-
-             'templates/templates.xml',
+    'summary': "Download BIR Form 2307 in vendor bills",
+    'description': """
+        Module to enable downloading Certificate of Creditable Tax Withheld on Vendor Bills
+    """,
+    'category': 'Accounting',
+    'website': 'https://ithinksols.com',
+    'depends': ['base', 'account_bir'],
+    'data': [
+             'data/account_bir_forms_slspi_data.xml',
+             'wizard/account_bir_forms_slspi_wizard_views.xml'
              ],
-    'qweb': [
-    ],
-    'test': [
-    ],
-    'js': [
-    ],
-    'external_dependencies': {
-    },
     'installable': True,
     'application': False,
     'auto_install': False,
