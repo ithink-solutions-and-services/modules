@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_account_bir_user,access_account_bir_user,model_account_bir,base.group_user,1,0,0,0
-access_account_bir_system,access_account_bir_system,model_account_bir,base.group_system,1,0,0,0
+access_account_bir_system,access_account_bir_system,model_account_bir,base.group_system,1,1,1,1
