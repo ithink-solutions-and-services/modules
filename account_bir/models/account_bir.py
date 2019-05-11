@@ -6,3 +6,4 @@ class AccountBir(models.Model):
     name = fields.Char("BIR Form")
     code = fields.Char("Code")
     active = fields.Boolean("Active", default=True)
+    wizard_id = fields.Char("Wizard ID")
