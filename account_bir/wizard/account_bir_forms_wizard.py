@@ -14,6 +14,8 @@ class AccountBirForms(models.TransientModel):
             'name': action.name,
             'type': action.type,
             'target': 'new',
-            'view_type': 'form',
+            'res_model': action.res_model,
+            'view_type': action.view_type,
             'view_mode': action.view_mode,
         }
+
