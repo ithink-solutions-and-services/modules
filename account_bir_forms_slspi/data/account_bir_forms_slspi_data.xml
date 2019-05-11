@@ -1,10 +1,10 @@
 <odoo>
     <data>
     
-        <record id="record_account_bir_slspi" model="account.bir">
+        <record id="account_bir_slspi_item" model="account.bir">
             <field name="name">Summary List of Sales, Purchases and Importations</field>
             <field name="code">slspi</field>
-            <field name="active">True<field>
+            <field name="active" eval="True"/>
             <field name="wizard_id">account_bir_forms_slspi.action_bir_forms_slspi_wizard</field>
         </record>
     
