@@ -23,7 +23,6 @@
         
         <menuitem name="BIR" id="menu_account_bir" parent="account.menu_finance" sequence="14" groups="account.group_account_manager"/>
         <menuitem name="BIR Forms" id="menu_account_bir_forms" parent="menu_account_bir" sequence="100" groups="base.group_system" action="action_account_bir"/>
-        <menuitem name="Generate BIR Form" id="menu_account_bir_forms_wizard" parent="menu_account_bir" sequence="1" groups="account.group_account_manager" action=""/>
         
     </data>
 </odoo>
