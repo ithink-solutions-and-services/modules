@@ -5,27 +5,15 @@
     'version': '1.0',
     'summary': "BIR Philippines Forms Generation",
     'description': """
-    
+        Base module for BIR Forms Generation
     """,
     'category': 'Accounting',
     'website': 'https://ithinksols.com',
-    'images': [
-    ],
     'depends': ['base', 'account_invoicing'],
     'data': ['security/ir.model.access.csv',
-
              'views/account_bir_views.xml.xml',
-
-             'templates/templates.xml',
+             'wizard/account_bir_forms_wizard_views.xml'
              ],
-    'qweb': [
-    ],
-    'test': [
-    ],
-    'js': [
-    ],
-    'external_dependencies': {
-    },
     'installable': True,
     'application': False,
     'auto_install': False,
