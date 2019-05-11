@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+    
+        <act_window id="action_bir_forms_slspi_wizard"
+                    name="Generate Summary List of Sales, Purchases, and Importations"
+                    res_model="account.bir.forms.slspi"
+                    view_mode="form"
+                    view_type="form"
+                    target="new" />
+        
+    </data>
+</odoo>
