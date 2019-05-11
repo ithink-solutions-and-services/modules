@@ -9,6 +9,7 @@
                 <tree editable="bottom">
                     <field name="code" required="1"/>
                     <field name="name" required="1"/>
+                    <field name="wizard_id" required="1"/>
                     <field name="active"/>
                 </tree>
             </field>
