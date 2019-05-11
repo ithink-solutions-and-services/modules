@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+,,,,,,,
+access_pdf_forms_form_system,access_pdf_forms_form_system,model_pdf_forms_form,base.group_system,1,1,1,1
+,,,,,,,
+,,,,,,,
+,,,,,,,
+access_pdf_forms_form_mapping_system,access_pdf_forms_form_mapping_system,model_pdf_forms_form_mapping,base.group_system,1,1,1,1

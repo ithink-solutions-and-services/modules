@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+
+        <menuitem name="PDF Forms" id="menu_pdf_forms" sequence="5" groups="base.group_system" web_icon="pdf_forms,static/description/icon.png"/>
+        <menuitem name="PDF" id="menu_pdf_forms_form_main" sequence="1" parent="menu_pdf_forms"/>
+
+    </data>
+</odoo>
+

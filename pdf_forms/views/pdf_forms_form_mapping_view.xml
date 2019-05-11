@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+
+        <record id="view_pdf_forms_form_mapping_tree" model="ir.ui.view">
+            <field name="name">view_pdf_forms_form_mapping_tree</field>
+            <field name="model">pdf_forms.form.mapping</field>
+            <field name="arch" type="xml">
+                <tree string="PDF Form Mappings" editable="bottom">
+                    <field name="model_id" invisible="1"/>
+                    <field name="form_id"/>
+                    <field name="pdf_field_name"/>
+                    <field name="model_field_name" domain="[('model_id','=',model_id)]" options="{'no_create': True, 'no_quick_create': True, 'no_create_edit':True}"/>
+                    <field name="model_field_sub"/>
+                    <field name="model_field_sub_type"/>
+                    <field name="select_m2o"/>
+                    <field name="model_field_sub_parent"/>
+                    <field name="model_field_sub_domain"/>
+                    <field name="type"/>
+                    <field name="checkbox_prefix" readonly="1"/>
+                    <field name="checkbox_not"/>
+                    <field name="static_value"/>
+                    <field name="visible_if"/>
+                    <field name="field_depends"/>
+                    <field name="write_not_app"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        
+        <record model="ir.actions.act_window" id="action_pdf_forms_form_mapping">
+            <field name="name">PDF Form Mappings</field>
+            <field name="res_model">pdf_forms.form.mapping</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem name="PDF Form Mappings" id="menu_pdf_forms_form_mapping" sequence="2" parent="menu_pdf_forms_form_main" action="action_pdf_forms_form_mapping"/>
+    </data>
+</odoo>
