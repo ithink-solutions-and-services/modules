@@ -1,6 +1,35 @@
 <odoo>
     <data>
     
+        <record id="bir_forms_slspi_wizard_view_form" model="ir.ui.view">
+            <field name="name">Summary List of Sales, Purchases, and Importations</field>
+            <field name="model">account.bir.forms.slspi</field>
+            <field name="arch" type="xml">
+                <form string="Summary List of Sales, Purchases, and Importations">
+                    <group col="4">
+                        <field name="dat_type" colspan="4" string="BIR DAT" required="1"/>
+                        <field name="of_month" colspan="2" string="For the Month of" required="1" attrs="{'invisible': [('dat_type','not in',['sales','purchases'])]}"/>
+                        <field name="of_year" colspan="1" nolabel="1" required="1" attrs="{'invisible': [('dat_type','not in',['sales','purchases'])]}"/>
+                        <field name="company_id" colspan="4" string="Company" required="1" attrs="{'invisible': [('dat_type','not in',['sales','purchases'])]}"/>
+                        <field name="non_creditable" colspan="4" string="Non-Creditable Tax" attrs="{'invisible': [('dat_type','not in',['purchases'])], 'required': [('dat_type','in',['purchases'])]}"/>
+                    </group>
+                    <footer>
+                        <button name="action_generate"
+                                string="Generate"
+                                type="object"
+                                class="oe_highlight" />
+                        or
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="oe_link"
+                            special="cancel"
+                            />
+                    </footer>
+                </form>
+            </field>
+        </record>        
+        
         <act_window id="action_bir_forms_slspi_wizard"
                     name="Generate Summary List of Sales, Purchases, and Importations"
                     res_model="account.bir.forms.slspi"
