@@ -1,4 +1,4 @@
-from odoo import models, api
+from odoo import fields, models, api
 
 
 class AccountBirForms(models.TransientModel):
