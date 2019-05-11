@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+    
+        <record id="record_account_bir_slspi" model="account.bir">
+            <field name="name">Summary List of Sales, Purchases and Importations</field>
+            <field name="code">slspi</field>
+            <field name="active">True<field>
+            <field name="wizard_id"></field>
+        </record>
+    
+
+    </data>
+</odoo>
