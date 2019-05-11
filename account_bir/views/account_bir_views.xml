@@ -14,5 +14,8 @@
             </field>
         </record>
         
+        
+        <menuitem name="BIR" id="menu_account_bir" parent="account.menu_finance_configuration" sequence="15" groups="base.group_system"/>
+        
     </data>
 </odoo>
