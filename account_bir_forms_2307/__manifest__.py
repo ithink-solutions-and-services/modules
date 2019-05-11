@@ -9,7 +9,7 @@
     """,
     'category': 'Accounting',
     'website': 'https://ithinksols.com',
-    'depends': ['base', 'account_bir'],
+    'depends': ['base', 'account_bir','pdf_forms'],
     'data': [
              'data/account_bir_forms_slspi_data.xml',
              'wizard/account_bir_forms_slspi_wizard_views.xml'
