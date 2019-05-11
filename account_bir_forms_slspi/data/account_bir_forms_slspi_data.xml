@@ -5,7 +5,7 @@
             <field name="name">Summary List of Sales, Purchases and Importations</field>
             <field name="code">slspi</field>
             <field name="active">True<field>
-            <field name="wizard_id"></field>
+            <field name="wizard_id">account_bir_forms_slspi.action_bir_forms_slspi_wizard</field>
         </record>
     
 
