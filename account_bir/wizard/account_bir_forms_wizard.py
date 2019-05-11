@@ -9,4 +9,11 @@ class AccountBirForms(models.TransientModel):
     @api.multi
     def select_form(self):
         self.ensure_one()
-        return self.env.ref('self.account_bir_id.wizard_id')
+        action = self.env.ref(self.account_bir_id.wizard_id)
+        return {
+            'name': action.name,
+            'type': action.type,
+            'target': 'new',
+            'view_type': 'form',
+            'view_mode': action.view_mode,
+        }
