@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="inherit_invoice_form_ewt_button" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit.ewt.button</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="print_2307" type="object" string="Print BIR Form 2307" states="paid"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
