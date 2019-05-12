@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+    
+        <record id="account_bir_forms_2307_pdf_item" model="pdf_forms.form">
+            <field name="name">BIR Form 2307</field>
+            <field name="model_id" ref="account.model_account_invoice"/>
+        </record>
+    
+        <record id="account_bir_forms_2307_pdf_item" model="pdf_forms.form.mapping">
+            <field name="form_id" ref="account_bir_forms_2307.account_bir_forms_2307_pdf_item">
+            <field name="pdf_field_name"></field>
+            
+        </record>
+    
+    </data>
+</odoo>
