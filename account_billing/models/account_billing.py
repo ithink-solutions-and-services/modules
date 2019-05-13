@@ -59,6 +59,42 @@ class AccountBilling(models.Model):
             
     invoice_count = fields.Integer(compute='_compute_invoice_count', store=True)
     
+    @api.multi
+    def action_open_invoices(self):
+        self.ensure_one()
+        invoices = self.env['account.invoice'].search([('billing_id', '=', self.id)])
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "account.invoice",
+            "views": [[self.env.ref('account.invoice_tree').id, "tree"],
+                      [self.env.ref('account.invoice_form').id, "form"]],
+            "domain": [["id", "in", invoices.ids]],
+            "context": {"create": False},
+            "name": "Invoices",
+        }
+    
+    @api.multi
+    def set_open(self):
+        for rec in self:
+            rec.write({'state': 'open', 'date': False})
+        return True
+
+    @api.multi
+    def set_pending(self):
+        for rec in self:
+            rec.write({'state': 'pending'})
+        return True
+
+    @api.multi
+    def set_cancel(self):
+        for rec in self:
+            rec.write({'state': 'cancel'})
+        return True
+
+    @api.multi
+    def set_close(self):
+        return self.write({'state': 'close', 'date': fields.Date.from_string(fields.Date.today())})
+    
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
     
