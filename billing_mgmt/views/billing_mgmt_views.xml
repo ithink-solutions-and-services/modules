@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+
+      <menuitem name="Billing" sequence="5" id="menu_billing"/>
+      <menuitem name="Billing" sequence="1" id="menu_billing_billing" parent="menu_billing"/>
+      <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
+      <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
+    
+  </data>
+</odoo>
