@@ -137,11 +137,8 @@ class AccountBilling(models.Model):
 
     @api.multi
     def _prepare_invoice_line(self, line, fiscal_position):
-        if 'force_company' in self.env.context:
-            company = self.env['res.company'].browse(self.env.context['force_company'])
-        else:
-            company = line.analytic_account_id.company_id
-            line = line.with_context(force_company=company.id, company_id=company.id)
+        self.ensure_one()
+        company = self.partner_id.company_id
 
         account = line.product_id.property_account_income_id
         if not account:
@@ -152,13 +149,11 @@ class AccountBilling(models.Model):
         tax = fiscal_position.map_tax(tax)
 
         return {
-            'name': line.name + " - " + line.months,
+            'name': line.name + " - " + self.billing_period.name,
             'account_id': account_id,
             'account_analytic_id': line.analytic_account_id.analytic_account_id.id,
             'price_unit': line.price_unit or 0.0,
-            'discount': line.discount,
             'quantity': line.quantity,
-            'uom_id': line.uom_id.id,
             'product_id': line.product_id.id,
             'invoice_line_tax_ids': [(6, 0, tax.ids)],
         }
@@ -167,19 +162,7 @@ class AccountBilling(models.Model):
     def _prepare_invoice_lines(self, fiscal_position):
         self.ensure_one()
         fiscal_position = self.env['account.fiscal.position'].browse(fiscal_position)
-        line_ids = []
-        for line in self.recurring_invoice_line_ids:
-            if line.months_total == 0:
-#                line.name = line.name + " - " + line.months
-                line_ids.append((0, 0, self._prepare_invoice_line(line, fiscal_position)))
-            else:
-                if line.months_total > line.months_current:
-                    line.months_current += 1
-#                    line.name = line.name + " - " + line.months
-                    line_ids.append((0, 0, self._prepare_invoice_line(line, fiscal_position)))
-        return line_ids
-
-#        return [(0, 0, self._prepare_invoice_line(line, fiscal_position)) for line in self.recurring_invoice_line_ids]
+        return [(0, 0, self._prepare_invoice_line(line, fiscal_position)) for line in self.recurring_invoice_line_ids]
 
     @api.multi
     def _prepare_invoice(self):
