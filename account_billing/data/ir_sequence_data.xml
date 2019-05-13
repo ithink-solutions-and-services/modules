@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+	    <record id="sequence_account_billing" model="ir.sequence">
+		    <field name="name">Billing # Sequence</field>
+		    <field name="code">account.billing</field>
+			  <field name="prefix">BILL/%(year)s/</field>
+		</record>
+	</data>
+</odoo>
