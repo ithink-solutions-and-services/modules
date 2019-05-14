@@ -6,7 +6,7 @@ class AccountBillingGenerate(models.TransientModel):
     @api.multi
     def generate(self):
         self.ensure_one()
-        invoices = self.env['account.billing'].generate_print_invoices()
+        invoices = self.env['account.billing']._recurring_create_invoice()
         ids = []
         for invoice in invoices:
             ids.append(invoice.id)
