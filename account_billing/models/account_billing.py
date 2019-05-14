@@ -43,6 +43,13 @@ class AccountBilling(models.Model):
     user_id = fields.Many2one('res.users', string='Assigned User', track_visibility='onchange')
     invoice_ids = fields.One2many('account.invoice', 'billing_id', string="Invoices")
     template_id = fields.Many2one('account.billing.template', string="Billing Template")
+    reading_ids = fields.One2many('account.billing.reading', 'billing_id', string="Water Meter Readings")
+    
+    @api.onchange('reading_ids')
+    def _onchange_reading_ids(self):
+        for rec in self:
+            water_line_id = self.env['account.billing.line'].sudo().search([('billing_id','=',rec.id), ('product_id.water_','',)])
+                    
     
     @api.onchange('template_id')
     def _onchange_template_id(self):
@@ -316,4 +323,5 @@ class AccountBillingReading(models.Model):
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
     user_id = fields.Many2one('res.users', "Meter Reader")
     state = fields.Selection([('draft', 'New'), ('applied', 'Applied in Billing'), ('cancel', 'Cancelled')],
-                             string='Status', required=True, track_visibility='onchange', copy=False, default='draft')                                      
+                             string='Status', required=True, track_visibility='onchange', copy=False, default='draft')  
+    create_date_custom = fields.Date("Create Date", default=datetime.datetime.today().date())
