@@ -313,7 +313,7 @@ class AccountBillingTemplateLine(models.Model):
     product_id = fields.Many2one('product.product', string="Product")
     quantity = fields.Float('Quantity', default=1)
     
-    @api.depends('product_id', 'quantity', 'water_reading')
+    @api.depends('product_id', 'quantity')
     def _product(self):
         for rec in self:
             unit_price = 0
