@@ -3,9 +3,10 @@
 
         <menuitem name="Billing" sequence="5" id="menu_billing"/>
         <menuitem name="Billing" sequence="1" id="menu_billing_billing" parent="menu_billing"/>
+        <menuitem id="account_billing_generate" name="Generate Billing" parent="menu_billing_billing" action="view_sim" sequence="1"/>
         <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
         <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
-    
+        
         
         <record id="view_account_billing_form" model="ir.ui.view">
             <field name="name">view.account.billing.form</field>
@@ -136,7 +137,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Billing Information" id="menu_billing_account_billing" parent="menu_billing_billing" action="action_billing_account_billing"/>
+        <menuitem name="Billing Information" id="menu_billing_account_billing" parent="menu_billing_billing" action="action_billing_account_billing" sequence="2"/>
     
   </data>
 </odoo>
