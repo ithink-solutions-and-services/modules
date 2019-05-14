@@ -264,7 +264,7 @@ class AccountBilling(models.Model):
                     new_date = next_date + relativedelta(**{periods[rule]: interval})
                     new_date_first_day = BillingPeriod.get_date_first_day(new_date)
                     new_date_last_day = BillingPeriod.get_date_last_day(new_date)
-                    next_billing_period = BillingPeriod.search([('start_date','=',new_date_first_day),('end_date','=',new_date_last_day)])
+                    next_billing_period = BillingPeriod.search([('date_start','=',new_date_first_day),('date_end','=',new_date_last_day)])
                     if not next_billing_period:
                         next_billing_period = BillingPeriod.create({
                             'name': str(calendar.month_name[new_date.month]) + " " + str(new_date_first_day.day) + " - " + str(new_date_last_day.day) + ", " + str(new_date.year),
