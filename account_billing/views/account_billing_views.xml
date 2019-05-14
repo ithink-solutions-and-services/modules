@@ -39,7 +39,7 @@
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                           <button name="action_open_invoices" type="object" class="oe_stat_button" icon="fa-pencil-square-o"><field string="Invoices" name="invoices_count" widget="statinfo"/></button>
+                           <button name="action_open_invoices" type="object" class="oe_stat_button" icon="fa-pencil-square-o"><field string="Invoices" name="invoice_count" widget="statinfo"/></button>
                         </div>
                         <h1 class="mt0">
                             <div>
