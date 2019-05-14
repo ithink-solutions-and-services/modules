@@ -9,7 +9,7 @@
     'depends': ['base', 'account'],
     'data': [
              'data/ir_sequence_data.xml',
-             'data/ir_actions_report_data.xml',
+             'data/ir_actions_server_data.xml',
 
              'views/account_billing_views.xml',
              ],
