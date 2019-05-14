@@ -215,7 +215,7 @@ class AccountBilling(models.Model):
         return {
             'name': line.name + " - " + self.billing_period_id.name,
             'account_id': account_id,
-            'price_unit': line.price_unit or 0.0,
+            'price_unit': line.unit_price or 0.0,
             'quantity': line.quantity,
             'product_id': line.product_id.id,
             'invoice_line_tax_ids': [(6, 0, tax.ids)],
