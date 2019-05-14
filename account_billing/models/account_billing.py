@@ -26,6 +26,12 @@ class AccountBilling(models.Model):
     
     company_id = fields.Many2one('res.company', string="Company", compute="_company_id", store=True)
     
+    @api.model
+    def create(self, vals):
+        res = super(AccountBilling, self).create(vals)
+        res.name = self.env['ir.sequence'].next_by_code('account.billing')
+        return res
+    
     @api.depends('billing_line_ids')
     def _total(self):
         for rec in self:
