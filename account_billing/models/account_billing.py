@@ -296,9 +296,9 @@ class AccountBillingLine(models.Model):
                 rec.unit_price = unit_price
                 rec.taxed_price = unit_price + tax_price
                 rec.subtotal = rec.unit_price * rec.quantity
-                name = product_id.display_name
-                if product_id.description_sale:
-                    name += '\n' + product_id.description_sale
+                name = rec.product_id.display_name
+                if rec.product_id.description_sale:
+                    name += '\n' + rec.product_id.description_sale
                 rec.name = name
     
     unit_price = fields.Float('Unit Price(non-VAT)', compute="_product", store=True)
