@@ -32,5 +32,8 @@
                     view_mode="form"
                     view_type="form"
                     target="new" />
+        
+        <menuitem id="menu_account_billing_generate" name="Generate Billing" parent="menu_billing_billing" action="action_account_billing_generate" sequence="11"/>
+        
     </data>
 </odoo>
