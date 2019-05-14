@@ -8,10 +8,10 @@
     'website': 'www.ithinksols.com',
     'depends': ['base', 'account'],
     'data': ['security/ir.model.access.csv',
+             'data/ir_sequence_data.xml',
+             'data/ir_actions_report_data.xml',
 
-             'views/views.xml',
-
-             'templates/templates.xml',
+             'views/account_billing_views.xml',
              ],
     'installable': True,
     'application': False,
