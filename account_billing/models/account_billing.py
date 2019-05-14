@@ -59,6 +59,7 @@ class AccountBilling(models.Model):
             total_amount = water_line_id.product_id.cu_m_fixed_price + (water_line_id.product_id.cu_m_exceed_price * (total_cu_m-water_line_id.product_id.cu_m_fixed))
         water_line_id.unit_price = total_amount
         water_line_id._product()
+        rec._total()
         for reading_id in reading_ids:
             reading_id.write({'state': 'applied'})
         return True
