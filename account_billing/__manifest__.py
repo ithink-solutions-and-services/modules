@@ -11,6 +11,7 @@
              'data/ir_sequence_data.xml',
              'data/ir_actions_server_data.xml',
              'views/account_billing_views.xml',
+             'views/product_product_views.xml'
              ],
     'installable': True,
     'application': False,
