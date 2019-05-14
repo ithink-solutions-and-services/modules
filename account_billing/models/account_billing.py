@@ -207,6 +207,7 @@ class AccountBilling(models.Model):
                     next_date = fields.Date.from_string(sub.recurring_next_date or current_date)
                     rule, interval = sub.recurring_rule_type, sub.recurring_interval
                     new_date = next_date + relativedelta(**{periods[rule]: interval})
+                    new_date_first_day = BillingPeriod.get_date_first_day(new_date)
                     new_date_last_day = BillingPeriod.get_date_last_day(new_date)
                     next_billing_period = BillingPeriod.search([('start_date','=',new_date_first_day),('end_date','=',new_date_last_day)])
                     if not next_billing_period:
@@ -215,7 +216,7 @@ class AccountBilling(models.Model):
                             'start_date': new_date_first_day,
                             'end_date': new_date_last_day
                         })
-                    sub.write({'recurring_next_date': new_date, 'billing_period': next_billing_period.id})
+                    sub.write({'recurring_next_date': new_date, 'billing_period_id': next_billing_period.id})
                     if automatic:
                         self.env.cr.commit()
                 except Exception:
@@ -224,11 +225,7 @@ class AccountBilling(models.Model):
                         _logger.exception('Fail to create recurring invoice for subscription %s', sub.code)
                     else:
                         raise
-        for line in self.recurring_invoice_line_ids:
-            if line.type.lower() == 'internet':
-                line.price_unit = self.template_id.subscription_template_line_ids[0].product_id.lst_price
-                break
-        self._compute_recurring_total()
+        self._total()
         return invoices
     
 class AccountBillingLine(models.Model):
