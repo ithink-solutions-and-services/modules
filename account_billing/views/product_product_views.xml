@@ -18,7 +18,7 @@
                              <group>
                                  <field name="cu_m_fixed"/>
                                  <field name="cu_m_fixed_price"/>
-                                 <field name="cu_m_exceed_price "/>
+                                 <field name="cu_m_exceed_price"/>
                              </group>
                          </group>
                     </page>
