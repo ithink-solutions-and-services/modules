@@ -210,7 +210,7 @@ class AccountBilling(models.Model):
     def _prepare_invoice_lines(self, fiscal_position):
         self.ensure_one()
         fiscal_position = self.env['account.fiscal.position'].browse(fiscal_position)
-        return [(0, 0, self._prepare_invoice_line(line, fiscal_position)) for line in self.recurring_invoice_line_ids]
+        return [(0, 0, self._prepare_invoice_line(line, fiscal_position)) for line in self.billing_line_ids]
 
     @api.multi
     def _prepare_invoice(self):
