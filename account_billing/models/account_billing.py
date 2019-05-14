@@ -61,6 +61,28 @@ class AccountBilling(models.Model):
         reading_ids.write({'state': 'applied'})
         return True
             
+    @api.multi
+    def get_template_lines(self):
+        self.ensure_one()
+        rec = self
+        if rec.template_id and rec.state == 'draft':
+            rec.billing_line_ids.sudo().unlink()
+            for line_id in rec.template_id.template_line_ids:
+                vals = {
+                    'billing_id': rec.id,
+                    'product_id': line_id.product_id.id,
+                    'quantity': line_id.quantity
+                }
+                self.env['account.billing.line'].sudo().create(vals)
+        return True
+    
+    @api.multi
+    def write(self, vals):
+        res = super(AccountBilling, self).write(vals)
+        if 'template_id' in vals and vals['template_id']:
+            for rec in self:
+                rec.get_template_lines()
+        return res
     
     @api.onchange('template_id')
     def _onchange_template_id(self):
@@ -68,15 +90,6 @@ class AccountBilling(models.Model):
             if rec.template_id and rec.state == 'draft':
                 rec.recurring_type = rec.template_id.recurring_type
                 rec.recurring_type_interval = rec.template_id.recurring_type_interval
-                rec.billing_line_ids.sudo().unlink()
-                for line_id in rec.template_id.template_line_ids:
-                    vals = {
-                        'billing_id': rec.id,
-                        'product_id': line_id.product_id.id,
-                        'quantity': line_id.quantity
-                    }
-                    self.env['account.billing.line'].sudo().create(vals)
-    
     
     @api.depends('invoice_ids')
     def _compute_invoice_count(self):
