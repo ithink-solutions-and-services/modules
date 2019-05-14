@@ -277,7 +277,7 @@ class AccountBilling(models.Model):
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
     
-    name = fields.Char("Name")
+    name = fields.Char("Name", compute="_product", store=True)
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
     product_id = fields.Many2one('product.product', string="Product")
     quantity = fields.Float('Quantity', default=1)
