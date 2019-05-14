@@ -213,7 +213,7 @@ class AccountBilling(models.Model):
         tax = fiscal_position.map_tax(tax)
 
         return {
-            'name': line.name + " - " + self.billing_period.name,
+            'name': line.name + " - " + self.billing_period_id.name,
             'account_id': account_id,
             'account_analytic_id': line.analytic_account_id.analytic_account_id.id,
             'price_unit': line.price_unit or 0.0,
