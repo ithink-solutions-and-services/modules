@@ -259,7 +259,6 @@ class AccountBilling(models.Model):
                      values={'self': invoices[-1], 'origin': sub},
                      subtype_id=self.env.ref('mail.mt_note').id)
                     invoices[-1].compute_taxes()
-                    invoices[-1].recompute_lines_agents()
                     next_date = fields.Date.from_string(sub.recurring_next_date or current_date)
                     rule, interval = sub.recurring_type, sub.recurring_type_interval
                     new_date = next_date + relativedelta(**{periods[rule]: interval})
