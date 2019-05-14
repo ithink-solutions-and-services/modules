@@ -261,7 +261,6 @@
                     <field name="name"/>
                     <field name="date_start"/>
                     <field name="date_end"/>
-                    <field name="journal_id"/>
                 </tree>
             </field>
         </record>
