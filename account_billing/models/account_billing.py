@@ -297,7 +297,7 @@ class AccountBillingTemplate(models.Model):
     _name = 'account.billing.template'
     
     name = fields.Char("Template Name")
-    journal_id = fields.Many2one('account.jounal', string="Sales Journal")
+    journal_id = fields.Many2one('account.journal', string="Sales Journal")
     template_line_ids = fields.One2many('account.billing.template.line', 'template_id', string="Template Lines")
     recurring_type = fields.Selection([('daily', 'Day(s)'), ('weekly', 'Week(s)'),
                                             ('monthly', 'Month(s)'), ('yearly', 'Year(s)'), ],
