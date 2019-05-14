@@ -3,7 +3,7 @@
 
         <menuitem name="Billing" sequence="5" id="menu_billing"/>
         <menuitem name="Billing" sequence="1" id="menu_billing_billing" parent="menu_billing"/>
-        <menuitem id="account_billing_generate" name="Generate Billing" parent="menu_billing_billing" action="server_create_billing_invoices" sequence="1"/>
+        <menuitem id="account_billing_generate" name="Generate Billing" parent="menu_billing_billing" action="server_create_billing_invoices" sequence="11"/>
         <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
         <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
         
