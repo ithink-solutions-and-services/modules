@@ -171,7 +171,7 @@ class AccountBilling(models.Model):
             'comment': _("This invoice covers the following period: %s - %s") % (format_date(fields.Date.to_string(next_date), {}), format_date(fields.Date.to_string(end_date), {})),
             'user_id': self.user_id.id,
             'billing_id': self.id,
-            'billing_period': self.billing_period_id.id,
+            'billing_period_id': self.billing_period_id.id,
             'billing_template_id': self.template_id.id
         }
 
