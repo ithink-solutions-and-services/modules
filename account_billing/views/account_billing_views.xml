@@ -45,13 +45,61 @@
                         </group>
                         <notebook>
                             <page string="Billing Lines">
-                                <field name="billing_line_ids" nolabel="1"/>
+                                <field name="billing_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="billing_id" invisible="1"/>
+                                        <field name="product_id"/>
+                                        <field name="unit_price"/>
+                                        <field name="quantity"/>
+                                        <field name="taxed_price"/>
+                                        <field name="subtotal"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="billing_id"/>
+                                                    <field name="product_id"/>
+                                                    <field name="quantity"/>
+                                                </group>
+                                                <group>
+                                                    <field name="unit_price"/>
+                                                    <field name="taxed_price"/>
+                                                    <field name="subtotal"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
                                 <group class="oe_subtotal_footer oe_right">
                                     <field name="total_amount"/>
                                 </group>
                             </page>
                             <page string="Meter Readings">
-                                <field name="reading_ids" nolabel="1"/>
+                                <field name="reading_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="billing_id" invisible="1"/>
+                                        <field name="create_date_custom"/>
+                                        <field name="cu_meter"/>
+                                        <field name="user_id"/>
+                                        <field name="state"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="billing_id"/>
+                                                    <field name="cu_meter"/>
+                                                    <field name="user_id"/>
+                                                </group>
+                                                <group>
+                                                    <field name="create_date_custom"/>
+                                                    <field name="state"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
                             </page>
                             <page string="Suspend Reason">
                                 <field name="suspend_reason" nolabel="1"/>
