@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+    
+        <record id="view_account_billing_generate_form" model="ir.ui.view">
+            <field name="name">Generate Billing</field>
+            <field name="model">account.billing.generate</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <p>Click "Generate" button below to generate all billing statements</p>
+                    </group>
+                    <footer>
+                        <button name="generate"
+                                string="Generate"
+                                type="object"
+                                class="oe_highlight" />
+                        or
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="oe_link"
+                            special="cancel"
+                            />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_account_billing_generate"
+                    name="Generate Billing"
+                    res_model="account.billing.generate"
+                    view_mode="form"
+                    view_type="form"
+                    target="new" />
+    </data>
+</odoo>
