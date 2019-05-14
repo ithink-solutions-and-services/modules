@@ -1,10 +1,94 @@
 <odoo>
-  <data>
+    <data>
 
-      <menuitem name="Billing" sequence="5" id="menu_billing"/>
-      <menuitem name="Billing" sequence="1" id="menu_billing_billing" parent="menu_billing"/>
-      <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
-      <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
+        <menuitem name="Billing" sequence="5" id="menu_billing"/>
+        <menuitem name="Billing" sequence="1" id="menu_billing_billing" parent="menu_billing"/>
+        <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
+        <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
+    
+        
+        <record id="view_account_billing_form" model="ir.ui.view">
+            <field name="name">view.account.billing.form</field>
+            <field name="model">account.billing</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="apply_draft_readings" type="object" class="oe_highlight" string="Apply Draft Readings"/>
+                        <button name="recurring_invoice" type="object" string="Generate Bill"/>
+                        <field name="state" widget="statusbar" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                           <button name="action_open_invoices" type="object" class="oe_stat_button" icon="fa-pencil-square-o"><field string="Invoices" name="invoices_count" widget="statinfo"/></button>
+                        </div>
+                        <h1 class="mt0">
+                            <div>
+                                <label string="Draft Billing" attrs="{'invisible': [('name','!=',False)]}"/>
+                                <field name="name" readonly="1" class="oe_inline" attrs="{'invisible': [('name','=',False)]}"/>
+                            </div>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="template_id"/>
+                                <field name="billing_period_id"/>
+                                <field name="recurring_type"/>
+                                <field name="recurring_type_interval"/>
+                                <field name="recurring_next_date"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="date_start"/>
+                                <field name="date_closed"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Billing Lines">
+                                <field name="billing_line_ids" nolabel="1"/>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_amount"/>
+                                </group>
+                            </page>
+                            <page string="Meter Readings">
+                                <field name="reading_ids" nolabel="1"/>
+                            </page>
+                            <page string="Suspend Reason">
+                                <field name="suspend_reason" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        
+        <record id="view_account_billing_tree" model="ir.ui.view">
+            <field name="name">view.account.billing.tree</field>
+            <field name="model">account.billing</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="date_start"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_billing_account_billing">
+            <field name="name">Billing</field>
+            <field name="res_model">account.billing</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Billing Information" id="menu_billing_account_billing" parent="menu_billing_billing" action="action_billing_account_billing"/>
     
   </data>
 </odoo>
