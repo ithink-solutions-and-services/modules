@@ -157,5 +157,79 @@
 
         <menuitem name="Billing Information" id="menu_billing_account_billing" parent="menu_billing_billing" action="action_billing_account_billing" sequence="2"/>
     
+        <record id="view_account_billing_template_form" model="ir.ui.view">
+            <field name="name">view.account.billing.template.form</field>
+            <field name="model">account.billing.template</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="journal_id"/>
+                            </group>
+                            <group>
+                                <field name="recurring_type"/>
+                                <field name="recurring_type_interval"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Template Lines">
+                                <field name="template_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="template_id" invisible="1"/>
+                                        <field name="product_id"/>
+                                        <field name="unit_price"/>
+                                        <field name="quantity"/>
+                                        <field name="taxed_price"/>
+                                        <field name="subtotal"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="template_id"/>
+                                                    <field name="product_id"/>
+                                                    <field name="quantity"/>
+                                                </group>
+                                                <group>
+                                                    <field name="unit_price"/>
+                                                    <field name="taxed_price"/>
+                                                    <field name="subtotal"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <record id="view_account_billing_template_tree" model="ir.ui.view">
+            <field name="name">view.account.billing.template.tree</field>
+            <field name="model">account.billing.template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="recurring_type"/>
+                    <field name="recurring_type_interval"/>
+                    <field name="journal_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_account_billing_template">
+            <field name="name">Billing Templates</field>
+            <field name="res_model">account.billing.template</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Billing Templates" id="menu_billing_account_billing_template" parent="menu_billing_settings" action="action_account_billing_template" sequence="1"/>
+        
   </data>
 </odoo>
