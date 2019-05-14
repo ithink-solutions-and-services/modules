@@ -7,7 +7,7 @@
     'category': 'Billing',
     'website': 'www.ithinksols.com',
     'depends': ['base', 'account'],
-    'data': ['security/ir.model.access.csv',
+    'data': [
              'data/ir_sequence_data.xml',
              'data/ir_actions_report_data.xml',
 
