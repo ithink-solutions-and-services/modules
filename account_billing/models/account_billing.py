@@ -100,6 +100,12 @@ class AccountBilling(models.Model):
         }
     
     @api.multi
+    def set_draft(self):
+        for rec in self:
+            rec.write({'state': 'draft'})
+        return True
+    
+    @api.multi
     def set_open(self):
         for rec in self:
             rec.write({'state': 'open', 'date_closed': False})
