@@ -266,8 +266,8 @@ class AccountBilling(models.Model):
         ids = []
         for invoice in invoices:
             ids.append(invoice.id)
-#        return self.env['account.invoice'].browse(ids).invoice_print()
-        return self.env.ref('account.account_invoices').report_action(ids)
+        invoice_ids = self.env['account.invoice'].browse(ids)
+        return self.env.ref('account.account_invoices').report_action(invoice_ids)
     
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
