@@ -43,7 +43,7 @@
                         </div>
                         <h1 class="mt0">
                             <div>
-                                <label string="Draft Billing" attrs="{'invisible': [('state','!=','draft')]}"/>
+                                <!--<label string="Draft Billing" attrs="{'invisible': [('state','!=','draft')]}"/>-->
                                 <field name="name" readonly="1" class="oe_inline" attrs="{'invisible': [('state','=','draft')]}"/>
                             </div>
                         </h1>
