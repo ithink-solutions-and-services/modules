@@ -274,6 +274,16 @@
 
         <menuitem name="Billing Periods" id="menu_billing_account_billing_period" parent="menu_billing_settings" action="action_account_billing_period" sequence="2"/>
         
+        <record model="ir.actions.act_window" id="action_billing_invoices">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','out_invoice'), ('billing_id','!=',False)]</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'sequence': 0,'view_mode': 'tree', 'view_id': ref('account.invoice_tree')}),
+                (0, 0, {'sequence': 1,'view_mode': 'form', 'view_id': ref('account.invoice_form')})]"/>
+        </record>
         
-  </data>
+        <menuitem name="Invoices" id="menu_billing_invoices" parent="menu_billing_billing" action="action_account_billing_period" sequence="2"/>
+    </data>
 </odoo>
