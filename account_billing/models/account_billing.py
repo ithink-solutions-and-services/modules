@@ -50,7 +50,7 @@ class AccountBilling(models.Model):
         self.ensure_one()
         rec = self
         water_line_id = self.env['account.billing.line'].sudo().search([('billing_id','=',rec.id), ('product_id.water_product','=',True)], limit=1)
-        reading_ids = rec.reading_ids.filtered( lambda r: r.state != "draft")
+        reading_ids = rec.reading_ids.filtered( lambda r: r.state == "draft")
         total_cu_m = sum(reading_ids.mapped('cu_meter'))
         total_amount = 0
         if total_cu_m <= water_line_id.product_id.cu_m_fixed:
