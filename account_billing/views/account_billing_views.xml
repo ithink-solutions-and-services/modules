@@ -33,6 +33,12 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
+                        <button name="set_open" type="object" class="oe_highlight" string="Start Billing" states="draft,pending"/>
+                        <button name="set_pending" type="object" class="oe_highlight" string="Suspend Billing" states="open"/>
+                        <button name="set_close" type="object" class="oe_highlight" string="Close Billing" states="open"/>
+                        <button name="set_cancel" type="object" string="Cancel Billing"/>
+                        <button name="set_draft" type="object" class="oe_highlight" string="Reset to Draft" states="cancel"/>
+                        
                         <button name="apply_draft_readings" type="object" class="oe_highlight" string="Apply Draft Readings"/>
                         <button name="recurring_invoice" type="object" string="Generate Bill"/>
                         <field name="state" widget="statusbar" nolabel="1"/>
