@@ -277,6 +277,7 @@ class AccountBilling(models.Model):
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
     
+    name = fields.Char("Name")
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
     product_id = fields.Many2one('product.product', string="Product")
     quantity = fields.Float('Quantity', default=1)
@@ -295,6 +296,10 @@ class AccountBillingLine(models.Model):
                 rec.unit_price = unit_price
                 rec.taxed_price = unit_price + tax_price
                 rec.subtotal = rec.unit_price * rec.quantity
+                name = product_id.display_name
+                if product_id.description_sale:
+                    name += '\n' + product_id.description_sale
+                rec.name = name
     
     unit_price = fields.Float('Unit Price(non-VAT)', compute="_product", store=True)
     taxed_price = fields.Float('Taxed Price', compute="_product", store=True)
