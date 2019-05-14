@@ -246,7 +246,7 @@ class AccountBilling(models.Model):
                     invoices[-1].compute_taxes()
                     invoices[-1].recompute_lines_agents()
                     next_date = fields.Date.from_string(sub.recurring_next_date or current_date)
-                    rule, interval = sub.recurring_rule_type, sub.recurring_interval
+                    rule, interval = sub.recurring_type, sub.recurring_type_interval
                     new_date = next_date + relativedelta(**{periods[rule]: interval})
                     new_date_first_day = BillingPeriod.get_date_first_day(new_date)
                     new_date_last_day = BillingPeriod.get_date_last_day(new_date)
