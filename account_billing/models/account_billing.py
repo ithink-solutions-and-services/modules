@@ -338,7 +338,7 @@ class AccountBillingReading(models.Model):
     
     cu_meter = fields.Float("Cubic Meter")
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
-    user_id = fields.Many2one('res.users', "Meter Reader")
+    user_id = fields.Many2one('res.users', "Meter Reader", default=lambda self: self.env.user)
     state = fields.Selection([('draft', 'New'), ('applied', 'Applied in Billing'), ('cancel', 'Cancelled')],
                              string='Status', required=True, track_visibility='onchange', copy=False, default='draft')  
     create_date_custom = fields.Date("Create Date", default=datetime.datetime.today().date())
