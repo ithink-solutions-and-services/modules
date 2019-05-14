@@ -69,29 +69,6 @@ class AccountBilling(models.Model):
         for reading_id in reading_ids:
             reading_id.write({'state': 'applied'})
         return True
-            
-    #@api.multi
-   # def get_template_lines(self):
-   #     self.ensure_one()
-   #     rec = self
-   #     if rec.template_id and rec.state == 'draft':
-   #         rec.billing_line_ids.sudo().unlink()
-   #         for line_id in rec.template_id.template_line_ids:
-   #             vals = {
-   #                 'billing_id': rec.id,
-   #                 'product_id': line_id.product_id.id,
-   #                 'quantity': line_id.quantity
-    #            }
-    #            self.env['account.billing.line'].sudo().create(vals)
-   #     return True
-    
-  #  @api.multi
- #   def write(self, vals):
- #       res = super(AccountBilling, self).write(vals)
-  #      if 'template_id' in vals and vals['template_id']:
- #           for rec in self:
-  #              rec.get_template_lines()
-  #      return res
 
     @api.onchange('template_id')
     def _on_change_template(self):
@@ -108,13 +85,6 @@ class AccountBilling(models.Model):
                rec.billing_line_ids = billing_line_ids
                rec.recurring_type_interval = self.template_id.recurring_type_interval
                rec.recurring_type = self.template_id.recurring_type
-    
-  #  @api.onchange('template_id')
- #   def _onchange_template_id(self):
-  #      for rec in self:
-  #          if rec.template_id and rec.state == 'draft':
-  #              rec.recurring_type = rec.template_id.recurring_type
-  #              rec.recurring_type_interval = rec.template_id.recurring_type_interval
     
     @api.depends('invoice_ids')
     def _compute_invoice_count(self):
@@ -274,8 +244,8 @@ class AccountBilling(models.Model):
                     if not next_billing_period:
                         next_billing_period = BillingPeriod.create({
                             'name': str(calendar.month_name[new_date.month]) + " " + str(new_date_first_day.day) + " - " + str(new_date_last_day.day) + ", " + str(new_date.year),
-                            'start_date': new_date_first_day,
-                            'end_date': new_date_last_day
+                            'date_start': new_date_first_day,
+                            'date_end': new_date_last_day
                         })
                     sub.write({'recurring_next_date': new_date, 'billing_period_id': next_billing_period.id})
                     if automatic:
@@ -292,7 +262,8 @@ class AccountBilling(models.Model):
     @api.model
     def generate_print_invoices(self):
         #return self.env.ref('account_billing.report_soa_report').report_action(self._recurring_create_invoice())
-        return self.env['account.invoice'].browse(self._recurring_create_invoice()).invoice_print()
+        invoices = self._recurring_create_invoice()
+        return self.env['account.invoice'].browse(invoices).invoice_print()
     
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
