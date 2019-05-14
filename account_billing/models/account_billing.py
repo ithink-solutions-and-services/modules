@@ -102,7 +102,7 @@ class AccountBilling(models.Model):
     @api.multi
     def set_open(self):
         for rec in self:
-            rec.write({'state': 'open', 'date': False})
+            rec.write({'state': 'open', 'date_closed': False})
         return True
 
     @api.multi
@@ -120,7 +120,7 @@ class AccountBilling(models.Model):
     @api.multi
     def set_close(self):
         for rec in self:
-            rec.write({'state': 'close', 'date': fields.Date.from_string(fields.Date.today())})
+            rec.write({'state': 'close', 'date_closed': fields.Date.from_string(fields.Date.today())})
         return True
     
     @api.multi
