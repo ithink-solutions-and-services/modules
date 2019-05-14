@@ -45,15 +45,22 @@ class AccountBilling(models.Model):
     template_id = fields.Many2one('account.billing.template', string="Billing Template")
     reading_ids = fields.One2many('account.billing.reading', 'billing_id', string="Water Meter Readings")
     
-    @api.onchange('reading_ids')
-    def _onchange_reading_ids(self):
-        for rec in self:
-            water_line_id = self.env['account.billing.line'].sudo().search([('billing_id','=',rec.id), ('product_id.water_product','=',True)], limit=1)
-            reading_ids = rec.reading_ids.filtered( lambda r: r.state != "draft")
-            total_cu_m = sum(reading_ids.mapped('cu_meter'))
-            if total_cu_m <= water_line_id.product_id.cu_m_fixed 
+    @api.multi
+    def apply_draft_readings(self):
+        self.ensure_one()
+        rec = self
+        water_line_id = self.env['account.billing.line'].sudo().search([('billing_id','=',rec.id), ('product_id.water_product','=',True)], limit=1)
+        reading_ids = rec.reading_ids.filtered( lambda r: r.state != "draft")
+        total_cu_m = sum(reading_ids.mapped('cu_meter'))
+        total_amount = 0
+        if total_cu_m <= water_line_id.product_id.cu_m_fixed:
+            total_amount = water_line_id.product_id.cu_m_fixed_price
+        else:
+            total_amount = water_line_id.product_id.cu_m_fixed_price + (water_line_id.product_id.cu_m_exceed_price * (total_cu_m-water_line_id.product_id.cu_m_fixed))
+        water_line_id.unit_price = total_amount
+        reading_ids.write({'state': 'applied'})
+        return True
             
-                    
     
     @api.onchange('template_id')
     def _onchange_template_id(self):
@@ -209,6 +216,7 @@ class AccountBilling(models.Model):
             subs = self.with_context(company_id=company_id, force_company=company_id).browse(sub_ids)
             for sub in subs:
                 try:
+                    sub.apply_draft_readings()
                     invoices.append(AccountInvoice.create(sub._prepare_invoice()))
                     invoices[-1].message_post_with_view('mail.message_origin_link',
                      values={'self': invoices[-1], 'origin': sub},
@@ -238,6 +246,11 @@ class AccountBilling(models.Model):
                         raise
         self._total()
         return invoices
+    
+    @api.model
+    def generate_print_invoices(self):
+        #return self.env.ref('account_billing.report_soa_report').report_action(self._recurring_create_invoice())
+        return self._recurring_create_invoice().invoice_print()
     
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
