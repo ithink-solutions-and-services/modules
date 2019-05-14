@@ -286,7 +286,7 @@ class AccountBillingLine(models.Model):
             unit_price = 0
             subtotal = 0
             if rec.product_id:
-                unit_price = rec.product_id.lst_price
+                unit_price = rec.product_id.lst_price if rec.unit_price == 0 else rec.unit_price
                 tax_price = 0
                 for tax in rec.product_id.taxes_id:
                     if tax.amount_type == 'percent':
