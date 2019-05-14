@@ -152,7 +152,7 @@ class AccountBilling(models.Model):
         if not self.partner_id:
             raise UserError(_("You must first select a Customer for Billing %s!") % self.name)
 
-        company_id = self.partner_id.company_id
+        company = self.partner_id.company_id
 
         fpos_id = self.env['account.fiscal.position'].get_fiscal_position(self.partner_id.id)
         journal = self.template_id.journal_id or self.env['account.journal'].search([('type', '=', 'sale'), ('company_id', '=', company.id)], limit=1)
@@ -170,7 +170,7 @@ class AccountBilling(models.Model):
             'account_id': self.partner_id.property_account_receivable_id.id,
             'type': 'out_invoice',
             'partner_id': self.partner_id.id,
-            'currency_id': company_id.currency_id.id,
+            'currency_id': company.currency_id.id,
             'journal_id': journal.id,
             'origin': self.name,
             'fiscal_position_id': fpos_id,
