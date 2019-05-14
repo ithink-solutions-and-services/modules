@@ -237,7 +237,7 @@ class AccountBilling(models.Model):
     def recurring_invoice(self):
         self.ensure_one()
         self._recurring_create_invoice()
-        return self.action_subscription_invoice()
+        return self.action_open_invoices()
     
     @api.returns('account.invoice')
     def _recurring_create_invoice(self, automatic=False):
