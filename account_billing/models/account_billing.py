@@ -294,7 +294,7 @@ class AccountBillingPeriod(models.Model):
     date_end = fields.Date("Date End")
     
 class AccountBillingTemplate(models.Model):
-    _name = 'account.billing.template
+    _name = 'account.billing.template'
     
     name = fields.Char("Template Name")
     journal_id = fields.Many2one('account.jounal', string="Sales Journal")
