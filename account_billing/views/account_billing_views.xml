@@ -7,6 +7,24 @@
         <menuitem name="Reports" sequence="99" id="menu_billing_reports" parent="menu_billing"/>
         <menuitem name="Settings" sequence="100" id="menu_billing_settings" parent="menu_billing"/>
         
+        <record id="view_account_billing_search" model="ir.ui.view">
+            <field name="name">view.account.billing.search</field>
+            <field name="model">account.billing</field>
+            <field name="arch" type="xml">
+               <search string="Billing">
+                    <field name="name" string="Billing" filter_domain="['|','|', ('name','ilike',self), ('partner_id', 'child_of', self), ('partner_id.name', 'ilike', self)]"/>
+                    <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                    <filter string="Active" name="active" domain="[('state','=','open')]"/>
+                    <filter string="Pending" name="pending" domain="[('state','=','pending')]"/>
+                    <filter string="Closed" name="closed" domain="[('state','=','closed')]"/>
+                    <filter string="Cancelled" name="cancelled" domain="[('state','=','cancel')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_state" string="Status" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
         
         <record id="view_account_billing_form" model="ir.ui.view">
             <field name="name">view.account.billing.form</field>
