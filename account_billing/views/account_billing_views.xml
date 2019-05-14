@@ -284,6 +284,7 @@
                 (0, 0, {'sequence': 1,'view_mode': 'form', 'view_id': ref('account.invoice_form')})]"/>
         </record>
         
-        <menuitem name="Invoices" id="menu_billing_invoices" parent="menu_billing_billing" action="action_account_billing_period" sequence="2"/>
+        <menuitem name="Billing Invoices" id="menu_billing_invoices" parent="menu_billing_billing" action="action_billing_invoices" sequence="2"/>
+        
     </data>
 </odoo>
