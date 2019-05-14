@@ -250,7 +250,7 @@ class AccountBilling(models.Model):
     @api.model
     def generate_print_invoices(self):
         #return self.env.ref('account_billing.report_soa_report').report_action(self._recurring_create_invoice())
-        return self._recurring_create_invoice().invoice_print()
+        return self.env['account.invoice'].browse(self._recurring_create_invoice()).invoice_print()
     
 class AccountBillingLine(models.Model):
     _name = 'account.billing.line'
