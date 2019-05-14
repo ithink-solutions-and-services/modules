@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 import datetime
 from dateutil.relativedelta import relativedelta
 import calendar
