@@ -79,7 +79,26 @@
                                     <li>Please disregard if payment has already been made.</li>
                                 </ol>
                             </td>
-                            <td></td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>&amp;nbsp;</td>
+                                        <td>PREVIOUS BALANCE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&amp;nbsp;</td>
+                                        <td style="border-bottom: 2px solid black;">PREVIOUS BALANCE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bold">Water consumption</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1st <t t-esc="doc_id."/> cu. meter</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                     </table>   
                 </div>
