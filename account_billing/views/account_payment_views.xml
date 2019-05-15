@@ -1,31 +1,14 @@
 <odoo>
     <data>
 
-        <record id="inherit_product_normal_form_view" model="ir.ui.view">
-            <field name="name">inherit.product.normal.form.view</field>
-            <field name="model">product.product</field>
-            <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <record id="inherit_view_account_payment_form" model="ir.ui.view">
+            <field name="name">inherit.view.account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@name='options']" position="inside">
-                    <div>
-                        <field name="water_product"/>
-                        <label for="water_product"/>
-                    </div>
-                    <div>
-                        <field name="monthly_due_product"/>
-                        <label for="monthly_due_product"/>
-                    </div>
-                </xpath>
-                <xpath expr="//page[@name='general_information']" position="after">
-                    <page name="billing_water" string="Water Consumption" attrs="{'invisible': [('water_product','=',False)]}">
-                         <group>
-                             <group>
-                                 <field name="cu_m_fixed"/>
-                                 <field name="cu_m_fixed_price"/>
-                                 <field name="cu_m_exceed_price"/>
-                             </group>
-                         </group>
-                    </page>
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="or_no"/>
+                    <field name="particulars"/>
                 </xpath>
             </field>
         </record>
