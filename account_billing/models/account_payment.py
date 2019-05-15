@@ -9,3 +9,12 @@ class AccountPayment(models.Model):
     
     or_no = fields.Char("OR#")
     particulars = fields.Char("Particulars")
+
+    @api.model
+    def create(self, vals):
+        if not vals['or_no']:
+            vals['or_no'] = self.env['ir.sequence'].next_by_code('account.payment')
+        exist = self.env['account.payment'].sudo().search([('or_no','=',vals['or_no'])])
+        if exist and len(exist)>0:
+            raise UserError("OR# already existing!")
+        return super(AccountPayment, self).create(vals)
