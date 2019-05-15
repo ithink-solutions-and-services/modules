@@ -10,3 +10,9 @@ class AccountInvoice(models.Model):
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
     billing_period_id = fields.Many2one('account.billing.period', string="Billing Period")
     billing_template_id = fields.Many2one('account.billing.template', string="Billing Template")
+
+class AccountInvoiceLine(models.Model):
+    _inherit = 'account.invoice.line'
+    
+    cu_m = fields.Float("Cu. M")
+    prev_cu_m = fields.Float("Previous Cu. M)
