@@ -62,6 +62,13 @@
                                         <td class="bold">PREVIOUS</td>
                                         <td class="bold">USED</td>
                                     </tr>
+                                    <tr>
+                                        <td class="bold">WATER</td>
+                                        <td><t t-esc="cu_m_total"/></td>
+                                        <td><t t-esc="cu_m_total"/></td>
+                                        <td>USED</td>
+                                    </tr>
+                                     
                                 </table>
                             </td>
                             <td></td>
