@@ -196,6 +196,8 @@ class AccountBilling(models.Model):
             'price_unit': line.unit_price or 0.0,
             'quantity': line.quantity,
             'product_id': line.product_id.id,
+            'cu_m': line.cu_m if line.product_id.water_product else 0,
+            'prev_cu_m': line.prev_cu_m if line.product_id.water_product else 0,
             'invoice_line_tax_ids': [(6, 0, tax.ids)],
         }
 
