@@ -11,7 +11,8 @@
              'data/ir_sequence_data.xml',
              'views/account_billing_views.xml',
              'views/product_product_views.xml',
-             'wizard/account_billing_generate_views.xml'
+             'wizard/account_billing_generate_views.xml',
+             'report/account_invoice_report_views.xml'
              ],
     'installable': True,
     'application': False,
