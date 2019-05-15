@@ -2,9 +2,11 @@
     <data>
 
         <template id="report_account_payment_receipt_document">
+            <style> .bold { font-weight:bold; }
             <div class="header o_background_header">
                 <div class="pull-right">
                     <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
+                    <h5>This Official Receipt will not be used to generate VAT Input/Output Tax</h5>
                 </div>
                 <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
                 <div class="pull-left company_address">
@@ -16,11 +18,11 @@
             </div>
             <div class="article">
                 <div class="page" style="font-size:10px;color:black!important;">
-                    
-                
                     <table style="border: 2px solid black;">
-                    
-                    
+                        <tr>
+                            <td</td>
+                            <td><div class="bold">Date:</div> <span t-field="doc_id.payment_date"/></td>
+                        </tr>
                     </table>
                 </div>
             </div>
