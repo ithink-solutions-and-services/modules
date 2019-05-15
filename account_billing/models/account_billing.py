@@ -64,6 +64,8 @@ class AccountBilling(models.Model):
         else:
             total_amount = water_line_id.product_id.cu_m_fixed_price + (water_line_id.product_id.cu_m_exceed_price * (total_cu_m-water_line_id.product_id.cu_m_fixed))
         water_line_id.unit_price = total_amount
+        water_line_id.prev_cu_m = water_line_id.cu_m
+        water_line_id.cu_m = total_cu_m
         water_line_id._product()
         rec._total()
         for reading_id in reading_ids:
@@ -276,6 +278,8 @@ class AccountBillingLine(models.Model):
     billing_id = fields.Many2one('account.billing', string="Linked to Billing")
     product_id = fields.Many2one('product.product', string="Product")
     quantity = fields.Float('Quantity', default=1)
+    cu_m = fields.Float("Cubic Meters")
+    prev_cu_m = fields.Float("Previous Cubic Meters")
     
     @api.depends('product_id', 'quantity')
     def _product(self):
