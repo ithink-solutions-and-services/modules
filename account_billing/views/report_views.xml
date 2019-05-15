@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+
+        <template id="report_account_payment_receipt_document">
+            <div class="header o_background_header">
+                <div class="pull-right">
+                    <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
+                </div>
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
+                <div class="pull-left company_address">
+                    <div>
+                        <strong t-field="company.partner_id.name"/>
+                    </div>
+                    <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                </div>
+            </div>
+            <div class="article">
+                <div class="page" style="font-size:10px;color:black!important;">
+                    
+                
+                    <table style="border: 2px solid black;">
+                    
+                    
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_account_payment_receipt">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc_id">
+                    <t t-call="account_billing.report_account_payment_receipt_document"/>
+                </t>
+            </t>
+        </template>
+    
+    </data>
+</odoo>
