@@ -9,6 +9,14 @@ class AccountPayment(models.Model):
     
     or_no = fields.Char("OR#")
     particulars = fields.Char("Particulars")
+    
+    @api.depends('invoice_ids', 'invoice_ids.residual')
+    def _total_due(self):
+        for rec in self:
+            total = sum(rec.invoice_ids.mapped("residual"))
+            rec.invoices_total_due = total + rec.amount
+    
+    invoices_total_due = fields.Float("Total Due on Invoices", compute="_total_due", store=True)
 
     @api.model
     def create(self, vals):
