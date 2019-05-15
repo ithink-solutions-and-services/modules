@@ -8,3 +8,4 @@ class AccountPayment(models.Model):
     _inherit = 'account.payment'
     
     or_no = fields.Char("OR#")
+    particulars = fields.Char("Particulars")
