@@ -49,12 +49,27 @@
                                     <tr>
                                         <td><div class="bold">Outstanding Balance</div></td>
                                         <td>Php</td>
-                                        <td><span t-field="doc_id.invoices_total_balance"/></td>
+                                        <td><t t-esc="doc_id.invoices_total_due - doc_id.amount"/></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3"></td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td colspan="2"><span t-field="company.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Prepared by:</div></td>
+                                        <td><div class="bold">Approved by:</div></td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
                     </table>
+                    <p style="text-align:center" class="bold">ORIGINAL COPY - Homeowner &amp;nbsp; DUPLICATE COPY - Accounting</p>
                 </div>
             </div>
         </template>
