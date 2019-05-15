@@ -28,9 +28,11 @@ class AccountInvoice(models.Model):
         for rec in self:
             rec.water_total = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("price_subtotal"))
             rec.monthly_due_total = sum(rec.invoice_line_ids.filtered(lambda r: r.monthly_due_product == True).mapped("price_subtotal"))
+            rec.water_days = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("price_subtotal"))
     
     water_total = fields.Float("Total Water Consumption", compute="_water_total", store=True)
     monthly_due_total = fields.Float("Total Monthly Dues", compute="_water_total", store=True)
+    water_days = fields.Integer("1st number of days", compute="_water_total", store=True)
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
