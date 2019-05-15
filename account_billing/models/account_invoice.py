@@ -11,6 +11,8 @@ class AccountInvoice(models.Model):
     billing_period_id = fields.Many2one('account.billing.period', string="Billing Period")
     billing_template_id = fields.Many2one('account.billing.template', string="Billing Template")
     
+    total_cu_ms = fields.Float("Total Water Consumption")
+    latest_cu_ms = fields.Float("Latest Water Consumption")
     
     @api.depends('invoice_line_ids', 'invoice_line_ids.cu_m', 'invoice_line_ids.prev_cu_m')
     def _cu_m(self):
