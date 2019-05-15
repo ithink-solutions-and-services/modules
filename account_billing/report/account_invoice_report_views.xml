@@ -14,7 +14,7 @@
             </field>
         </record>
 
-        <menuitem name="Invoices" action="account.action_account_invoice_report_all" id="menu_billing_report_invoices" parent="menu_billing_reports" sequence="1"/>
+       
         
     </data>
 </odoo>
