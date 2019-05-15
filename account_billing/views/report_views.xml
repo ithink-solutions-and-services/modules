@@ -64,12 +64,20 @@
                                     </tr>
                                     <tr>
                                         <td class="bold">WATER</td>
-                                        <td><t t-esc="cu_m_total"/></td>
-                                        <td><t t-esc="cu_m_total"/></td>
-                                        <td>USED</td>
+                                        <td><t t-esc="doc_id.total_cu_ms"/></td>
+                                        <td><t t-esc="doc_id.total_cu_ms - doc_id.latest_cu_ms"/></td>
+                                        <td><t t-esc="doc_id.latest_cu_ms"/></td>
                                     </tr>
-                                     
                                 </table>
+                                <p>Reminders on Payment of Association Dues:</p>
+                                <ol>
+                                    <li>Payment must be made on or before <t t-esc="doc_id.date_due"/> to avoid disconnection of water service.</li>
+                                    <li>Issue your check in favor of <t t-esc="company.partner_id.name"/>.</li>
+                                    <li class="bold">Always bring the statement of account when paying.</li>
+                                    <li>Schedule of payment (Mon-Sat 8:00am to 5:00pm).</li>
+                                    <li>For clarification/question, Please see or contact our administrator.</li>
+                                    <li>Please disregard if payment has already been made.</li>
+                                </ol>
                             </td>
                             <td></td>
                         </tr>
