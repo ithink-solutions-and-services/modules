@@ -18,6 +18,9 @@ class AccountBilling(models.Model):
     date_closed = fields.Date(string='Date Closed', track_visibility='onchange')
     billing_line_ids = fields.One2many('account.billing.line', 'billing_id', string="Billing Lines")
     billing_period_id = fields.Many2one('account.billing.period', string="Billing Period")
+    total_cu_ms = fields.Float("Total Water Consumption")
+    latest_cu_ms = fields.Float("Latest Water Consumption")
+    
     
     @api.depends('partner_id')
     def _company_id(self):
@@ -66,6 +69,8 @@ class AccountBilling(models.Model):
         water_line_id.unit_price = total_amount
         water_line_id.prev_cu_m = water_line_id.cu_m
         water_line_id.cu_m = total_cu_m
+        rec.total_cu_ms = rec.total_cu_ms + total_cu_m
+        rec.latest_cu_ms = total_cu_m
         water_line_id._product()
         rec._total()
         for reading_id in reading_ids:
@@ -174,7 +179,9 @@ class AccountBilling(models.Model):
             'user_id': self.user_id.id,
             'billing_id': self.id,
             'billing_period_id': self.billing_period_id.id,
-            'billing_template_id': self.template_id.id
+            'billing_template_id': self.template_id.id,
+            'total_cu_ms': self.total_cu_ms,
+            'latest_cu_ms': self.latest_cu_ms,
         }
 
     @api.multi
