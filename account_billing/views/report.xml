@@ -8,7 +8,16 @@
             report_type="qweb-pdf"
             name="account_billing.report_account_payment_receipt"
             file="account_billing.report_account_payment_receipt"
-            menu="True"/>
+            menu="False"/>
+        
+        <report
+            id="report_account_invoice_bill_report"
+            model="account.payment"
+            string="Custom Receipt"
+            report_type="qweb-pdf"
+            name="account_billing.report_account_invoice_bill"
+            file="account_billing.report_account_invoice_bill"
+            menu="False"/>
 
         <record id="summary_paperformat_account_payment_receipt" model="report.paperformat">
             <field name="name">Custom Receipt</field>
@@ -28,5 +37,23 @@
             ]"/>
         </record>
 
+        <record id="summary_paperformat_account_invoice_bill" model="report.paperformat">
+            <field name="name">Custom Billing Statement</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">28</field>
+            <field name="margin_bottom">22</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">24</field>
+            <field name="dpi">90</field>
+            <field name="report_ids" eval="[(4,ref('account_billing.report_account_invoice_bill_report'))
+            ]"/>
+        </record>
+        
     </data>
 </odoo>
