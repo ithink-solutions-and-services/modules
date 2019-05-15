@@ -55,7 +55,28 @@
                             </td>
                         </tr>
                         <tr>
-                            <td rowspan="3"></td>
+                            <td rowspan="3">
+                                <p class="bold">Amount: (in words)</p>
+                                <p style="padding-left: 4px;"><t t-esc="doc_id.currency_id.amount_to_text(doc_id.amount)"/></p>
+                                <p class="bold">In payment for</p>
+                                <p style="padding-left: 4px;"><t t-esc="doc_id.particulars"/></p>
+                                <p class="bold">FORM OF PAYMENT</p>
+                                <p style="padding-left: 4px;" class="bold">CASH: ( <t t-if="doc_id.payment_method_code == 'manual'">X</t> ) &amp;nbsp; &amp;nbsp; CHECK: ( <t t-if="doc_id.payment_method_code == 'electronic'">X</t> )</p>
+                                <table style="border:2px solid black;">
+                                    <tr>
+                                        <td class="bold">Date</td>
+                                        <td class="bold">Bank</td>
+                                        <td class="bold">Check</td>
+                                        <td class="bold">Amount</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><span t-field="doc_id.amount"/></td>
+                                    </tr>
+                                </table>
+                            </td>
                             <td>
                                 <table>
                                     <tr>
