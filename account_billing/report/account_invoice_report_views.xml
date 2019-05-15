@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <record id="inherit_view_account_invoice_report_search" model="ir.ui.view">
+            <field name="name">inherit.view.account.invoice.report.search</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_invoice']" position="before">
+                    <filter string="Water and Monthly Dues" name="water_monthly_due" domain="['|', ('water_product', '=', True), ('monthly_due_product','=',True)]"/>
+                    <filter string="Other" name="other_due" domain="[('water_product', '=', False), ('monthly_due_product','=',False)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
