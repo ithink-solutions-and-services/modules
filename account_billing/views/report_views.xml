@@ -20,8 +20,39 @@
                 <div class="page" style="font-size:10px;color:black!important;">
                     <table style="border: 2px solid black;">
                         <tr>
-                            <td</td>
-                            <td><div class="bold">Date:</div> <span t-field="doc_id.payment_date"/></td>
+                            <td>&amp;nbsp;</td>
+                            <td><div class="bold">DATE:</div> <span t-field="doc_id.payment_date"/></td>
+                        </tr>
+                        <tr>
+                            <td><div class="bold">RECEIVED FROM:</div> <span t-field="doc_id.partner_id"/></td>
+                            <td><div class="bold">CUSTOMER NO:</div> <span t-field="doc_id.partner_id.id"/></td>
+                        </tr>
+                        <tr>
+                            <td><div class="bold">ADDRESS:</div> <span t-field="doc_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></td>
+                            <td rowspan="2">
+                                <table>
+                                    <tr>
+                                        <td><div class="bold">DETAILS OF PAYMENT:</div></td>
+                                        <td>&amp;nbsp;</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Total Due Amount</div></td>
+                                        <td>Php</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Paid Amount</div></td>
+                                        <td>Php</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Outstanding Balance</div></td>
+                                        <td>Php</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                     </table>
                 </div>
