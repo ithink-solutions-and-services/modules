@@ -21,6 +21,11 @@ class AccountBilling(models.Model):
     total_cu_ms = fields.Float("Total Water Consumption")
     latest_cu_ms = fields.Float("Latest Water Consumption")
     
+    @api.one
+    def invoices_due(self, invoice_id):
+        return sum(self.invoice_ids.filtered(lambda r: r.id != invoice_id).mapped('residual'))
+        
+    
     
     @api.depends('partner_id')
     def _company_id(self):
