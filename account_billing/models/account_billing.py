@@ -211,6 +211,7 @@ class AccountBilling(models.Model):
             'cu_m': line.cu_m if line.product_id.water_product else 0,
             'prev_cu_m': line.prev_cu_m if line.product_id.water_product else 0,
             'cu_m_fixed': line.product_id.cu_m_fixed if line.product_id.water_product else 0,
+            'cu_m_fixed_price': line.product_id.cu_m_fixed_price if line.product_id.water_product else 0,
             'invoice_line_tax_ids': [(6, 0, tax.ids)],
         }
 
