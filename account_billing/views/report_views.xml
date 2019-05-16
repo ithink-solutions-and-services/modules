@@ -94,8 +94,8 @@
                                         <td>&amp;nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td>1st <t t-esc="doc_id."/> cu. meter</td>
-                                        <td>&amp;nbsp;</td>
+                                        <td>1st <t t-esc="doc_id.total_cu_ms_fixed"/> cu. meter</td>
+                                        <td><t t-esc="doc_id.total_cu_ms_fixed_price"/></td>
                                     </tr>
                                 </table>
                             </td>
