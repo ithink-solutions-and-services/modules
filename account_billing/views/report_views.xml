@@ -90,12 +90,28 @@
                                         <td style="border-bottom: 2px solid black;"><t t-esc="doc_id.billing_id.invoice_dues(doc_id.id)"/></td>
                                     </tr>
                                     <tr>
-                                        <td class="bold">Water consumption</td>
+                                        <td class="bold" style="text-align:center;">Water consumption</td>
                                         <td>&amp;nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td>1st <t t-esc="doc_id.total_cu_ms_fixed"/> cu. meter</td>
-                                        <td><t t-esc="doc_id.total_cu_ms_fixed_price"/></td>
+                                        <td style="text-align:center;">1st <t t-esc="doc_id.total_cu_ms_fixed"/> cu. meter</td>
+                                        <td style="text-align:right;"><t t-esc="doc_id.total_cu_ms_fixed_price"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>&amp;nbsp;</td>
+                                        <td style="text-align:left;" class="bold">Add</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bold" style="text-align:center;">Excess of <t t-esc="doc_id.total_cu_ms_fixed"/> cu. meter: </td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right;"><t t-esc="doc_id.latest_cu_ms"/> less <t t-esc="doc_id.total_cu_ms_fixed"/></td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">Multiply by <t t-esc="doc_id.total_cu_ms_exceed_price"/></td>
+                                        <td>&amp;nbsp;</td>
                                     </tr>
                                 </table>
                             </td>
