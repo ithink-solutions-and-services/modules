@@ -86,7 +86,7 @@
                                     </tr>
                                     <tr>
                                         <td>&amp;nbsp;</td>
-                                        <td style="border-bottom: 2px solid black;"><t t-esc="doc_id.billing_id.invoice_dues(doc_id.id)"/></td>
+                                        <td style="border-bottom: 2px solid black;"><t t-esc="doc_id.billing_id.invoices_due(doc_id.id)"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bold" style="text-align:center;">Water consumption</td>
