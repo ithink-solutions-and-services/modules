@@ -11,6 +11,8 @@ class AccountInvoice(models.Model):
     billing_period_id = fields.Many2one('account.billing.period', string="Billing Period")
     billing_template_id = fields.Many2one('account.billing.template', string="Billing Template")
     
+    total_cu_ms_fixed = fields.Float("Total Fixed Cu. m", compute="_water_total", store=True)
+    
     total_cu_ms = fields.Float("Total Water Consumption")
     latest_cu_ms = fields.Float("Latest Water Consumption")
     
@@ -23,12 +25,13 @@ class AccountInvoice(models.Model):
     cu_m_total = fields.Float("Total Cu. M", compute="_cu_m", store=True)
     prev_cu_m_total = fields.Float("Total Previous Cu. M", compute="_cu_m", store=True)
     
-    @api.depends('invoice_line_ids', 'invoice_line_ids.price_subtotal', 'invoice_ids.product_id.water_product', 'invoice_ids.product_id.monthly_due_product')
+    @api.depends('invoice_line_ids', 'invoice_line_ids.price_subtotal', 'invoice_line_ids.product_id.water_product', 'invoice_line_ids.product_id.monthly_due_product', 'invoice_line_ids.cu_m_fixed')
     def _water_total(self):
         for rec in self:
             rec.water_total = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("price_subtotal"))
             rec.monthly_due_total = sum(rec.invoice_line_ids.filtered(lambda r: r.monthly_due_product == True).mapped("price_subtotal"))
             rec.water_days = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("price_subtotal"))
+            rec.total_cu_ms_fixed = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("cu_m_fixed"))
     
     water_total = fields.Float("Total Water Consumption", compute="_water_total", store=True)
     monthly_due_total = fields.Float("Total Monthly Dues", compute="_water_total", store=True)
@@ -38,4 +41,5 @@ class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
     
     cu_m = fields.Float("Cu. M")
-    prev_cu_m = fields.Float("Previous Cu. M)
+    prev_cu_m = fields.Float("Previous Cu. M")
+    cu_m_fixed = fields.Float("Fixed Cu. m")
