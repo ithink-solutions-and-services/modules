@@ -23,7 +23,9 @@ class AccountBilling(models.Model):
     
     @api.one
     def invoices_due(self, invoice_id):
-        return sum(self.invoice_ids.filtered(lambda r: r.id != invoice_id).mapped('residual'))
+        invoices = self.invoice_ids.filtered(lambda r: r.id != invoice_id).mapped('residual')
+        total = sum(invoices)
+        return total
         
     
     
