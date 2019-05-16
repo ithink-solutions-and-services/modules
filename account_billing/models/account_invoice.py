@@ -44,6 +44,8 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
     
+    water_product = fields.Boolean(related="product_id.water_product")
+    monthly_due_product = fields.Boolean(related="product_id.monthly_due_product")
     cu_m = fields.Float("Cu. M")
     prev_cu_m = fields.Float("Previous Cu. M")
     cu_m_fixed = fields.Float("Fixed Cu. m")
