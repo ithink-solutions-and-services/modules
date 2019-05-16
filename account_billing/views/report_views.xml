@@ -38,7 +38,7 @@
     <br/>
     <p style="text-align: center; margin-bottom: 2px;"> STATEMENT
       OF ACCOUNT </p>
-    <div style="float:left;width: 49%;"> Ref. No.: 12 </div>
+    <div style="float:left;width: 49%;"> Ref. No.: <t t-esc="doc_id.number"/> </div>
     <div style="float:right;text-align:right;width: 50%;"> Rundate: May 16, 2019 </div>
     <br/>
     <p style="margin-top:2px;padding: 15px;text-align:center;border-bottom: 1px solid black;border-top: 1px solid black;">
