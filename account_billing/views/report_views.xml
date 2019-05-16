@@ -87,7 +87,7 @@
                                     </tr>
                                     <tr>
                                         <td>&amp;nbsp;</td>
-                                        <td style="border-bottom: 2px solid black;">PREVIOUS BALANCE</td>
+                                        <td style="border-bottom: 2px solid black;"><t t-esc="doc_id.billing_id.invoice_dues(doc_id.id)"/></td>
                                     </tr>
                                     <tr>
                                         <td class="bold">Water consumption</td>
