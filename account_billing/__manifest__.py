@@ -9,6 +9,8 @@
     'depends': ['base', 'account'],
     'data': ['security/ir.model.access.csv',
              'data/ir_sequence_data.xml',
+             'views/report.xml',
+             'views/report_views.xml',
              'views/account_billing_views.xml',
              'views/product_product_views.xml',
              'wizard/account_billing_generate_views.xml',
