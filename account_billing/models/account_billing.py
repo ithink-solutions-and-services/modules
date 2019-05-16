@@ -260,7 +260,7 @@ class AccountBilling(models.Model):
                     rule, interval = sub.recurring_type, sub.recurring_type_interval
                     new_date = next_date + relativedelta(**{periods[rule]: interval})
                     new_date_first_day = new_date
-                    new_date_last_day = new_date + relativedelta(month=1)
+                    new_date_last_day = new_date + relativedelta(**{periods[rule]: interval})
                     next_billing_period = BillingPeriod.search([('date_start','=',new_date_first_day),('date_end','=',new_date_last_day)])
                     if not next_billing_period:
                         next_billing_period = BillingPeriod.create({
