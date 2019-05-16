@@ -3,12 +3,12 @@
 	    <record id="sequence_account_billing" model="ir.sequence">
 		    <field name="name">Billing # Sequence</field>
 		    <field name="code">account.billing</field>
-	        <field name="prefix">BILL/%(year)s/</field>
+	        <field name="prefix">BILL/%(year)s</field>
 	    </record>
         <record id="sequence_account_payment_or" model="ir.sequence">
 		    <field name="name">OR# Sequence</field>
 		    <field name="code">account.payment</field>
-	        <field name="prefix">%(year)s/</field>
+	        <field name="prefix">%(year)s</field>
             <field name="padding">6</field>
 	    </record>
 	</data>
