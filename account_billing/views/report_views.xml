@@ -3,6 +3,7 @@
 
         <template id="report_account_invoice_bill_document">
             <style> .bold { font-weight:bold; } </style>
+            <t t-set="company" t-value="doc_id.company_id"/>
             <div class="header o_background_header">
                 <div class="pull-right">
                     <h3 class="mt0 text-right">If undelivered, please return to:</h3>
@@ -137,6 +138,7 @@
         
         <template id="report_account_payment_receipt_document">
             <style> .bold { font-weight:bold; } </style>
+            <t t-set="company" t-value="doc_id.company_id"/>
             <div class="header o_background_header">
                 <div class="pull-right">
                     <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
