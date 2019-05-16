@@ -134,6 +134,108 @@
                 </t>
             </t>
         </template>
+        
+        <template id="report_account_payment_receipt_document">
+            <style> .bold { font-weight:bold; }
+            <div class="header o_background_header">
+                <div class="pull-right">
+                    <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
+                    <h5>This Official Receipt will not be used to generate VAT Input/Output Tax</h5>
+                </div>
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
+                <div class="pull-left company_address">
+                    <div>
+                        <strong t-field="company.partner_id.name"/>
+                    </div>
+                    <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                </div>
+            </div>
+            <div class="article">
+                <div class="page" style="font-size:10px;color:black!important;">
+                    <table style="border: 2px solid black;">
+                        <tr>
+                            <td>&amp;nbsp;</td>
+                            <td><div class="bold">DATE:</div> <span t-field="doc_id.payment_date"/></td>
+                        </tr>
+                        <tr>
+                            <td><div class="bold">RECEIVED FROM:</div> <span t-field="doc_id.partner_id"/></td>
+                            <td><div class="bold">CUSTOMER NO:</div> <span t-field="doc_id.partner_id.id"/></td>
+                        </tr>
+                        <tr>
+                            <td><div class="bold">ADDRESS:</div> <span t-field="doc_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></td>
+                            <td rowspan="2">
+                                <table>
+                                    <tr>
+                                        <td><div class="bold">DETAILS OF PAYMENT:</div></td>
+                                        <td>&amp;nbsp;</td>
+                                        <td>&amp;nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Total Due Amount</div></td>
+                                        <td>Php</td>
+                                        <td><span t-field="doc_id.invoices_total_due"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Paid Amount</div></td>
+                                        <td>Php</td>
+                                        <td><span t-field="doc_id.amount"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Outstanding Balance</div></td>
+                                        <td>Php</td>
+                                        <td><t t-esc="doc_id.invoices_total_due - doc_id.amount"/></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">
+                                <p class="bold">Amount: (in words)</p>
+                                <p style="padding-left: 4px;"><t t-esc="doc_id.currency_id.amount_to_text(doc_id.amount)"/></p>
+                                <p class="bold">In payment for</p>
+                                <p style="padding-left: 4px;"><t t-esc="doc_id.particulars"/></p>
+                                <p class="bold">FORM OF PAYMENT</p>
+                                <p style="padding-left: 4px;" class="bold">CASH: ( <t t-if="doc_id.payment_method_code == 'manual'">X</t> ) &amp;nbsp; &amp;nbsp; CHECK: ( <t t-if="doc_id.payment_method_code == 'electronic'">X</t> )</p>
+                                <table style="border:2px solid black;">
+                                    <tr>
+                                        <td class="bold">Date</td>
+                                        <td class="bold">Bank</td>
+                                        <td class="bold">Check</td>
+                                        <td class="bold">Amount</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><span t-field="doc_id.amount"/></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td colspan="2"><span t-field="company.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="bold">Prepared by:</div></td>
+                                        <td><div class="bold">Approved by:</div></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style="text-align:center" class="bold">ORIGINAL COPY - Homeowner &amp;nbsp; DUPLICATE COPY - Accounting</p>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_account_payment_receipt">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc_id">
+                    <t t-call="account_billing.report_account_payment_receipt_document"/>
+                </t>
+            </t>
+        </template>
     
     </data>
 </odoo>
