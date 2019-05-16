@@ -3,7 +3,15 @@
 
         <template id="report_account_invoice_bill_document">
             <style> .bold { font-weight:bold; } </style>
-            <t t-set="company" t-value="doc_id.company_id"/>
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
             <div class="header o_background_header">
                 <div class="pull-right">
                     <h3 class="mt0 text-right">If undelivered, please return to:</h3>
@@ -138,7 +146,15 @@
         
         <template id="report_account_payment_receipt_document">
             <style> .bold { font-weight:bold; } </style>
-            <t t-set="company" t-value="doc_id.company_id"/>
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
             <div class="header o_background_header">
                 <div class="pull-right">
                     <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
