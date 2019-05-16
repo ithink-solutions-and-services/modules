@@ -162,97 +162,140 @@
         </template>
         
         <template id="report_account_payment_receipt_document">
-            <style> .bold { font-weight:bold; } </style>
             <div class="article">
                 <div class="page" style="font-size:10px;color:black!important;">
-                    <t t-set="company" t-value="doc_id.company_id"/>
-                    <div class="header o_background_header">
-                        <div class="pull-right">
-                            <h3 class="mt0 text-right">Official Receipt No.: <t t-esc="doc_id.or_no"/></h3>
-                            <h5>This Official Receipt will not be used to generate VAT Input/Output Tax</h5>
-                        </div>
-                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
-                        <div class="pull-left company_address">
-                            <div>
-                                <strong t-field="company.partner_id.name"/>
-                            </div>
-                            <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
-                        </div>
-                    </div>
-                    
-                    <table style="border: 2px solid black;">
-                        <tr>
-                            <td>&amp;nbsp;</td>
-                            <td><div class="bold">DATE:</div> <span t-field="doc_id.payment_date"/></td>
-                        </tr>
-                        <tr>
-                            <td><div class="bold">RECEIVED FROM:</div> <span t-field="doc_id.partner_id"/></td>
-                            <td><div class="bold">CUSTOMER NO:</div> <span t-field="doc_id.partner_id.id"/></td>
-                        </tr>
-                        <tr>
-                            <td><div class="bold">ADDRESS:</div> <span t-field="doc_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></td>
-                            <td rowspan="2">
-                                <table>
-                                    <tr>
-                                        <td><div class="bold">DETAILS OF PAYMENT:</div></td>
-                                        <td>&amp;nbsp;</td>
-                                        <td>&amp;nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bold">Total Due Amount</div></td>
-                                        <td>Php</td>
-                                        <td><span t-field="doc_id.invoices_total_due"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bold">Paid Amount</div></td>
-                                        <td>Php</td>
-                                        <td><span t-field="doc_id.amount"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bold">Outstanding Balance</div></td>
-                                        <td>Php</td>
-                                        <td><t t-esc="doc_id.invoices_total_due - doc_id.amount"/></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">
-                                <p class="bold">Amount: (in words)</p>
-                                <p style="padding-left: 4px;"><t t-esc="doc_id.currency_id.amount_to_text(doc_id.amount)"/></p>
-                                <p class="bold">In payment for</p>
-                                <p style="padding-left: 4px;"><t t-esc="doc_id.particulars"/></p>
-                                <p class="bold">FORM OF PAYMENT</p>
-                                <p style="padding-left: 4px;" class="bold">CASH: ( <t t-if="doc_id.payment_method_code == 'manual'">X</t> ) &amp;nbsp; &amp;nbsp; CHECK: ( <t t-if="doc_id.payment_method_code == 'electronic'">X</t> )</p>
-                                <table style="border:2px solid black;">
-                                    <tr>
-                                        <td class="bold">Date</td>
-                                        <td class="bold">Bank</td>
-                                        <td class="bold">Check</td>
-                                        <td class="bold">Amount</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><span t-field="doc_id.amount"/></td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table>
-                                    <tr>
-                                        <td colspan="2"><span t-field="company.partner_id.name"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="bold">Prepared by:</div></td>
-                                        <td><div class="bold">Approved by:</div></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    <p style="text-align:center" class="bold">ORIGINAL COPY - Homeowner &amp;nbsp; DUPLICATE COPY - Accounting</p>
+    <style> .bold { font-weight:bold; } 			     
+				.table {
+                    border: 1px solid black!important;
+                }
+                .table-bordered > thead > tr > th,
+                .table-bordered > tbody > tr > th,
+                .table-bordered > tfoot > tr > th,
+                .table-bordered > thead > tr > td,
+                .table-bordered > tbody > tr > td,
+                .table-bordered > tfoot > tr > td {
+                   border: 1px solid black!important;
+                }
+				h5 {
+				    font-size:12px!important;
+				}</style>
+    <table style="width: 100%">
+      <tbody>
+        <tr>
+          <td style="width: 60%;text-align:center;">
+            <img t-if="doc_id.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(doc_id.company_id.logo)" class="pull-left" width="300px;"/>
+            <div class="pull-left company_address">
+              <div>
+                <strong t-field="doc_id.company_id.partner_id.name"/>
+              </div>
+              <span t-field="doc_id.company_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+            </div>
+          </td>
+          <td style="width: 39%;">
+            <h5 style="text-align:center;"> Official Receipt No.: <t t-esc="doc_id.or_no"/></h5>
+            <h5 style="text-align:center;font-size:10px;"> This Official Receipt will not be used to generate VAT Input/Output tax </h5>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="width:100%;font-size:12px;" class="table table-bordered">
+      <tbody>
+        <tr>
+          <td style="width: 60%;"><br/>
+          </td>
+          <td style="width: 39%;text-align:center;padding:7px;">
+		    <font class="bold">DATE:</font>
+            <span t-field="doc_id.payment_date"/>
+		  </td>
+        </tr>
+        <tr>
+          <td style="width: 60%;padding:7px;"> <font class="bold">RECEIVED
+              FROM: </font> <span t-field="doc_id.partner_id"/> </td>
+          <td style="width: 39%;text-align:center;"><font class="bold">CUSTOMER
+              NO.:</font> <span t-field="doc_id.partner_id.id"/></td>
+        </tr>
+        <tr>
+          <td style="width: 60%;padding:7px;"> <font class="bold">ADDRESS:</font>
+            <br/>
+            <font style="padding-left: 15px;"><span t-field="doc_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></font> </td>
+          <td style="width: 39%;text-align:left;padding:7px;vertical-align:text-top"
+
+            rowspan="2"> <font class="bold">DETAILS OF PAYMENT</font> <br/>
+            <br/>
+            <table style="width:100%;">
+              <tbody>
+                <tr>
+                  <td class="bold">Total Due Amount</td>
+                  <td>Php</td>
+                  <td style="text-align:center;"><t t-esc="doc_id.invoices_total_due"/></td>
+                </tr>
+                <tr>
+                  <td class="bold">Paid Amount</td>
+                  <td>Php</td>
+                  <td style="text-align:center;"><t t-esc="doc_id.amount"/></td>
+                </tr>
+                <tr>
+                  <td colspan="3">&amp;nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="bold">Outstanding Balance</td>
+                  <td>Php</td>
+                  <td style="text-align:center;"><t t-esc="doc_id.invoices_total_due - doc_id.amount"/></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" style="padding:7px;">
+            <h5 class="bold">AMOUNT: (In words)</h5>
+            <h5 style="padding-left:15px;font-weight:normal;"><t t-esc="doc_id.currency_id.amount_to_text(doc_id.amount)"/></h5>
+            <h5 class="bold">In payment for:</h5>
+            <h5 style="padding-left:15px;font-weight:normal;"><t t-esc="doc_id.particulars"/></h5>
+			<h5>&amp;nbsp;</h5>
+			<h5>&amp;nbsp;</h5>
+			<h5>&amp;nbsp;</h5>
+			<h5>&amp;nbsp;</h5>
+            <h5 class="bold">FORM OF PAYMENT</h5>
+            <h5 style="padding-left:15px;">CASH ( <t t-if="doc_id.payment_method_code == 'manual'">X</t> ) &amp;nbsp; &amp;nbsp; &amp;nbsp;
+              &amp;nbsp; CHECK ( <t t-if="doc_id.payment_method_code == 'electronic'">X</t> )</h5>
+            <table style="width:100%;">
+              <tbody>
+                <tr>
+                  <td class="bold" style="text-align:center;">Date</td>
+                  <td class="bold" style="text-align:center;">Bank</td>
+                  <td class="bold" style="text-align:center;">Check</td>
+                  <td class="bold" style="text-align:center;">Amount</td>
+                </tr>
+                <tr>
+                  <td colspan="3">&amp;nbsp;</td>
+                  <td>
+                    <div style="float:left;width: 30%;"> Php </div>
+                    <div><t t-esc="doc_id.amount"/></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5 style="text-align:center;"> <span t-field="doc_id.company_id.partner_id.name"/> </h5>
+            <div style="float:left; padding:7px;width: 49%;"> Prepared by: </div>
+            <div style="padding:7px;"> Approved by: </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h5 style="text-align:center;border-bottom: 1px solid black;padding-bottom: 10px;margin-top:7px;">
+      <div style="float:left;width:49%;text-align:right;margin-right:15px;">
+        ORIGINAL COPY - Homeowner </div>
+      <div style="text-align:left;"> DUPLICATE COPY - Accounting </div>
+    </h5>
                 </div>
             </div>
         </template>
