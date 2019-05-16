@@ -3,42 +3,32 @@
 
         <template id="report_account_invoice_bill_document">
             <style> .bold { font-weight:bold; } </style>
-            <t t-if="not o and doc">
-                <t t-set="o" t-value="doc"/>
-            </t>
-            <t t-if="o and 'company_id' in o">
-                <t t-set="company" t-value="o.company_id.sudo()"/>
-            </t>
-            <t t-if="not o or not 'company_id' in o">
-                <t t-set="company" t-value="res_company"/>
-            </t>
-            <div class="header o_background_header">
-                <div class="pull-right">
-                    <h3 class="mt0 text-right">If undelivered, please return to:</h3>
-                    <div>
-                        <strong t-field="company.partner_id.name"/>
-                    </div>
-                    <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
-                </div>
-                <div class="pull-left company_address">
-                    <table>
-                        <tr>
-                            <td style="text-align:right;">CUST NO.:</td>
-                            <td style="text-align:left;"><span t-field="doc_id.partner_id.id"/></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:right;">TO:</td>
-                            <td style="text-align:left;"><span t-field="doc_id.partner_id.name"/></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align:right;">ADDRESS:</td>
-                            <td style="text-align:left;"><span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
             <div class="article">
+                <t t-set="company" t-value="doc_id.company_id"/>
                 <div class="page" style="font-size:10px;color:black!important;">
+                    <div class="header o_background_header">
+                        <div class="pull-right">
+                            <h3 class="mt0 text-right">If undelivered, please return to:</h3>
+                            <strong t-field="company.partner_id.name"/>
+                            <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                        </div>
+                        <div class="pull-left company_address">
+                            <table>
+                                <tr>
+                                    <td style="text-align:right;">CUST NO.:</td>
+                                    <td style="text-align:left;"><span t-field="doc_id.partner_id.id"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;">TO:</td>
+                                    <td style="text-align:left;"><span t-field="doc_id.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:right;">ADDRESS:</td>
+                                    <td style="text-align:left;"><span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                     <p style="text-align:center;">STATEMENT OF ACCOUNT</p>
                     <p><div class="pull-left">Ref. No.: <span t-field="doc_id.number"/></div><div class="pull-right">Rundate: <span t-field="doc_id.date_invoice"/></div></p>
                     <p style="text-align:center;border-top:2px;border-bottom:2px;padding:2px;">PARTICULARS</p>
@@ -146,30 +136,23 @@
         
         <template id="report_account_payment_receipt_document">
             <style> .bold { font-weight:bold; } </style>
-            <t t-if="not o and doc">
-                <t t-set="o" t-value="doc"/>
-            </t>
-            <t t-if="o and 'company_id' in o">
-                <t t-set="company" t-value="o.company_id.sudo()"/>
-            </t>
-            <t t-if="not o or not 'company_id' in o">
-                <t t-set="company" t-value="res_company"/>
-            </t>
-            <div class="header o_background_header">
-                <div class="pull-right">
-                    <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
-                    <h5>This Official Receipt will not be used to generate VAT Input/Output Tax</h5>
-                </div>
-                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
-                <div class="pull-left company_address">
-                    <div>
-                        <strong t-field="company.partner_id.name"/>
-                    </div>
-                    <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
-                </div>
-            </div>
             <div class="article">
+                <t t-set="company" t-value="doc_id.company_id"/>
                 <div class="page" style="font-size:10px;color:black!important;">
+                    <div class="header o_background_header">
+                        <div class="pull-right">
+                            <h3 class="mt0 text-right">Official Receipt No.: <t t-field="doc_id.or_no"/></h3>
+                            <h5>This Official Receipt will not be used to generate VAT Input/Output Tax</h5>
+                        </div>
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" class="pull-left"/>
+                        <div class="pull-left company_address">
+                            <div>
+                                <strong t-field="company.partner_id.name"/>
+                            </div>
+                            <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                        </div>
+                    </div>
+                    
                     <table style="border: 2px solid black;">
                         <tr>
                             <td>&amp;nbsp;</td>
