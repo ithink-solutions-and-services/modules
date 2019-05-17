@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="dashboard assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/account_billing/static/src/less/dashboard.less"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
