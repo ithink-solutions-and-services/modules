@@ -17,7 +17,8 @@
              'views/account_payment_views.xml',
              'wizard/account_billing_generate_views.xml',
              'report/account_invoice_report_views.xml',
-             'views/assets.xml'
+             'views/assets.xml',
+             'views/account_billing_dashboard_views.xml'
              ],
     'installable': True,
     'application': False,
