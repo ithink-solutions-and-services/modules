@@ -1,6 +1,7 @@
 <odoo>
     <data>
 
+<!-- v Billing Statement v -->
         <template id="report_account_invoice_bill_document">
             <style> .bold { font-weight:bold; } </style>
             <div class="article">
@@ -161,6 +162,11 @@
             </t>
         </template>
         
+<!-- ^ Billing Statement ^ -->
+	    
+	    
+<!-- v Official Receipt v -->
+	    
         <template id="report_account_payment_receipt_document">
             <div class="article">
                 <div class="page" style="font-size:10px;color:black!important;">
@@ -308,5 +314,7 @@
             </t>
         </template>
     
+<!-- ^ Official Receipt ^ -->
+	    
     </data>
 </odoo>
