@@ -174,12 +174,12 @@
 				.table {
                     border: 1px solid black!important;
                 }
-                .table-bordered > thead > tr > th,
-                .table-bordered > tbody > tr > th,
-                .table-bordered > tfoot > tr > th,
-                .table-bordered > thead > tr > td,
-                .table-bordered > tbody > tr > td,
-                .table-bordered > tfoot > tr > td {
+                .table-bordered &gt; thead &gt; tr &gt; th,
+                .table-bordered &gt; tbody &gt; tr &gt; th,
+                .table-bordered &gt; tfoot &gt; tr &gt; th,
+                .table-bordered &gt; thead &gt; tr &gt; td,
+                .table-bordered &gt; tbody &gt; tr &gt; td,
+                .table-bordered &gt; tfoot &gt; tr &gt; td {
                    border: 1px solid black!important;
                 }
 				h5 {
@@ -189,22 +189,19 @@
       <tbody>
         <tr>
           <td style="width: 60%;text-align:center;">
-            <img t-if="doc_id.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(doc_id.company_id.logo)" class="pull-left" width="300px;"/>
+            <img t-if="doc_id.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(doc_id.company_id.logo)" class="pull-left" width="90px;"/>
             <div class="pull-left company_address">
-              <div>
-                <strong t-field="doc_id.company_id.partner_id.name"/>
-              </div>
-              <span t-field="doc_id.company_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+              <span style="font-size:20px;" t-field="doc_id.company_id.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;], &quot;no_marker&quot;: true}"/>
             </div>
           </td>
-          <td style="width: 39%;">
+          <td style="width: 39%;vertical-align:middle;">
             <h5 style="text-align:center;"> Official Receipt No.: <t t-esc="doc_id.or_no"/></h5>
             <h5 style="text-align:center;font-size:10px;"> This Official Receipt will not be used to generate VAT Input/Output tax </h5>
           </td>
         </tr>
       </tbody>
     </table>
-    <table style="width:100%;font-size:12px;" class="table table-bordered">
+    <table style="width:100%;font-size:12px;margin-bottom:2px;" class="table table-bordered">
       <tbody>
         <tr>
           <td style="width: 60%;"><br/>
@@ -224,9 +221,7 @@
           <td style="width: 60%;padding:7px;"> <font class="bold">ADDRESS:</font>
             <br/>
             <font style="padding-left: 15px;"><span t-field="doc_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/></font> </td>
-          <td style="width: 39%;text-align:left;padding:7px;vertical-align:text-top"
-
-            rowspan="2"> <font class="bold">DETAILS OF PAYMENT</font> <br/>
+          <td style="width: 39%;text-align:left;padding:7px;vertical-align:text-top" rowspan="2"> <font class="bold">DETAILS OF PAYMENT</font> <br/>
             <br/>
             <table style="width:100%;">
               <tbody>
@@ -297,7 +292,7 @@
         </tr>
       </tbody>
     </table>
-    <h5 style="text-align:center;border-bottom: 1px solid black;padding-bottom: 10px;margin-top:7px;">
+    <h5 style="text-align:center;border-bottom: 1px solid black;padding-bottom: 10px;margin-top:5px;">
       <div style="float:left;width:49%;text-align:right;margin-right:15px;">
         ORIGINAL COPY - Homeowner </div>
       <div style="text-align:left;"> DUPLICATE COPY - Accounting </div>
