@@ -37,8 +37,8 @@ class AccountInvoice(models.Model):
             rec.total_cu_ms_fixed_price = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("cu_m_fixed_price"))
             rec.total_cu_ms_exceed_price = sum(rec.invoice_line_ids.filtered(lambda r: r.water_product == True).mapped("cu_m_exceed_price"))
     
-    water_total = fields.Float("Total Water Consumption", compute="_water_total", store=True)
-    monthly_due_total = fields.Float("Total Monthly Dues", compute="_water_total", store=True)
+    water_total = fields.Float("Total Water Consumption Price", compute="_water_total", store=True)
+    monthly_due_total = fields.Float("Total Monthly Dues Price", compute="_water_total", store=True)
     water_days = fields.Integer("1st number of days", compute="_water_total", store=True)
 
 class AccountInvoiceLine(models.Model):
