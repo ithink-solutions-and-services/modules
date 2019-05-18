@@ -286,5 +286,5 @@ class AccountBillingDashboard(models.Model):
     kanban_dashboard_graph_type = fields.Selection([('line','Line'),('bar','Bar')], string="Graph Type", default='line')    
     content_type = fields.Selection([('col_day','Daily Collection'), ('col_mo','Monthly Collection'),
                                      ('dues_col_day','Daily Dues Collection'), ('dues_col_mo','Monthly Dues Collection'),
-                                     ('other_col_day','Daily Other Collection'), ('other_col_mo','Monthly Other Collection
+                                     ('other_col_day','Daily Other Collection'), ('other_col_mo','Monthly Other Collection'),
                                     ], string="Content Type")
