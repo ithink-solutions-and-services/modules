@@ -6,7 +6,7 @@
             <style> .bold { font-weight:bold; } </style>
             <div class="article">
                 <div class="page" style="font-size:10px;color:black!important;">
-                          <div style="float:left;width: 49%;">
+                          <div style="float:left;width: 69%;">
       <table>
         <tbody>
           <tr>
@@ -20,11 +20,11 @@
         </tbody>
       </table>
     </div>
-    <div style="float:right;width: 50%;">
+    <div style="float:right;width: 30%;">
       <table>
         <tbody>
           <tr>
-            <td style="text-align:left">If undelivered, please return to:</td>
+            <td style="text-align:left;">If undelivered, please return to:</td>
             <td>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;</td>
           </tr>
           <tr>
