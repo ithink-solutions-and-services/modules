@@ -2,12 +2,7 @@
     <data>
         <record id="term_account_billing_fifth_day" model="account.payment.term">
             <field name="name">5th Day of Next Month</field>
-        </record>
-        <record id="term_line_account_billing_fifth_day" model="account.payment.term.line">
-            <field name="payment_id" ref="term_account_billing_fifth_day">
-            <field name="value">balance</field>
-            <field name="option">after_invoice_month</field>
-            <field name="days">5</field>
+            <field name="line_ids" eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 500, 'days': 5, 'option': 'after_invoice_month'})]"/>
         </record>
     </data>
 </odoo>
