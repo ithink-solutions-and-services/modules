@@ -4,7 +4,7 @@
         <field name="name">account.billing..dashboard.kanban.view</field>
         <field name="model">account.billing.dashboard</field>
         <field name="arch" type="xml">
-            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_billing_dashboard_kanban">
+<kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_billing_dashboard_kanban">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="total_count"/>
@@ -21,7 +21,7 @@
                             <!--<t t-value="JSON.parse(record.kanban_dashboard.raw_value)" t-set="dashboard"/>
                             <t t-value="record.type.raw_value" t-set="journal_type"/>-->
                             <t t-call="BillTop"/>
-                            <div class="o_kanban_card_content">
+                            <div class="container o_kanban_card_content">
                                 <div class="row">
                                     <t t-call="BillBody"/>
                                     <!--<t t-if="journal_type == 'sale' || journal_type == 'purchase'" t-call="JournalBodySalePurchase"/>
@@ -35,7 +35,7 @@
                                 </div>
                                 <t t-if="record.type.raw_value == 'graph' || record.type.raw_value == 'combined'" t-call="BillGraph"/>
                             </div>
-                            <div class="container o_kanban_card_manage_pane">
+                            <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu" >
                                 <t t-call="BillManage"/>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <!--<t t-value="JSON.parse(record.kanban_dashboard.raw_value)" t-set="dashboard"/>
                             <t t-value="record.type.raw_value" t-set="journal_type"/>-->
                             <t t-call="BillTop"/>
-                            <div class="o_kanban_card_content">
+                            <div class="container o_kanban_card_content">
                                 <div class="row">
                                     <t t-call="BillBody"/>
                                     <!--<t t-if="journal_type == 'sale' || journal_type == 'purchase'" t-call="JournalBodySalePurchase"/>
@@ -58,7 +58,7 @@
                                     </t>-->
                                 </div>
                             </div>
-                            <div class="container o_kanban_card_manage_pane">
+                            <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
                                 <t t-call="BillManage"/>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="o_kanban_manage_button_section">
-                                <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" /></a>
+                                <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v"/></a>
                             </div>
                         </div>
                     </t>
@@ -136,13 +136,13 @@
                         </div>-->
 
                         <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
-                            <div class="col-xs-8">
+                            <div class="col-8">
                                 <ul class="oe_kanban_colorpicker" data-field="color"/>
                             </div>
                         </div>
 
                         <div class="row o_kanban_card_settings">
-                            <div class="col-xs-6">
+                            <div class="col-6">
                                <t t-if="record.type.raw_value == 'graph' || record.type.raw_value == 'combined'">
                                <a type="object" name="toggle_graph_type">
                                   <t t-if="record.kanban_dashboard_graph_type.raw_value == 'line'"><span>Switch to Bar Graph</span></t>
@@ -156,18 +156,19 @@
                         </div>
                     </t>
 
-                    <t t-name="BillBody" >
+                    <t t-name="BillBody">
                         <t t-if="record.type.raw_value == 'graph' || record.type.raw_value == 'combined'">
-                        <div class="col-xs-6 o_kanban_primary_left">
-                            <button type="object" name="action_print" class="btn btn-primary btn-sm o_invoice_new">
+                        <div class="col-5 o_kanban_primary_left">
+                            <button type="object" name="action_print" class="btn btn-primary o_invoice_new">
                                 <span>Print</span>
                             </button>
                         </div>
                         </t>
-                        <div class="col-xs-6 o_kanban_primary_right">
+                        <div class="col-7 o_kanban_primary_right">
+                          <div class="row">
                             <span>
-                                <t t-if="record.content_type.raw_value == 'col_day'"><i class="fa fa-thumbs-up"></i></t>
-                                <t t-if="record.content_type.raw_value == 'col_mo'"><i class="fa fa-trophy"></i></t>
+                                <t t-if="record.content_type.raw_value == 'col_day'"><i class="fa fa-thumbs-up"/></t>
+                                <t t-if="record.content_type.raw_value == 'col_mo'"><i class="fa fa-trophy"/></t>
                                 <!--<t t-if="record.type.raw_value == 'overdue receivable'"><i class="fa fa-arrow-left"></i></t>
                                 <t t-if="record.type.raw_value == 'collection'"><i class="fa fa-trophy"></i></t>
                                 <t t-if="record.type.raw_value == 'subscription'"><i class="fa fa-users"></i></t>
@@ -175,7 +176,7 @@
                                 <t t-esc="record.short_count.raw_value"/>
                             </span>
                             <br/>
-                            <span style="font-size: 12px;"><field name="name"/></span>
+                          </div>
                         </div>
                     </t>
                     <t t-name="BillGraph">
