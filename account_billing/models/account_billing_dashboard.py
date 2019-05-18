@@ -34,24 +34,24 @@ class AccountBillingDashboard(models.Model):
         records = self.env['account.billing.dashboard'].sudo().search([])
         if records:
             if len(records) == 0:
-                self.env['account.billing.dashboard'].sudo().create({'name': 'Dashboard 1'})
+                self.env['account.billing.dashboard'].sudo().create({'name': "Today's Collection", 'type': 'text', 'content_type': 'col_day'})
             elif len(records) > 1:
                 count = 0
                 for rec in records:
                     if count > 0:
                         rec.sudo().unlink()
         else:
-            self.env['account.billing.dashboard'].sudo().create({'name': 'Dashboard 1', 'type': 'text', 'content_type': 'col_day'})
+            self.env['account.billing.dashboard'].sudo().create({'name': "Today's Collection", 'type': 'text', 'content_type': 'col_day'})
         if records:
             if len(records) == 0:
-                self.env['account.billing.dashboard'].sudo().create({'name': 'Dashboard 2'})
+                self.env['account.billing.dashboard'].sudo().create({'name': "This Month's Collection", 'type': 'combined', 'content_type': 'col_mo'})
             elif len(records) > 1:
                 count = 0
                 for rec in records:
                     if count > 0:
                         rec.sudo().unlink()
         else:
-            self.env['account.billing.dashboard'].sudo().create({'name': 'Dashboard 2', 'type': 'combined', 'content_type': 'col_mo'})
+            self.env['account.billing.dashboard'].sudo().create({'name': "This Month's Collection", 'type': 'combined', 'content_type': 'col_mo'})
         self.env['account.billing.dashboard'].sudo().search([('content_type','=',False)]).unlink()
                     
                     
