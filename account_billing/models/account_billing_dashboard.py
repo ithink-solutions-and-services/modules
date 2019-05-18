@@ -279,7 +279,7 @@ class AccountBillingDashboard(models.Model):
 
     name = fields.Char("Dashboard")
     total_count = fields.Float("Count", compute="_count")
-    short_count = fields.Float("Short Count", compute="_count")
+    short_count = fields.Char("Short Count", compute="_count")
     color = fields.Integer("Color")
     type = fields.Selection([('combined','Combined'), ('text','Text'), ('graph','Graph')], string="Dashboard Content Type", default="combined")
     kanban_dashboard_graph = fields.Text(compute="_kanban_dashboard_graph")
