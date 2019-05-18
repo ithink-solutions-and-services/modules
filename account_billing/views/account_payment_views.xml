@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+
+        <record id="inherit_view_account_payment_form" model="ir.ui.view">
+            <field name="name">inherit.view.account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="%(account_billing.report_account_payment_receipt_report)d" type="action" attrs="{'invisible': [('state','in',['draft', 'cancelled'])]}" string="Print Receipt"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="or_no"/>
+                    <field name="particulars"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="inherit_view_account_payment_invoice_form" model="ir.ui.view">
+            <field name="name">inherit.view.account.payment.invoice.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_validate_invoice_payment']" position="before">
+                    <button name="%(account_billing.report_account_payment_receipt_report)d" type="action" class="oe_highlight" attrs="{'invisible': [('state','not in',['draft', 'cancelled'])]}" string="Print Receipt"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_date']" position="after">
+                    <field name="or_no"/>
+                    <field name="particulars"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

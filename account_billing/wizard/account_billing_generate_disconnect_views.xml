@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+    
+        <record id="view_account_billing_generate_disconnect_form" model="ir.ui.view">
+            <field name="name">Generate Disconnection Notice</field>
+            <field name="model">account.billing.generate.disconnect</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <p>Click "Generate" button below to generate all disconnection notices</p>
+                    </group>
+                    <footer>
+                        <button name="generate"
+                                string="Generate"
+                                type="object"
+                                class="oe_highlight" />
+                        or
+                        <button
+                            name="action_cancel"
+                            string="Cancel"
+                            class="oe_link"
+                            special="cancel"
+                            />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_account_billing_generate_disconnect"
+                    name="Generate Disconnection Notice"
+                    res_model="account.billing.generate.disconnect"
+                    view_mode="form"
+                    view_type="form"
+                    target="new" />
+        
+        <menuitem id="menu_account_billing_generate_disconnect" name="Generate Disconnection Notice" parent="menu_billing_billing" action="action_account_billing_generate_disconnect" sequence="12"/>
+        
+    </data>
+</odoo>

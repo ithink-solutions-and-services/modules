@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+    
+        <record id="property_payment_term_account_billing" model="ir.property">
+            <field name="name">property_payment_term_id</field>
+            <field name="fields_id" ref="account.field_res_partner__property_payment_term_id"/>
+            <field name="type">many2one</field>
+        </record>
+    
+    </data>
+</odoo>

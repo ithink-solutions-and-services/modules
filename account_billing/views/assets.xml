@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="dashboard assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/account_billing/static/src/scss/account_billing_dashboard.scss"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
