@@ -9,6 +9,8 @@
     'depends': ['base', 'account'],
     'data': ['security/ir.model.access.csv',
              'data/ir_sequence_data.xml',
+             'data/account_payment_term_data.xml',
+             'data/ir_property_data.xml',
              'views/report.xml',
              'views/report_views.xml',
              'views/account_billing_views.xml',
