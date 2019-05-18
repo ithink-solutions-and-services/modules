@@ -264,7 +264,7 @@ class AccountBilling(models.Model):
                     next_billing_period = BillingPeriod.search([('date_start','=',new_date_first_day),('date_end','=',new_date_last_day)])
                     if not next_billing_period:
                         next_billing_period = BillingPeriod.create({
-                            'name': new_date_first_day.strftime("%b-%d-%y") + ' To ' + new_date_last_day.strftime("%b-%d-%y")
+                            'name': new_date_first_day.strftime("%b-%d-%y") + ' To ' + new_date_last_day.strftime("%b-%d-%y"),
                             'date_start': new_date_first_day,
                             'date_end': new_date_last_day
                         })
