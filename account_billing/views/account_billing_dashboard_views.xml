@@ -157,13 +157,11 @@
                     </t>
 
                     <t t-name="BillBody">
-                        <t t-if="record.type.raw_value == 'graph' || record.type.raw_value == 'combined'">
                         <div class="col-5 o_kanban_primary_left">
                             <button type="object" name="action_print" class="btn btn-primary o_invoice_new">
                                 <span>Print</span>
                             </button>
                         </div>
-                        </t>
                         <div class="col-7 o_kanban_primary_right">
                           <div class="row">
                             <span>
