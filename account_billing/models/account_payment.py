@@ -14,7 +14,7 @@ class AccountPayment(models.Model):
     def _total_due(self):
         for rec in self:
             total = sum(rec.invoice_ids.mapped("residual"))
-            rec.invoices_total_due = total + rec.amount
+            rec.invoices_total_due = total
     
     invoices_total_due = fields.Float("Total Due on Invoices", compute="_total_due", store=True)
 
