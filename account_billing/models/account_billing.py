@@ -168,7 +168,8 @@ class AccountBilling(models.Model):
         next_date = fields.Date.from_string(self.recurring_next_date)
         periods = {'daily': 'days', 'weekly': 'weeks', 'monthly': 'months', 'yearly': 'years'}
         end_date = next_date + relativedelta(**{periods[self.recurring_type]: self.recurring_type_interval})
-        end_date = end_date - relativedelta(days=1)     # remove 1 day as normal people thinks in term of inclusive ranges.
+ #       end_date = end_date - relativedelta(days=1)     # remove 1 day as normal people thinks in term of inclusive ranges.
+        
         # DO NOT FORWARDPORT
         format_date = self.env['ir.qweb.field.date'].value_to_html
 
