@@ -134,14 +134,9 @@ class AccountBillingDashboard(models.Model):
             color = '#875A7B' if '+e' in version else '#7c7bad'
             return {'values': data, 'title': graph_title, 'key': graph_key, 'area': True, 'color': color}
         return True
-
-    @api.one
-    def _get_name(self):
-        self.name = datetime.today().strftime("%B %Y")
-        
     
 
-    name = fields.Char("Dashboard", compute="_get_name")
+    name = fields.Char("Dashboard")
     total_count = fields.Float("Count", compute="_count")
     color = fields.Integer("Color")
     type = fields.Selection([('combined','Combined'), ('text','Text'), ('graph','Graph')], string="Dashboard Content Type", default="combined")
