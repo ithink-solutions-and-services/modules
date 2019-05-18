@@ -10,4 +10,7 @@ class AccountBillingGenerate(models.TransientModel):
         ids = []
         for invoice in invoices:
             ids.append(invoice.id)
-        return self.env.ref('account_billing.report_account_invoice_bill_report').report_action(ids)
+        if len(ids)>0:
+            return self.env.ref('account_billing.report_account_invoice_bill_report').report_action(ids)
+        else:
+            return True
