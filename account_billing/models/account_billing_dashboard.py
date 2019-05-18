@@ -30,6 +30,10 @@ class AccountBillingDashboard(models.Model):
 
     @api.model_cr
     def init(self):
+        try:
+            self.env.ref('account_billing.property_payment_term_account_billing').sudo().value_reference = 'account.payment.term,' + str(self.env.ref('account_billing.term_account_billing_fifth_day').id)
+        except:
+            pass
         self.env['account.billing.dashboard'].sudo().search([]).unlink()
         records = self.env['account.billing.dashboard'].sudo().search([])
         if records:
