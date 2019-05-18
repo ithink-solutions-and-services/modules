@@ -10,6 +10,7 @@
                 <field name="total_count"/>
                 <field name="color"/>
                 <field name="type"/>
+                <field name="content_type"/>
                 <field name="kanban_dashboard_graph_type"/>
                 <templates>
                     <t t-name="kanban-box">
