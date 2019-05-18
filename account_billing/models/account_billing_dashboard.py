@@ -131,14 +131,14 @@ class AccountBillingDashboard(models.Model):
             self.short_count = self.human_format(total_count)
         elif self.content_type == 'other_col_day':
             total_count = 0
-            invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','==',False), ('payment_ids.payment_date','=',datetime.today().date())])
+            invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','=',False), ('payment_ids.payment_date','=',datetime.today().date())])
             for invoice_billing in invoices_billing:
                 total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',datetime.today().date())]).mapped('amount'))
             self.total_count = total_count
             self.short_count = self.human_format(total_count)
         elif self.content_type == 'other_col_mo':
             total_count = 0
-            invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','==',False), ('payment_ids.payment_date','>=',datetime.today().date().replace(day=1)), ('payment_ids.payment_date','<',datetime.today().date().replace(day=1)+relativedelta(months=1))])
+            invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','=',False), ('payment_ids.payment_date','>=',datetime.today().date().replace(day=1)), ('payment_ids.payment_date','<',datetime.today().date().replace(day=1)+relativedelta(months=1))])
             for invoice_billing in invoices_billing:
                 total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','>=',datetime.today().date().replace(day=1)), ('payment_date','<',datetime.today().date().replace(day=1)+relativedelta(months=1))]).mapped('amount'))
             self.total_count = total_count
@@ -206,7 +206,7 @@ class AccountBillingDashboard(models.Model):
                 get_date = date(month=today.month, year=today.year, day=i)
                 get_date_short_name = get_date.strftime("%d")
                 get_date_start = datetime(month=today.month, year=today.year, day=i, hour=0, minute=0, second=0)
-                invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','==',False),('payment_ids.payment_date','=',get_date_start)])
+                invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','=',False),('payment_ids.payment_date','=',get_date_start)])
                 count = 0
                 for invoice_billing in invoices_billing:
                     count = count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',get_date_start)]).mapped('amount'))
@@ -266,7 +266,7 @@ class AccountBillingDashboard(models.Model):
                 get_date_name = get_date.strftime("%d %B %Y")
                 get_date_short_name = get_date.strftime("%d-%b")
                 get_date_start = datetime(month=today.month, year=today.year, day=i, hour=0, minute=0, second=0)
-                invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','==',False),('payment_ids.payment_date','=',get_date_start)])
+                invoices_billing = self.env['account.invoice'].sudo().search([('state','in',['open','in_payment','paid']),('billing_id','=',False),('payment_ids.payment_date','=',get_date_start)])
                 count = 0
                 for invoice_billing in invoices_billing:
                     count = count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',get_date_start)]).mapped('amount'))
