@@ -194,7 +194,7 @@
         <field name="context">{'search_default_dashboard':1}</field>
     </record>
 
-    <menuitem id="menu_account_billing_dashboard" name="Dashboard" action="open_account_billing_dashboard_kanban" parent="menu_account_billing" sequence="0"/>
+    <menuitem id="menu_account_billing_dashboard" name="Dashboard" action="open_account_billing_dashboard_kanban" parent="menu_billing" sequence="0"/>
 
 </data>
 </odoo>
