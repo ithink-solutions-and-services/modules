@@ -8,6 +8,7 @@
                 <field name="id"/>
                 <field name="name"/>
                 <field name="total_count"/>
+                <field name="short_count"/>
                 <field name="color"/>
                 <field name="type"/>
                 <field name="content_type"/>
