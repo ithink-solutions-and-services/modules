@@ -162,7 +162,7 @@
                                 <span>Print</span>
                             </button>
                         </div>
-                        <div class="col-7 o_kanban_primary_right">
+                        <div class="col-7 o_kanban_primary_right" style="font-size:32px;text-align:center;">
                           <div class="row">
                             <span>
                                 <t t-if="record.content_type.raw_value == 'col_day'"><i class="fa fa-thumbs-up"/></t>
