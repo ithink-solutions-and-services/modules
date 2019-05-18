@@ -5,7 +5,7 @@
             <field name="name">property_payment_term_id</field>
             <field name="fields_id" ref="account.field_res_partner_property_payment_term_id">
             <field name="type">many2one</field>
-            <field name="value_reference" ref="">
+            <field name="value_reference" ref="term_account_billing_fifth_day">
         </record>
     
     </data>
