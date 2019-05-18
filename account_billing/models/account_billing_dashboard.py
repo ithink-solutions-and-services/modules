@@ -59,15 +59,15 @@ class AccountBillingDashboard(models.Model):
     def _count(self):
         if self.content_type == 'col_day':
             total_count = 0
-            invoices_billing = self.env['account.invoice'].sudo().search([('billing_id','!=',False), ('payment_ids.payment_date','=',datetime.datetime.today().date())])
+            invoices_billing = self.env['account.invoice'].sudo().search([('billing_id','!=',False), ('payment_ids.payment_date','=',datetime.today().date())])
             for invoice_billing in invoices_billing:
-                total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',datetime.datetime.today().date())]).mapped('amount'))
+                total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',datetime.today().date())]).mapped('amount'))
             rec.total_count = total_count
         elif self.content_type == 'col_mo':
             total_count = 0
-            invoices_billing = self.env['account.invoice'].sudo().search([('billing_id','!=',False), ('payment_ids.payment_date','>=',datetime.datetime.today().date(day=1)), ('payment_ids.payment_date','<',datetime.datetime.today().date(day=1)+relativedelta(month=1))])
+            invoices_billing = self.env['account.invoice'].sudo().search([('billing_id','!=',False), ('payment_ids.payment_date','>=',datetime.today().date(day=1)), ('payment_ids.payment_date','<',datetime.today().date(day=1)+relativedelta(month=1))])
             for invoice_billing in invoices_billing:
-                total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','>=',datetime.datetime.today().date(day=1)), ('payment_date','<',datetime.datetime.today().date(day=1)+relativedelta(month=1))]).mapped('amount'))
+                total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','>=',datetime.today().date(day=1)), ('payment_date','<',datetime.today().date(day=1)+relativedelta(month=1))]).mapped('amount'))
             rec.total_count = total_count
                 
                 
