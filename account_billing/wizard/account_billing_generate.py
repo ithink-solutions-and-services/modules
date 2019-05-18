@@ -9,7 +9,7 @@ class AccountBillingGenerate(models.TransientModel):
         invoices = self.env['account.billing']._recurring_create_invoice()
         ids = []
         for invoice in invoices:
-            invoice.action_open_invoice()
+            invoice.action_invoice_open()
             ids.append(invoice.id)
         if len(ids)>0:
             return self.env.ref('account_billing.report_account_invoice_bill_report').report_action(ids)
