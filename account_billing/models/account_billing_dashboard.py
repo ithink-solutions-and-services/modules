@@ -63,14 +63,14 @@ class AccountBillingDashboard(models.Model):
             for invoice_billing in invoices_billing:
                 total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','=',datetime.today().date())]).mapped('amount'))
             self.total_count = total_count
-            self.short_count = self.human_format(total_count)
+            self.short_count = self.human_format(total_count) if total_count != 0 else total_count
         elif self.content_type == 'col_mo':
             total_count = 0
             invoices_billing = self.env['account.invoice'].sudo().search([('billing_id','!=',False), ('payment_ids.payment_date','>=',datetime.today().date().replace(day=1)), ('payment_ids.payment_date','<',datetime.today().date().replace(day=1)+relativedelta(month=1))])
             for invoice_billing in invoices_billing:
                 total_count = total_count + sum(self.env['account.payment'].sudo().search([('id','in',invoice_billing.payment_ids.ids), ('payment_date','>=',datetime.today().date().replace(day=1)), ('payment_date','<',datetime.today().date().replace(day=1)+relativedelta(month=1))]).mapped('amount'))
             self.total_count = total_count
-            self.short_count = self.human_format(total_count)
+            self.short_count = self.human_format(total_count) if total_count != 0 else total_count
                 
     def human_format(self, num):
         num = float('{:.3g}'.format(num))
