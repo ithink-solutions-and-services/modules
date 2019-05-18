@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="term_account_billing_fifth_day" model="account.payment.term">
+            <field name="name">5th Day of Next Month</field>
+        </record>
+        <record id="term_line_account_billing_fifth_day" model="account.payment.term.line">
+            <field name="payment_id" ref="term_account_billing_fifth_day">
+            <field name="value">balance</field>
+            <field name="option">fix_day_following_month</field>
+            <field name="days">5</field>
+        </record>
+    </data>
+</odoo>
