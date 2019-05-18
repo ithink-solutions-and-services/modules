@@ -4,7 +4,7 @@
         <field name="name">account.billing..dashboard.kanban.view</field>
         <field name="model">account.billing.dashboard</field>
         <field name="arch" type="xml">
-<kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_billing_dashboard_kanban">
+            <kanban create="false" class="oe_background_grey o_kanban_dashboard o_account_billing_dashboard_kanban">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="total_count"/>
