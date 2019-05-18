@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//header" position="inside">
                     <button name="%(account_billing.report_account_invoice_bill_report)d" type="action" attrs="{'invisible': [('state','not in',['draft', 'cancel'])]}" string="Print Billing Statement" class="oe_highlight"/>
-                    <button name="%(account_billing.report_account_invoice_disconnect_report)d" type="action" attrs="{'invisible': [('date_due','<',time.strftime('%Y-%m-%d'))]}" string="Print Disconnection Notice" class="oe_highlight"/>
+                    <button name="%(account_billing.report_account_invoice_disconnect_report)d" type="action" attrs="{'invisible': [('date_due','lt;',time.strftime('%Y-%m-%d'))]}" string="Print Disconnection Notice" class="oe_highlight"/>
                 </xpath>
             </field>
         </record>
